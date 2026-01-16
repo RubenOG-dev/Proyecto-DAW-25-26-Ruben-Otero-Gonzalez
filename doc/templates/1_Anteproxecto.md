@@ -200,7 +200,7 @@ O frontend será desenvolto con **React**, empregando a linguaxe **JavaScript**.
 
 ```mermaid
 gantt
-    title Cronograma de Traballo - Proxecto 2026
+    title PLANIFICACIÓN FCT
     dateFormat  DD/MM/YY
     axisFormat  %d/%m
 
