@@ -11,7 +11,7 @@
 > *EXPLICACION*: Este documento describe os requirimentos para "nome do proxecto" especificando que funcionalidade ofrecerá e de que xeito.
 
 ## 1- Descrición Xeral
-
+O proxecto consiste no desenvolvemento dunha aplicación web de recomendación de videoxogos que permite aos usuarios descubrir novos títulos segundo as súas preferencias, crear listas personalizadas, valorar xogos e participar nun foro organizado por categorías, combinando recomendación personalizada e interacción social.
 >*EXPLICACION*: Descrición Xeral do proxecto
 
 ## 2- Funcionalidades
