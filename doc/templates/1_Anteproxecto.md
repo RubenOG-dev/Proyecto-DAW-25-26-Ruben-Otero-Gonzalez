@@ -22,7 +22,7 @@
 
 ## 1- Descrición do proxecto
 
-O proxecto consiste no desenvolvemento dunha **aplicación web de recomendación e comparación de videoxogos**, chamada **GameMatcher*, orientada a usuarios que desexan descubrir novos títulos segundo os seus gustos, plataformas dispoñibles e valoracións doutros usuarios.
+O proxecto consiste no desenvolvemento dunha **aplicación web de recomendación e comparación de videoxogos**, chamada *GameMatcher*, orientada a usuarios que desexan descubrir novos títulos segundo os seus gustos, plataformas dispoñibles e valoracións doutros usuarios.
 
 A aplicación permitirá consultar información detallada de cada videoxogo, clasificalos por categorías e plataformas, valorar xogos e visualizar rankings dinámicos segundo as valoracións recibidas nun período de tempo determinado (día, semana ou mes). Ademais, incluirá funcionalidades sociais como un foro organizado por categorías.
 
@@ -93,7 +93,7 @@ O incremento de xogadores xera unha necesidade de aumento de videoxogos no merca
 
 ### 2.3- Segmento de clientes
 
-**GameMatcher* vai dirixida principalmente a persoas interesadas no mundo dos videoxogos e no consumo de contido dixital.
+*GameMatcher* vai dirixida principalmente a persoas interesadas no mundo dos videoxogos e no consumo de contido dixital.
 Distínguense dous tipos de perfís:
 
 - **Usuarios**: persoas afeccionadas aos videoxogos que utilizan a aplicación para consultar información, comparar xogos, realizar valoracións, crear listas de favoritos e participar nos foros da comunidade. Este perfil inclúe xogadores ocasionais e habituais, principalmente usuarios de plataformas dixitais.
@@ -118,7 +118,7 @@ Estas plataformas están ben posicionadas no mercado, pero adoitan centrarse nun
 
 ### 2.5- Proposta de valor
 
-A aplicación diferénciase da competencia ao integrar nun único espazo funcionalidades que actualmente se atopan dispersas:
+*GameMatcher* diferénciase da competencia ao integrar nun único espazo funcionalidades que actualmente se atopan dispersas:
 
 - **Comparación de videoxogos** segundo características, valoracións e preferencias do usuario.
 - **Recomendación baseada en xogos similares**, permitíndolle ao usuario descubrir novos títulos adaptados aos seus gustos.
@@ -126,7 +126,7 @@ A aplicación diferénciase da competencia ao integrar nun único espazo funcion
 - **Organización clara e intuitiva** por categorías, plataformas e preferencias, facilitando a navegación.
 - **Interacción social**, permitindo aos usuarios participar en foros e compartir experiencias.
 
-O valor que aporta ao mercado é a **posibilidade de tomar decisións de forma rápida e informada** sobre que xogos mercar ou probar, centralizando recomendacións, comparacións e comunidade nunha única plataforma especializada. Isto fai que os usuarios escollan esta aplicación fronte a servizos máis xerais ou fragmentados, e que as empresas (clientes) dispoñan dun canal atractivo para publicidade ou promoción.
+O valor que *GameMatcher* aporta ao mercado é a **posibilidade de tomar decisións de forma rápida e informada** sobre que xogos mercar ou probar, centralizando recomendacións, comparacións e comunidade nunha única plataforma especializada. Isto fai que os usuarios escollan esta aplicación fronte a servizos máis xerais ou fragmentados, e que as empresas (clientes) dispoñan dun canal atractivo para publicidade ou promoción.
 
 ---
 
@@ -176,10 +176,10 @@ Estes rangos son estimacións habituais no mercado actual e permiten defender a 
 
 #### 2.8.1- Viabilidade técnica
 
-O proxecto é viable a nivel técnico, xa que se empregan tecnoloxías coñecidas e estudadas ao longo do ciclo:
+*GameMatcher* é viable a nivel técnico, xa que se empregan tecnoloxías coñecidas e estudadas ao longo do ciclo:
 - **Backend**: **PHP** con patrón **MVC** para organizar o código.
 - **Base de datos**: MySQL.
-- **Frontend**: **HTML5**, **CSS3** e **JavaScript**, empregando chamadas asincrónicas mediante **fetch/AJAX** para interactuar co **backend** sen recargar a páxina.
+- **Frontend**: **HTML5**, **CSS3**, **Bootstrap** e **JavaScript**, empregando chamadas asincrónicas mediante **fetch/AJAX** para interactuar co **backend** sen recargar a páxina.
 Dispóñense dos medios materiais necesarios, incluíndo dominio web, servidor e ferramentas de desenvolvemento, e non existen impedimentos técnicos relevantes que dificulten a súa implementación.
 
 ---
@@ -194,14 +194,14 @@ A nivel económico, os custos mensuais estimados son de aproximadamente **160–
 - Mantemento e substitución de hardware: 5–10 €/mes.  
 - Publicidade opcional: 10–30 €/mes.  
 
-Os ingresos potenciais, tomando como referencia unha comunidade inicial de usuarios e fontes como subscricións premium, publicidade e afiliacións, poderían acadar **~115 €/mes** nunha primeira fase.  
+Os ingresos potenciais de *GameMatcher*, tomando como referencia unha comunidade inicial de usuarios e fontes como subscricións premium, publicidade e afiliacións, poderían acadar **~115 €/mes** nunha primeira fase.  
 A medio prazo, coa ampliación de usuarios activos e aumento da publicidade e afiliacións, os ingresos poderían superar claramente os custos mensuais, garantindo a sustentabilidade económica do proxecto.  
 
 ---
 
 #### 2.8.3- Conclusión
 
-O proxecto é viable tanto a nivel técnico como económico.  
+Polo consecuente *GameMatcher* podería decirse que é viable tanto a nivel técnico como económico.  
 - A curto prazo, podería existir un pequeno déficit inicial, pero é asumible dentro dun proxecto experimental e mellorable mediante promoción e captación de usuarios.  
 - A medio e longo prazo, os ingresos derivados de subscricións premium, publicidade e afiliacións permitirían cubrir os custos fixos e variables, asegurando a rendibilidade.  
 - Ademais, a bonificación da **cuota cero** facilita a viabilidade inicial e minimiza riscos económicos.  
