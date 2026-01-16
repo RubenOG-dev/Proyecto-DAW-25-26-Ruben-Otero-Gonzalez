@@ -57,61 +57,76 @@ A aplicación pretende cubrir a necesidade de:
 - Consultar opinións reais doutros usuarios.
 - Descubrir novos títulos segundo preferencias concretas.
 
-Existen produtos similares no mercado, como webs especializadas ou tendas dixitais, pero non sempre ofrecen recomendacións claras nin unha comunidade centrada na valoración. Isto supón unha oportunidade para crear un servizo máis especializado.
+Actualmente existen plataformas relacionadas co mundo do videoxogo que cobren algunhas das funcionalidades propostas, como tendas dixitais con sistemas de valoración ou webs especializadas en análises. Porén, estas solucións adoitan centrarse nun único aspecto (venda, crítica profesional ou comunidade) e non integran nunha mesma plataforma a comparación de videoxogos, a recomendación baseada en similitude e a interacción social estruturada.
+Esta fragmentación do mercado xera a oportunidade de desenvolver unha aplicación especializada que centralice estes servizos, ofrecendo ao usuario unha experiencia máis clara e orientada á toma de decisións.
+
+Segundo datos recentes do mercado global de videoxogos, a facturación anual medrou aproximadamente duns **220,79 billóns de dólares en 2022** a uns **317,91 billóns en 2025**, con proxectos que sitúan o mercado por encima dos **400 billóns en 2027**. Isto indica un crecemento sostido na industria e unha maior oferta de contido dispoñible para os usuarios. :contentReference[oaicite:2]{index=2}
+Ademais, o número de xogadores no mundo alcanzou uns **3,22 miles de millóns en 2023** e espera que supere os **3,5 miles de millóns en 2025**, o que amosa unha expansión constante da base de usuarios. :contentReference[oaicite:3]{index=3}
+
+Aquí amosase o incremento de xogadores de videoxogos na última década:
+![Xogadores](../img/grafic_xogadores_videoxogos.png)
+
+O incremento de xogadores xera unha necesidade de aumento de videoxogos no mercado, o cal favorece a este prroxecto xa que neste tipo de web os novos usuarios xunto cos usuarios mais antigos, poden buscar xogos que encaixen nas súas necesidades, mediante os filtros anteriormente citados. Tamen favorece o apartado dos foros da comunidade xogadora, xa que a mais numero de xogadores maior é a posibilidade de interación nestes foros.
 
 #### Análise DAFO
 
 **Debilidades**
-- Proxecto desenvolvido de forma individual.
-- Necesidade de captar usuarios para obter valoracións relevantes.
+- Proxecto desenvolvido de forma individual, o que limita o ritmo de desenvolvemento e mantemento.
+- Necesidade inicial de captar usuarios activos para xerar valoracións e contido relevante.
 
 **Ameazas**
-- Competencia de plataformas xa consolidadas.
-- Cambios constantes no mercado dos videoxogos.
+- Existencia de plataformas consolidadas cunha base de usuarios moi ampla.
+- Dificultade inicial para acadar visibilidade e posicionamento fronte a servizos xa coñecidos.
 
 **Fortalezas**
-- Especialización exclusiva en videoxogos.
-- Plataforma clara e centrada na experiencia do usuario.
+- Enfoque especializado na comparación, valoración e recomendación de videoxogos.
+- Integración nunha única plataforma de funcionalidades que actualmente se atopan dispersas.
+- Deseño orientado á experiencia do usuario e á interacción comunitaria.
+- Flexibilidade para evolucionar a aplicación segundo as necesidades do mercado.
 
 **Oportunidades**
-- Crecemento continuo da industria do videoxogo.
-- Aumento do consumo de contido dixital e recomendacións online.
+- Crecemento constante da industria do videoxogo e do número de xogadores.
+- Aumento do catálogo de videoxogos, o que incrementa a necesidade de ferramentas de recomendación.
+- Tendencia ao consumo de contido dixital e á participación en comunidades online.
 
 ---
 
 ### 2.3- Segmento de clientes
 
-A aplicación vai dirixida principalmente a:
-- Persoas afeccionadas aos videoxogos.
-- Usuarios habituais de plataformas dixitais e redes sociais.
+A aplicación vai dirixida principalmente a persoas interesadas no mundo dos videoxogos e no consumo de contido dixital.
+Distínguense dous tipos de perfís:
 
-Distínguense dous perfís:
-- **Usuarios**: persoas que utilizan a aplicación para consultar e/ou valorar videoxogos.
-- **Clientes**: empresas anunciantes, tendas dixitais ou plataformas de venda de videoxogos.
+- **Usuarios**: persoas afeccionadas aos videoxogos que utilizan a aplicación para consultar información, comparar xogos, realizar valoracións, crear listas de favoritos e participar nos foros da comunidade. Este perfil inclúe xogadores ocasionais e habituais, principalmente usuarios de plataformas dixitais.
+- **Clientes**: empresas ou entidades que poderían empregar a plataforma como medio publicitario, tales como tendas dixitais de videoxogos, desenvolvedores independentes ou marcas relacionadas co sector do ocio dixital.
 
-O mercado potencial é amplo, xa que o sector do videoxogo conta cun gran número de usuarios a nivel nacional e internacional.
+O mercado potencial é amplo, xa que o sector do videoxogo conta cun elevado número de usuarios a nivel nacional e internacional, en continuo crecemento.
 
 ---
 
 ### 2.4- Competencia
 
-No mercado existen diversas plataformas relacionadas cos videoxogos:
-- Páxinas web especializadas en análise de videoxogos.
-- Tendas dixitais como Steam ou Epic Games.
-- Foros e comunidades online.
+No mercado existen diversas plataformas relacionadas co mundo dos videoxogos, aínda que ningunha delas ofrece de forma centralizada todas as funcionalidades propostas neste proxecto.
 
-Estas plataformas adoitan estar ben posicionadas, pero moitas delas non están centradas exclusivamente na recomendación nin na comparación baseada en valoracións da comunidade, o que permite diferenciar o proxecto.
+Entre as principais referencias destacan:
+- **Tendas dixitais** como Steam ou Epic Games, que dispoñen de sistemas de valoración e recomendación, pero cun enfoque orientado á venda e non á comparación neutral entre videoxogos.
+- **Páxinas web especializadas** en análises e noticias de videoxogos, como medios dixitais, que ofrecen información detallada pero cunha participación limitada do usuario.
+- **Foros e comunidades online**, onde os usuarios comparten opinións, pero cunha información dispersa e sen sistemas estruturados de filtrado, comparación ou recomendación.
+
+Estas plataformas están ben posicionadas no mercado, pero adoitan centrarse nun único aspecto (venda, análise profesional ou comunidade), o que deixa unha oportunidade para unha aplicación especializada que integre recomendación, comparación e interacción social nun mesmo espazo.
 
 ---
 
 ### 2.5- Proposta de valor
 
-A aplicación diferénciase da competencia en:
-- Centralizar recomendación, comparación e comunidade nun único lugar.
-- Ofrecer rankings dinámicos segundo o tempo.
-- Organización clara por categorías e plataformas.
+A aplicación diferénciase da competencia ao integrar nun único espazo funcionalidades que actualmente se atopan dispersas:
 
-O valor que aporta ao mercado é a facilidade para descubrir videoxogos adaptados aos gustos do usuario, polo que os usuarios escollerán esta plataforma fronte a outras máis xenéricas.
+- **Comparación de videoxogos** segundo características, valoracións e preferencias do usuario.
+- **Recomendación baseada en xogos similares**, permitíndolle ao usuario descubrir novos títulos adaptados aos seus gustos.
+- **Ranking dinámico** de xogos segundo valoracións da comunidade, actualizado día, semana ou mes.
+- **Organización clara e intuitiva** por categorías, plataformas e preferencias, facilitando a navegación.
+- **Interacción social**, permitindo aos usuarios participar en foros e compartir experiencias.
+
+O valor que aporta ao mercado é a **posibilidade de tomar decisións de forma rápida e informada** sobre que xogos mercar ou probar, centralizando recomendacións, comparacións e comunidade nunha única plataforma especializada. Isto fai que os usuarios escollan esta aplicación fronte a servizos máis xerais ou fragmentados, e que as empresas (clientes) dispoñan dun canal atractivo para publicidade ou promoción.
 
 ---
 
@@ -123,38 +138,31 @@ A forma xurídica escollida sería a de **autónomo**, xa que permite iniciar a 
 
 ### 2.7- Investimentos
 
-Os investimentos iniciais necesarios serían:
-- Equipo informático.
-- Servidor web e base de datos.
-- Dominio web.
-- Software de desenvolvemento.
-- Gastos básicos de subministracións.
-
----
-
 #### 2.7.1- Custos
 
-**Custos fixos**
-- Aloxamento web.
-- Dominio.
-- Cota de autónomo.
+Os custos fixos inclúen:
+- **Cuota de autónomo:**  0€ hasta final de 2026 en Galicia. Despois ~80 €/mes;
+- **Dominio web (Dinahosting):** 10 – 15 €/ano.
+- **Hosting web básico (Dinahosting):** ~33 €/ano (plan compartido, contratación anual).
+- **Tarifa de internet:** aprox. 30 €/mes.
+- **Asesoría Fiscal:** aprox. 30 €/mes (para xestionar autónomo, impostos e contabilidade).
+- **Software e ferramentas de desenvolvemento:** 0 – 50 € (opcional).
 
-**Custos variables**
-- Publicidade.
-- Mantemento e melloras da aplicación.
-
-Inclúense tamén os impostos e custos sociais correspondentes.
+Custos variables poden incluír:
+- Publicidade en redes sociais (0,5 € – 1,5 € por anuncio).
+- Substitución ou actualización de hardware (50 – 100 €/ano aprox.).
+- Mantemento técnico adicional (20 – 50 €/mes opcional).
 
 ---
 
 #### 2.7.2- Ingresos
 
-Os ingresos procederían principalmente de:
-- Publicidade na plataforma.
-- Enlaces de afiliación.
-- Subscricións premium.
+As fontes de ingresos potenciais son:
+- **Publicidade en banners:** 1 € – 5 € por cada 1000 visualizacións.
+- **Comisións de afiliación:** 5 % – 10 % por venda derivada en tendas dixitais como Steam ou Epic Games.
+- **Subscricións premium mensuais (opcional):** 2 – 5 € por usuario.
 
-A política de prezos sería accesible para facilitar a captación de usuarios.
+Estes rangos son estimacións habituais no mercado actual e permiten defender a viabilidade económica do proxecto.
 
 ---
 
@@ -162,64 +170,73 @@ A política de prezos sería accesible para facilitar a captación de usuarios.
 
 #### 2.8.1- Viabilidade técnica
 
-O proxecto é viable a nivel técnico, xa que se empregan tecnoloxías coñecidas e estudadas ao longo do ciclo. Dispóñense dos medios materiais necesarios e non existen impedimentos técnicos relevantes para o seu desenvolvemento.
+O proxecto é viable a nivel técnico, xa que se empregan tecnoloxías coñecidas e estudadas ao longo do ciclo:
+- **Backend**: **PHP** con patrón **MVC** para organizar o código.
+- **Base de datos**: MySQL.
+- **Frontend**: **HTML5**, **CSS3** e **JavaScript**, empregando chamadas asincrónicas mediante **fetch/AJAX** para interactuar co **backend** sen recargar a páxina.
+Dispóñense dos medios materiais necesarios, incluíndo dominio web, servidor e ferramentas de desenvolvemento, e non existen impedimentos técnicos relevantes que dificulten a súa implementación.
 
 ---
 
 #### 2.8.2- Viabilidade económica
 
-Os custos iniciais son reducidos, polo que o proxecto pode manterse cun investimento moderado. A medio prazo, os ingresos por publicidade e afiliacións permitirían cubrir os gastos.
+A nivel económico, os custos mensuais estimados son de aproximadamente **160–185 €/mes**, incluíndo:  
+
+- Cuota de autónomo: 80 €/mes (restituída grazas ao programa **“cuota cero” en Galicia 2026**).  
+- Asesoría fiscal: 30 €/mes.  
+- Tarifa de internet: 30 €/mes.  
+- Mantemento e substitución de hardware: 5–10 €/mes.  
+- Publicidade opcional: 10–30 €/mes.  
+
+Os ingresos potenciais, tomando como referencia unha comunidade inicial de usuarios e fontes como subscricións premium, publicidade e afiliacións, poderían acadar **~115 €/mes** nunha primeira fase.  
+A medio prazo, coa ampliación de usuarios activos e aumento da publicidade e afiliacións, os ingresos poderían superar claramente os custos mensuais, garantindo a sustentabilidade económica do proxecto.  
 
 ---
 
 #### 2.8.3- Conclusión
 
-O proxecto é viable tanto a nivel técnico como económico. Os beneficios potenciais poden superar os custos iniciais e, no caso de perdas, estas poderían cubrirse mediante financiamento ou subvencións.
+O proxecto é viable tanto a nivel técnico como económico.  
+- A curto prazo, podería existir un pequeno déficit inicial, pero é asumible dentro dun proxecto experimental e mellorable mediante promoción e captación de usuarios.  
+- A medio e longo prazo, os ingresos derivados de subscricións premium, publicidade e afiliacións permitirían cubrir os custos fixos e variables, asegurando a rendibilidade.  
+- Ademais, a bonificación da **cuota cero** facilita a viabilidade inicial e minimiza riscos económicos.  
 
 ---
 
 ## 3- Requirimentos técnicos
 
 ### Infraestrutura
-- **Dominio web** proporcionado polo tutor para probar a aplicación durante as prácticas.  
-- **Servidor web** facilitado polo tutor, onde se desplegará a aplicación.  
-- **Base de datos MySQL** proporcionada polo tutor para almacenar o contido necesario da aplicación.  
-- **Acceso FTP** facilitado polo tutor para subir arquivos e actualizar a aplicación.
+
+O proxecto estará aloxado en **Dinahosting**, un servizo de aloxamento web profesional que ofrece soporte completo para proxectos web como o noso. A infraestrutura dispoñible incluirá:
+
+- **Dominio web:** unha dirección pública propia para acceder á aplicación.  
+- **Servidor web:** con soporte para PHP e Apache/Nginx, configurado para executar a aplicación de forma estable e segura.  
+- **Base de datos MySQL:** para almacenar toda a información da aplicación.  
+- **Acceso FTP/SFTP:** para subir, xestionar e actualizar os ficheiros da aplicación de forma cómoda e segura.  
+
+Esta infraestrutura garante que a aplicación poida estar accesible de forma continua, cun rendemento axeitado para o CRUD dunha funcionalidade e con capacidade para futuras ampliacións sen necesidade de contratar recursos adicionais.
 
 ### Backend
-O backend será desenvolvido con **Laravel**, empregando o patrón **MVC** para organizar o código.  
+O backend será desenvolvido con **PHP**, empregando o patrón **MVC** para organizar o código.  
 A base de datos **MySQL** almacenará toda a información da aplicación.  
-Para o proxecto implementarase un **CRUD dunha funcionalidade** (foro ou xogos), permitindo dar de alta, modificar, eliminar e consultar datos.  
+Para o proxecto implementarase un **CRUD dunha funcionalidade** (foro ou xogos), permitindo dar de alta, modificar, eliminar e consultar datos.
+O uso de **MVC** garante que o código estea estruturado, separado por responsabilidades (modelo, vista e controlador) e facilite futuras ampliacións.
 
 ### Frontend
-O frontend será desenvolto con **React**, empregando a linguaxe **JavaScript**. Para o estilo e a organización visual usarase **CSS3**, empregando **Flexbox e CSS Grid** para deseñar layouts adaptables a diferentes tamaños de pantalla (móbil, tablet e escritorio), garantindo unha interface amigable e usable.
+O **frontend** será desenvolvido con:
+
+- **HTML5** e **CSS3** para estruturar e estilizar a interface.
+- **JavaScript**, empregando chamadas asincrónicas mediante **fetch/AJAX** para interactuar co backend e actualizar a información sen recargar a páxina.
+- **Bootstrap** para acelerar o deseño responsive e aproveitar compoñentes predefinidos como botóns, formularios, táboas e modais.
+- **Flexbox e CSS Grid** para personalizar layouts e garantir unha experiencia adaptativa a distintos tamaños de pantalla (móbil, tablet e escritorio).
+
+O uso combinado de **Bootstrap** e **CSS3** permite:
+- Aproveitar a estrutura responsive e os compoñentes listos de Bootstrap.
+- Mantelo flexible e personalizable coas túas propias regras de CSS, adaptando estilos, cores, tamaños e disposicións específicas.
+- Garantir unha interface amigable, clara e usable para os usuarios, onde a información de xogos, rankings, filtros e foros sexa fácil de consultar e interactuar.
 
 ---
 
 ## 4- Planificación
 
-```mermaid
-gantt
-    title PLANIFICACIÓN FCT
-    dateFormat  DD/MM/YY
-    axisFormat  %d/%m
+![DiagramDeGant](../img/DiagramaDeGant.png)
 
-    section Definición
-    Anteproxecto           :a1, 16/01/26, 0d
-    Análise                :a2, 16/01/26, 7d
-
-    
-    section Deseño
-    Deseño do sistema      :a3, 23/01/26, 7d
-
-    section Desenvolvemento
-    Codificación e Probas  :active, a4, 30/01/26, 35d
-    1ª Entrega (Código)    :a4, 30/01/26, 22d
-    2ª Entrega (Código)    :a4, 21/02/26, 13d
-
-    section Finalización
-    Implantación           :a5, 06/03/26, 7d
-
-
-
-```
