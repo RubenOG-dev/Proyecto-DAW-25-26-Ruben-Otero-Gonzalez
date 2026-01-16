@@ -219,6 +219,6 @@ gantt
 
     section Finalización
     Ajustes finais e documentación                     :a8, 23/04/26, 7d
-    Presentación / defensa do proxecto                 :milestone, 30/04/26, 0d
-                :milestone, 20/03/26, 0d
+    Presentación / defensa do proxecto                 :milestone, a9, 30/04/26
+
 ```
