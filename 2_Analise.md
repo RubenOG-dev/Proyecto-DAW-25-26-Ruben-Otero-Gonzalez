@@ -23,7 +23,7 @@ O proxecto consiste no desenvolvemento dunha aplicación web de recomendación d
 | Rexistro de usuarios | Permite a un usuario crear unha conta na aplicación mediante un formulario de rexistro |
 | Inicio de sesión | Permite ao usuario rexistrado acceder á aplicación mediante as súas credenciais |
 | Consulta de videoxogos | Permite a calquera usuario visualizar o catálogo de videoxogos clasificados por categorías |
-| Visualización de rankings | Mostra os videoxogos mellor valorados por día, semana ou mes |
+| Visualización de rankings | O sitema mostra os videoxogos mellor valorados por día, semana ou mes |
 | Valoración de videoxogos | O usuario rexistrado pode asignar unha puntuación a un videoxogo |
 | Xestión de favoritos | O usuario rexistrado pode engadir ou eliminar videoxogos da súa lista de favoritos |
 | Recomendación de xogos | O sistema mostra xogos recomendados baseándose nos favoritos e valoracións do usuario |
