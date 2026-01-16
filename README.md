@@ -117,7 +117,7 @@ O valor que aporta ao mercado é a facilidade para descubrir videoxogos adaptado
 
 ### 2.6- Forma xurídica
 
-A forma xurídica escollida sería **autónomo**, xa que permite iniciar a actividade cun investimento reducido e cunha xestión máis sinxela, axeitada para un proxecto dixital de pequena escala na súa fase inicial.
+A forma xurídica escollida sería a de **autónomo**, xa que permite iniciar a actividade cun investimento reducido e cunha xestión máis sinxela, axeitada para un proxecto dixital de pequena escala na súa fase inicial.
 
 ---
 
