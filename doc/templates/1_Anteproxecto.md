@@ -243,6 +243,4 @@ O uso combinado de **Bootstrap** e **CSS3** permite:
 ---
 
 ## 4- Planificación
-
-
-
+![DiagramDeGant](../img/DiagramaDeGant.png)
