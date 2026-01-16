@@ -22,7 +22,7 @@
 
 ## 1- Descrición do proxecto
 
-O proxecto consiste no desenvolvemento dunha **aplicación web de recomendación e comparación de videoxogos**, orientada a usuarios que desexan descubrir novos títulos segundo os seus gustos, plataformas dispoñibles e valoracións doutros usuarios.
+O proxecto consiste no desenvolvemento dunha **aplicación web de recomendación e comparación de videoxogos**, chamada **GameMatcher*, orientada a usuarios que desexan descubrir novos títulos segundo os seus gustos, plataformas dispoñibles e valoracións doutros usuarios.
 
 A aplicación permitirá consultar información detallada de cada videoxogo, clasificalos por categorías e plataformas, valorar xogos e visualizar rankings dinámicos segundo as valoracións recibidas nun período de tempo determinado (día, semana ou mes). Ademais, incluirá funcionalidades sociais como un foro organizado por categorías.
 
@@ -93,7 +93,7 @@ O incremento de xogadores xera unha necesidade de aumento de videoxogos no merca
 
 ### 2.3- Segmento de clientes
 
-A aplicación vai dirixida principalmente a persoas interesadas no mundo dos videoxogos e no consumo de contido dixital.
+**GameMatcher* vai dirixida principalmente a persoas interesadas no mundo dos videoxogos e no consumo de contido dixital.
 Distínguense dous tipos de perfís:
 
 - **Usuarios**: persoas afeccionadas aos videoxogos que utilizan a aplicación para consultar información, comparar xogos, realizar valoracións, crear listas de favoritos e participar nos foros da comunidade. Este perfil inclúe xogadores ocasionais e habituais, principalmente usuarios de plataformas dixitais.
