@@ -132,7 +132,13 @@ O valor que aporta ao mercado é a **posibilidade de tomar decisións de forma r
 
 ### 2.6- Forma xurídica
 
-A forma xurídica escollida sería a de **autónomo**, xa que permite iniciar a actividade cun investimento reducido e cunha xestión máis sinxela, axeitada para un proxecto dixital de pequena escala na súa fase inicial.
+A forma xurídica de **GameMatcher** será a de **autónomo**, a opción máis adecuada para un proxecto dixital de pequena escala na súa fase inicial. Esta elección permite:
+
+- Trámites máis sinxelos e rápidos en comparación con outras formas xurídicas como a SL.  
+- Non require capital inicial.  
+- Bonificacións na cuota de autónomo nos primeiros meses grazas á tarifa plana ou á **“cuota cero” en Galicia 2026**, reducindo os custos iniciais.
+
+**Resumo:** iniciar a actividade como autónomo permite concentrarse no desenvolvemento e crecemento da aplicación sen asumir un alto risco económico.
 
 ---
 
