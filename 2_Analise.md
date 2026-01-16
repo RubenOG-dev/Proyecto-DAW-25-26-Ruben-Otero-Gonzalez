@@ -11,7 +11,8 @@
 > *EXPLICACION*: Este documento describe os requirimentos para "nome do proxecto" especificando que funcionalidade ofrecerá e de que xeito.
 
 ## 1- Descrición Xeral
-O proxecto consiste no desenvolvemento dunha aplicación web de recomendación de videoxogos que permite aos usuarios descubrir novos títulos segundo as súas preferencias, crear listas personalizadas, valorar xogos e participar nun foro organizado por categorías, combinando recomendación personalizada e interacción social.
+O proxecto consiste no desenvolvemento dunha aplicación web de recomendación de videoxogos a cal ten por obxectivo facilitar aos usuarios o descubrimento de novos títulos adaptados aos seus gustos e preferencias. A plataforma permitirá aos usuarios crear e xestionar listas personalizadas de xogos, valorar e comentar sobre diferentes títulos, así como seguir as recomendacións baseadas no seu historial de xogos e intereses. Ademais, a aplicación contará cun foro integrado organizado por categorías, onde os usuarios poderán interactuar entre si, compartir experiencias, debater sobre tendencias do sector e recibir suxestións da comunidade. Deste xeito, combínase a recomendación personalizada con un espazo de interacción social que fomenta a participación activa e o intercambio de coñecemento entre xogadores, ofrecendo unha experiencia completa e envolvente que vai máis aló da simple suxestión de videoxogos.
+
 >*EXPLICACION*: Descrición Xeral do proxecto
 
 ## 2- Funcionalidades
