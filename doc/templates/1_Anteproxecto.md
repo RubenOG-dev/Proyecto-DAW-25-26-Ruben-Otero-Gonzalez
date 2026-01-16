@@ -200,13 +200,14 @@ O frontend será desenvolto con **React**, empregando a linguaxe **JavaScript**.
 
 ```mermaid
 gantt
-    title PLANIFICACIÓN FCT
+    title PLANIFICACIÓN TFG
     dateFormat  DD/MM/YY
     axisFormat  %d/%m
 
     section Definición
     Anteproxecto           :a1, 16/01/26, 0d
-    Análise                :a2, 16/01/26, 7d
+    section Analise
+                   :a2, 16/01/26, 7d
     
     section Deseño
     Deseño do sistema      :a3, 23/01/26, 7d
