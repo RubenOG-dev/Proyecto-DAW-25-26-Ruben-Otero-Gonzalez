@@ -132,7 +132,7 @@ Os investimentos iniciais necesarios serían:
 
 ---
 
-### 2.7.1- Custos
+#### 2.7.1- Custos
 
 **Custos fixos**
 - Aloxamento web.
@@ -147,7 +147,7 @@ Inclúense tamén os impostos e custos sociais correspondentes.
 
 ---
 
-### 2.7.2- Ingresos
+#### 2.7.2- Ingresos
 
 Os ingresos procederían principalmente de:
 - Publicidade na plataforma.
