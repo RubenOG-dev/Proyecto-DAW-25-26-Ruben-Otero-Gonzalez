@@ -16,6 +16,7 @@ O proxecto consiste no desenvolvemento dunha aplicación web de recomendación d
 
 ## 2- Funcionalidades
 
+
 | Acción | Descrición |
 |------|------------|
 | Rexistro de usuarios | Permite a un usuario crear unha conta na aplicación mediante un formulario de rexistro |
