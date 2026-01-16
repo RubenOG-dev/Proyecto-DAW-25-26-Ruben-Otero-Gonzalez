@@ -16,10 +16,22 @@ O proxecto consiste no desenvolvemento dunha aplicación web de recomendación d
 
 ## 2- Funcionalidades
 
->*EXPLICACION* Describir que servizos ou operacións se van poder realizar por medio do noso proxecto, indicando que actores interveñen en cada caso.
->
-> Enumeradas, de maneira que na fase de deseño poidamos definir o diagrama ou configuración correspondente a cada funcionalidade.
-> Cada función ten uns datos de entrada e uns datos de saída. Entre os datos de entrada e de saída, realízase un proceso, que debe ser explicado.
+| Acción | Descrición |
+|------|------------|
+| Rexistro de usuarios | Permite a un usuario crear unha conta na aplicación mediante un formulario de rexistro |
+| Inicio de sesión | Permite ao usuario rexistrado acceder á aplicación mediante as súas credenciais |
+| Consulta de videoxogos | Permite a calquera usuario visualizar o catálogo de videoxogos clasificados por categorías |
+| Visualización de rankings | Mostra os videoxogos mellor valorados por día, semana ou mes |
+| Valoración de videoxogos | O usuario rexistrado pode asignar unha puntuación a un videoxogo |
+| Xestión de favoritos | O usuario rexistrado pode engadir ou eliminar videoxogos da súa lista de favoritos |
+| Recomendación de xogos | O sistema mostra xogos recomendados baseándose nos favoritos e valoracións do usuario |
+| Creación de publicacións | O usuario rexistrado pode crear publicacións no foro por categorías |
+| Edición de publicacións | O usuario rexistrado pode modificar as súas propias publicacións |
+| Eliminación de publicacións | O usuario rexistrado pode eliminar as súas propias publicacións |
+| Comentarios en publicacións | O usuario rexistrado pode comentar publicacións doutros usuarios |
+| Moderación de contidos | O administrador pode editar ou eliminar publicacións e comentarios |
+| Xestión de videoxogos | O administrador pode dar de alta, modificar ou eliminar videoxogos |
+| Xestión de categorías | O administrador pode crear, modificar ou eliminar categorías |
 
 Exemplo:
 
