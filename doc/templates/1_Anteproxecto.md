@@ -200,26 +200,26 @@ O frontend será desenvolto con **React**, empregando a linguaxe **JavaScript**.
 
 ```mermaid
 gantt
-    title Planificación do proxecto completo - 2026
+    title PLANIFICACIÓN FCT
     dateFormat  DD/MM/YY
     axisFormat  %d/%m
 
-    section Estudo preliminar
-    Investigación de mercado e definición de requisitos  :done, a1, 16/01/26, 14d
-    Análise DAFO e segmentación de clientes             :done, a2, 30/01/26, 7d
+    section Definición
+    Anteproxecto           :a1, 16/01/26, 0d
+    Análise                :a2, 16/01/26, 7d
 
+    
     section Deseño
-    Deseño da arquitectura e do sistema                :active, a3, 06/02/26, 14d
-    Prototipado de pantallas e fluxos                  :a4, 20/02/26, 7d
+    Deseño do sistema      :a3, 23/01/26, 7d
 
     section Desenvolvemento
-    Implementación do backend (MVC + CRUD)            :a5, 27/02/26, 21d
-    Desenvolvemento do frontend (HTML, CSS, JS, AJAX) :a6, 19/03/26, 21d
-    Integración e probas                               :a7, 09/04/26, 14d
+    Codificación e Probas  :active, a4, 30/01/26, 35d
+    1ª Entrega (Código)    :a4, 30/01/26, 22d
+    2ª Entrega (Código)    :a4, 21/02/26, 13d
 
     section Finalización
-    Ajustes finais e documentación                     :a8, 23/04/26, 7d
-    Presentación / defensa do proxecto                 :milestone, 30/04/26
+    Implantación           :a5, 06/03/26, 7d
+
 
 
 ```
