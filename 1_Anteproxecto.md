@@ -181,22 +181,18 @@ O proxecto é viable tanto a nivel técnico como económico. Os beneficios poten
 ## 3- Requirimentos técnicos
 
 ### Infraestrutura
-- Dominio web.
-- Servidor web.
-- Servidor de base de datos.
+- **Dominio web** proporcionado polo tutor para probar a aplicación durante as prácticas.  
+- **Servidor web** facilitado polo tutor, onde se desplegará a aplicación.  
+- **Base de datos MySQL** proporcionada polo tutor para almacenar o contido necesario da aplicación.  
+- **Acceso FTP** facilitado polo tutor para subir arquivos e actualizar a aplicación.
 
 ### Backend
-- Laravel (PHP).
-- Modelo Vista-Controlador (MVC).
-- API REST.
-- MySQL.
+O backend será desenvolvido con **Laravel**, empregando o patrón **MVC** para organizar o código.  
+A base de datos **MySQL** almacenará toda a información da aplicación.  
+Para o proxecto implementarase un **CRUD dunha funcionalidade** (foro ou xogos), permitindo dar de alta, modificar, eliminar e consultar datos.  
 
 ### Frontend
-- HTML5.
-- CSS3.
-- JavaScript.
-- React.
-- Deseño responsive.
+O frontend será desenvolto con **React**, empregando a linguaxe **JavaScript**. Para o estilo e a organización visual usarase **CSS3**, empregando **Flexbox e CSS Grid** para deseñar layouts adaptables a diferentes tamaños de pantalla (móbil, tablet e escritorio), garantindo unha interface amigable e usable.
 
 ---
 
