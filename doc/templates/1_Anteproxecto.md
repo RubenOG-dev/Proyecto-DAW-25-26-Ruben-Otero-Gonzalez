@@ -206,8 +206,7 @@ gantt
 
     section Definición
     Anteproxecto           :a1, 16/01/26, 0d
-    section Analise
-                   :a2, 16/01/26, 7d
+    Analise                :a2, 16/01/26, 7d
     
     section Deseño
     Deseño do sistema      :a3, 23/01/26, 7d
