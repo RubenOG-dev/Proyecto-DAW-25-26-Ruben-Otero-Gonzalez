@@ -233,6 +233,7 @@ A medio prazo, coa ampliación de usuarios activos e aumento da publicidade e af
 
 **Gráfico da viabilidade do proxecto nos primeiros 12 meses**
 ![Viabilidade](../img/Grafico_Viabilidade_GameMatcher_MediaXornada.png)
+<img src="../img/Grafico_Viabilidade_GameMatcher_MediaXornada.png" width="300">
 
 ---
 
