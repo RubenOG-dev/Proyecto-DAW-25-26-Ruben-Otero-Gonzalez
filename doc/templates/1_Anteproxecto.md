@@ -36,15 +36,18 @@ O desenvolvemento da aplicación abre unha oportunidade de negocio ao poder mone
 
 ### 2.1- Idea de negocio
 
-O produto central é unha **aplicación web de recomendación e comparación de videoxogos**.
+O produto central é unha **aplicación web de recomendación e comparación de videoxogos** orientada a usuarios de 16–35 anos interesados en videoxogos e contido dixital, especialmente aqueles que queren tomar decisións informadas sobre que xogos probar ou mercar.
 
 O valor engadido reside en ofrecer:
 - Recomendacións baseadas en valoracións reais de usuarios.
-- Rankings actualizados automaticamente.
-- Información organizada por categorías e plataformas.
-- Un foro específico para a comunidade xogadora.
+- Rankings dinámicos actualizados automáticamente.
+- Información organizada por categorías, plataformas e preferencias.
+- Foro específico para a comunidade xogadora.
 
-Como produto aumentado, poderían ofrecerse funcionalidades premium, como eliminación de publicidade.
+Como produto aumentado, poderían ofrecerse funcionalidades premium, como eliminación de publicidade, acceso anticipado a novas funcionalidades ou eventos exclusivos.
+
+A proposta céntrase en **integrar servizos dispersos nunha mesma plataforma**, permitindo ao usuario descubrir xogos de todo tipo (indie, AAA, clásicos ou recentes) e interactuar cunha comunidade activa, e ás empresas como canal publicitario global e segmentado.
+
 
 ---
 
@@ -71,48 +74,64 @@ O incremento de xogadores xera unha necesidade de aumento de videoxogos no merca
 #### Análise DAFO
 
 **Debilidades**
-- Proxecto desenvolvido de forma individual, o que limita o ritmo de desenvolvemento e mantemento.
-- Necesidade inicial de captar usuarios activos para xerar valoracións e contido relevante.
+- Proxecto desenvolvido de forma individual, o que pode limitar o ritmo de desenvolvemento e mantemento fronte a solucións empresariais con equipos máis amplos, especialmente en fases de crecemento da plataforma.
+- Necesidade inicial de captar un número suficiente de usuarios activos para xerar valoracións e contido comunitario que aporte valor ás recomendacións e rankings.
 
 **Ameazas**
-- Existencia de plataformas consolidadas cunha base de usuarios moi ampla.
-- Dificultade inicial para acadar visibilidade e posicionamento fronte a servizos xa coñecidos.
+- Existencia de plataformas consolidadas no sector dos videoxogos cunha base de usuarios moi ampla e un alto nivel de visibilidade.
+- Dificultade inicial para acadar posicionamento e recoñecemento fronte a servizos xa establecidos no mercado dixital.
 
 **Fortalezas**
-- Enfoque especializado na comparación, valoración e recomendación de videoxogos.
-- Integración nunha única plataforma de funcionalidades que actualmente se atopan dispersas.
-- Deseño orientado á experiencia do usuario e á interacción comunitaria.
-- Flexibilidade para evolucionar a aplicación segundo as necesidades do mercado.
+- Desenvolvemento dunha plataforma especializada que integra comparación, recomendación e valoración de videoxogos nun único espazo, fronte a solucións fragmentadas.
+- Arquitectura técnica baseada en tecnoloxías consolidadas (PHP MVC, MySQL, JavaScript), que facilita o mantemento, a escalabilidade e a evolución do proxecto.
+- Uso de fontes de datos fiables mediante a integración da API RAWG, combinadas con valoracións xeradas pola propia comunidade, o que reforza a calidade e credibilidade da información ofrecida.
+- Control total do proxecto ao tratarse dun desenvolvemento individual, permitindo unha toma de decisións rápida e unha adaptación flexible ás necesidades do mercado.
 
 **Oportunidades**
-- Crecemento constante da industria do videoxogo e do número de xogadores.
-- Aumento do catálogo de videoxogos, o que incrementa a necesidade de ferramentas de recomendación.
-- Tendencia ao consumo de contido dixital e á participación en comunidades online.
+- Crecemento constante da industria do videoxogo e aumento do número de usuarios de plataformas dixitais.
+- Incremento continuo do catálogo de videoxogos, que xera unha maior necesidade de ferramentas de recomendación e filtrado.
+- Tendencia crecente á participación en comunidades online e ao consumo de contido dixital personalizado.
 
 ---
 
 ### 2.3- Segmento de clientes
 
-*GameMatcher* vai dirixida principalmente a persoas interesadas no mundo dos videoxogos e no consumo de contido dixital.
-Distínguense dous tipos de perfís:
+GameMatcher diríxese a un mercado específico dentro do sector dos videoxogos, definido a partir de criterios de idade, localización e hábitos de consumo dixital.
 
-- **Usuarios**: persoas afeccionadas aos videoxogos que utilizan a aplicación para consultar información, comparar xogos, realizar valoracións, crear listas de favoritos e participar nos foros da comunidade. Este perfil inclúe xogadores ocasionais e habituais, principalmente usuarios de plataformas dixitais.
-- **Clientes**: empresas ou entidades que poderían empregar a plataforma como medio publicitario, tales como tendas dixitais de videoxogos, desenvolvedores independentes ou marcas relacionadas co sector do ocio dixital.
+**Usuarios principais**  
+- Idade: 16–35 anos.  
+- Localización inicial: España.  
+- Perfil: xogadores habituais e ocasionais que consumen videoxogos en formato dixital (PC e consolas) e que consultan información en liña antes de mercar ou probar un xogo.  
+- Hábitos: uso frecuente de plataformas dixitais, participación en comunidades online e interese por descubrir novos xogos segundo preferencias persoais.
 
-O mercado potencial é amplo, xa que o sector do videoxogo conta cun elevado número de usuarios a nivel nacional e internacional, en continuo crecemento.
+**Estimación inicial de usuarios**:  
+- Mercado potencial en España: ~18 millóns de persoas xogan a videoxogos.  
+- Mercado accesible (16–35 anos, consumo dixital): ~6–7 millóns.  
+- Usuarios previstos no primeiro ano: **2500-3000 usuarios rexistrados**, cun núcleo activo inicial de 300–500 usuarios.
+
+**Clientes**  
+- Desenvolvedores independentes de videoxogos.  
+- Pequenas editoras dixitais.  
+- Tendas online de videoxogos e marcas relacionadas co ocio dixital.
+
+**Estimación inicial de clientes**:  
+- 5–10 clientes no primeiro ano, principalmente mediante publicidade puntual, afiliacións ou promocións de xogos.
+
 
 ---
 
 ### 2.4- Competencia
 
-No mercado existen diversas plataformas relacionadas co mundo dos videoxogos, aínda que ningunha delas ofrece de forma centralizada todas as funcionalidades propostas neste proxecto.
+No mercado existen diversas plataformas relacionadas co mundo dos videoxogos que poden considerarse competencia indirecta de GameMatcher, aínda que ningunha delas cobre de forma específica o mesmo enfoque nin integra todas as funcionalidades propostas.
 
-Entre as principais referencias destacan:
-- **Tendas dixitais** como Steam ou Epic Games, que dispoñen de sistemas de valoración e recomendación, pero cun enfoque orientado á venda e non á comparación neutral entre videoxogos.
-- **Páxinas web especializadas** en análises e noticias de videoxogos, como medios dixitais, que ofrecen información detallada pero cunha participación limitada do usuario.
-- **Foros e comunidades online**, onde os usuarios comparten opinións, pero cunha información dispersa e sen sistemas estruturados de filtrado, comparación ou recomendación.
+**Competencia indirecta**  
+- **Tendas dixitais** como Steam ou Epic Games, que inclúen sistemas de valoración e recomendación, pero cun enfoque prioritariamente comercial e orientado á venda dos produtos.  
+- **Medios especializados e webs de análises**, que ofrecen contido profesional e noticias, pero cunha interacción limitada e sen recomendación personalizada baseada na similitude entre xogos.  
+- **Foros e comunidades online**, onde existe participación activa dos usuarios, aínda que a información adoita estar dispersa e non estruturada para a comparación ou recomendación eficiente.
 
-Estas plataformas están ben posicionadas no mercado, pero adoitan centrarse nun único aspecto (venda, análise profesional ou comunidade), o que deixa unha oportunidade para unha aplicación especializada que integre recomendación, comparación e interacción social nun mesmo espazo.
+**Posicionamento de GameMatcher fronte á competencia**  
+GameMatcher sitúase nun punto intermedio entre estas solucións, ofrecendo unha plataforma especializada na comparación e recomendación de videoxogos baseada en opinións da comunidade, cun enfoque neutral e orientado á toma de decisións por parte do usuario, e non á venda directa.
+
 
 ---
 
@@ -126,7 +145,8 @@ Estas plataformas están ben posicionadas no mercado, pero adoitan centrarse nun
 - **Organización clara e intuitiva** por categorías, plataformas e preferencias, facilitando a navegación.
 - **Interacción social**, permitindo aos usuarios participar en foros e compartir experiencias.
 
-O valor que *GameMatcher* aporta ao mercado é a **posibilidade de tomar decisións de forma rápida e informada** sobre que xogos mercar ou probar, centralizando recomendacións, comparacións e comunidade nunha única plataforma especializada. Isto fai que os usuarios escollan esta aplicación fronte a servizos máis xerais ou fragmentados, e que as empresas (clientes) dispoñan dun canal atractivo para publicidade ou promoción.
+O principal valor que *GameMatcher* aporta ao mercado é a **posibilidade de tomar decisións rápidas e informadas** sobre que videoxogos mercar ou probar, ao centralizar nunha única plataforma comparacións, recomendacións e valoracións xeradas pola propia comunidade de usuarios, fronte a sistemas baseados exclusivamente en críticas profesionais. Este enfoque permite unha experiencia máis personalizada e próxima aos intereses reais dos xogadores. Isto fai que os usuarios escollan esta aplicación fronte a servizos máis xerais ou fragmentados, e que as empresas (clientes) dispoñan dun canal atractivo para publicidade ou promoción.
+Ademais, *GameMatcher* garante a fiabilidade da información mediante o uso de **fontes externas recoñecidas para os datos básicos dos videoxogos**, combinadas con **valoracións realizadas exclusivamente por usuarios rexistrados**. Deste xeito, a plataforma ofrece información actualizada e opinións reais, independentes de intereses comerciais, o que supón un valor engadido tanto para os usuarios finais como para as empresas que utilicen a plataforma como canle de promoción ou publicidade.
 
 ---
 
@@ -148,16 +168,18 @@ A forma xurídica de **GameMatcher** será a de **autónomo**, a opción máis a
 
 Os custos fixos inclúen:
 - **Cuota de autónomo:**  0€ hasta final de 2026 en Galicia. Despois ~80 €/mes;
+- **Nomina:** 691€/mes (media xornada con 12 pagas prorrateadas)
 - **Dominio web (Dinahosting):** 10 – 15 €/ano.
 - **Hosting web básico (Dinahosting):** ~33 €/ano (plan compartido, contratación anual).
 - **Tarifa de internet:** aprox. 30 €/mes.
 - **Asesoría Fiscal:** aprox. 30 €/mes (para xestionar autónomo, impostos e contabilidade).
-- **Software e ferramentas de desenvolvemento:** 0 – 50 € (opcional).
 
 Custos variables poden incluír:
-- Publicidade en redes sociais (0,5 € – 1,5 € por anuncio).
-- Substitución ou actualización de hardware (50 – 100 €/ano aprox.).
-- Mantemento técnico adicional (20 – 50 €/mes opcional).
+- Publicidade en redes sociais e micro-influencers : 50–100 €/mes.
+- Substitución ou actualización de software (50 – 100 €/ano aprox.).
+- Gastos puntuais en eventos ou promocións: 0–200 €/mes.
+
+**Total estimado (fixo + variable inicial):** ~809–1144 €/mes
 
 ---
 
@@ -165,9 +187,15 @@ Custos variables poden incluír:
 
 As fontes de ingresos potenciais son:
 - **Publicidade en banners:** 1 € – 5 € por cada 1000 visualizacións.
-- **Comisións de afiliación:** 5 % – 10 % por venda derivada en tendas dixitais como Steam ou Epic Games.
-- **Subscricións premium mensuais (opcional):** 2 – 5 € por usuario.
+  - Estimación inicial: 50-100 €/mes.
+- **Comisións de afiliación:** 5 % – 10 % por venda derivada en tendas dixitais (Steam, Epic) ou merch de videoxogos.
+  - Estimación inicial: 50–100 €/mes
+- **Subscricións premium mensuais:** 3 – 5 € por usuario.
+  - Estimación inicial con estratexia activa: 20-40 usuarios → 100–200 €/mes
+- **Eventos ou torneos online (opcional)**: entradas ou patrocinios
+  - Estimación inicial: 0–200 €/mes
 
+**Total de ingresos inicial estimado**: 200-600€
 Estes rangos son estimacións habituais no mercado actual e permiten defender a viabilidade económica do proxecto.
 
 ---
@@ -176,26 +204,35 @@ Estes rangos son estimacións habituais no mercado actual e permiten defender a 
 
 #### 2.8.1- Viabilidade técnica
 
-*GameMatcher* é viable a nivel técnico, xa que se empregan tecnoloxías coñecidas e estudadas ao longo do ciclo:
-- **Backend**: **PHP** con patrón **MVC** para organizar o código.
-- **Base de datos**: MySQL.
-- **Frontend**: **HTML5**, **CSS3**, **Bootstrap** e **JavaScript**, empregando chamadas asincrónicas mediante **fetch/AJAX** para interactuar co **backend** sen recargar a páxina.
-Dispóñense dos medios materiais necesarios, incluíndo dominio web, servidor e ferramentas de desenvolvemento, e non existen impedimentos técnicos relevantes que dificulten a súa implementación.
+*GameMatcher* é viable a nivel técnico, xa que se basea no uso de tecnoloxías consolidadas, amplamente empregadas no desenvolvemento de aplicacións web e adecuadas ás necesidades do proxecto.
+
+- **Backend**: desenvolvemento en **PHP**, empregando o patrón **MVC**, o que permite unha correcta organización do código, facilita o mantemento e favorece a escalabilidade da aplicación.
+- **Base de datos**: **MySQL**, empregada para a xestión estruturada da información de usuarios, valoracións, comentarios e relacións cos videoxogos obtidos a través da API externa.
+- **Frontend**: **HTML5**, **CSS3**, **Bootstrap** e **JavaScript**, utilizando chamadas asincrónicas mediante **fetch/AJAX** para mellorar a experiencia do usuario ao interactuar coa aplicación sen necesidade de recargar a páxina.
+
+O proxecto dispón dos medios materiais necesarios, como dominio web, servidor e ferramentas de desenvolvemento, non existindo impedimentos técnicos relevantes para a súa implementación. Ademais, a integración da **API RAWG** permite obter información actualizada dos videoxogos de forma automatizada, garantindo a consistencia e fiabilidade dos datos, así como a redución de custos e tempo de mantemento.
+
 
 ---
 
 #### 2.8.2- Viabilidade económica
 
-A nivel económico, os custos mensuais estimados son de aproximadamente **160–185 €/mes**, incluíndo:  
+A nivel económico, os custos mensuais estimados son de aproximadamente **809–1146 €/mes**, incluíndo:  
 
 - Cuota de autónomo: 80 €/mes (restituída grazas ao programa **“cuota cero” en Galicia 2026**).  
+- Nomina: 691€/mes (media xornada con 12 pagas prorrateadas).
+- Dominio y Hosting Web: 3,5-5€/mes
 - Asesoría fiscal: 30 €/mes.  
 - Tarifa de internet: 30 €/mes.  
 - Mantemento e substitución de hardware: 5–10 €/mes.  
-- Publicidade opcional: 10–30 €/mes.  
+- Publicidade: 50–100 €/mes.
+- Gastos puntuais en eventos ou promocións: 0–200 €/mes.
 
-Os ingresos potenciais de *GameMatcher*, tomando como referencia unha comunidade inicial de usuarios e fontes como subscricións premium, publicidade e afiliacións, poderían acadar **~115 €/mes** nunha primeira fase.  
+Os ingresos potenciais de *GameMatcher*, tomando como referencia unha comunidade inicial de usuarios e fontes como subscricións premium, publicidade e afiliacións, poderían acadar **~200-600 €/mes** nunha primeira fase.  
 A medio prazo, coa ampliación de usuarios activos e aumento da publicidade e afiliacións, os ingresos poderían superar claramente os custos mensuais, garantindo a sustentabilidade económica do proxecto.  
+
+**Gráfico da viabilidade do proxecto nos primeiros 12 meses**
+![Viabilidade](../img/Grafico_Viabilidade_GameMatcher_MediaXornada.png)
 
 ---
 
