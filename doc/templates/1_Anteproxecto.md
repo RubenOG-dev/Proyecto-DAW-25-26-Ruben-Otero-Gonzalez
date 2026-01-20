@@ -232,7 +232,7 @@ A nivel económico, os custos mensuais estimados son de aproximadamente **809–
 Os ingresos potenciais de *GameMatcher*, tomando como referencia unha comunidade inicial de usuarios e fontes como subscricións premium, publicidade e afiliacións, poderían acadar **~200-600 €/mes** nunha primeira fase.  
 A medio prazo, coa ampliación de usuarios activos e aumento da publicidade e afiliacións, os ingresos poderían superar claramente os custos mensuais, garantindo a sustentabilidade económica do proxecto.  
 
-**Gráfico da viabilidade do proxecto nos primeiros 12 meses**
+**Gráfico da viabilidade do proxecto nos primeiros 12 meses:**
 <img src="../img/Grafico_Viabilidade_GameMatcher_MediaXornada.png" width="500">
 
 ---
