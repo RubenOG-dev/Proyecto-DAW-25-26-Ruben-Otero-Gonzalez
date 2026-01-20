@@ -260,9 +260,9 @@ Esta infraestrutura garante que a aplicación poida estar accesible de forma con
 
 ### Backend
 O backend será desenvolvido con **PHP**, empregando o patrón **MVC** para organizar o código.  
-A base de datos **MySQL** almacenará toda a información da aplicación.  
+A base de datos **MySQL** empregarase para almacenar a información propia da aplicación, como usuarios rexistrados, valoracións, comentarios, listas de favoritos e datos do foro.  
 Para o proxecto implementarase un **CRUD dunha funcionalidade** (foro ou xogos), permitindo dar de alta, modificar, eliminar e consultar datos.
-O uso de **MVC** garante que o código estea estruturado, separado por responsabilidades (modelo, vista e controlador) e facilite futuras ampliacións.
+O uso de **MVC** garante unha correcta separación entre modelo, vista e controlador, facilitando o mantemento e futuras ampliacións da aplicación.
 
 ### Frontend
 O **frontend** será desenvolvido con:
