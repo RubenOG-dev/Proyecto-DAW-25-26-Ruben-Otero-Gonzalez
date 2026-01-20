@@ -15,7 +15,7 @@
       - [2.7.2- Ingresos](#272--ingresos)
     - [2.8- Viabilidade](#28--viabilidade)
       - [2.8.1- Viabilidade técnica](#281--viabilidade-técnica)
-      - [2.8.2 - Viabilidade económica](#282---viabilidade-económica)
+      - [2.8.2 - Viabilidade económica](#28--viabilidade-económica)
       - [2.8.3- Conclusión](#283--conclusión)
   - [3- Requirimentos técnicos](#3--requirimentos-técnicos)
   - [4- Planificación](#4--planificación)
@@ -67,7 +67,8 @@ Segundo datos recentes do mercado global de videoxogos, a facturación anual med
 Ademais, o número de xogadores no mundo alcanzou uns **3,22 miles de millóns en 2023** e espera que supere os **3,5 miles de millóns en 2025**, o que amosa unha expansión constante da base de usuarios. :contentReference[oaicite:3]{index=3}
 
 Aquí amosase o incremento de xogadores de videoxogos na última década:
-![Xogadores](../img/grafic_xogadores_videoxogos.png)
+<img src="../img/grafic_xogadores_videoxogos.png" width="500">
+
 
 O incremento de xogadores xera unha necesidade de aumento de videoxogos no mercado, o cal favorece a este prroxecto xa que neste tipo de web os novos usuarios xunto cos usuarios mais antigos, poden buscar xogos que encaixen nas súas necesidades, mediante os filtros anteriormente citados. Tamen favorece o apartado dos foros da comunidade xogadora, xa que a mais numero de xogadores maior é a posibilidade de interación nestes foros.
 
@@ -232,8 +233,7 @@ Os ingresos potenciais de *GameMatcher*, tomando como referencia unha comunidade
 A medio prazo, coa ampliación de usuarios activos e aumento da publicidade e afiliacións, os ingresos poderían superar claramente os custos mensuais, garantindo a sustentabilidade económica do proxecto.  
 
 **Gráfico da viabilidade do proxecto nos primeiros 12 meses**
-![Viabilidade](../img/Grafico_Viabilidade_GameMatcher_MediaXornada.png)
-<img src="../img/Grafico_Viabilidade_GameMatcher_MediaXornada.png" width="300">
+<img src="../img/Grafico_Viabilidade_GameMatcher_MediaXornada.png" width="500">
 
 ---
 
