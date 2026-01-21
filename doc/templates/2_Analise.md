@@ -38,6 +38,22 @@ Exemplo:
 | Presentación dos productos  | Mostra dos productos por medio da páxina web |
 
 
+A continuación descríbense as principais funcionalidades do sistema, indicando os actores implicados e o proceso realizado en cada caso:
+
+| Acción | Descrición |
+|------|------------|
+| Consulta e presentación de videoxogos | O usuario pode visualizar un catálogo de videoxogos obtidos da API RAWG, con información detallada de cada título. |
+| Busca e filtrado | O usuario pode buscar xogos por nome e aplicar filtros (xénero, plataforma, valoración, etc.). |
+| Rexistro de usuarios | Un visitante pode crear unha conta proporcionando os datos necesarios, que se almacenan na base de datos. |
+| Inicio de sesión | Un usuario rexistrado pode autenticarse para acceder ás funcionalidades avanzadas. |
+| Eliminación de usuario | Un usuario rexistrado pode eliminar a súa propia conta. |
+| Valoración de videoxogos | O usuario rexistrado pode puntuar e escribir opinións sobre os videoxogos. |
+| Xestión de valoracións | O usuario pode editar ou eliminar as súas propias valoracións. |
+| Xestión do foro | O usuario rexistrado pode crear, modificar e eliminar comentarios nos foros da comunidade. |
+| Panel de administración | O administrador pode xestionar usuarios e moderar contido inapropiado. |
+
+Cada funcionalidade implica datos de entrada (accións do usuario, formularios ou seleccións) e datos de saída (información mostrada por pantalla, mensaxes de confirmación ou erro), procesados polo backend seguindo a lóxica do sistema.
+
 ## 3- Tipos de usuarios
 
 > *EXPLICACION* Describir os tipos de usuario que poderán acceder ao noso sistema. Habitualmente os tipos de usuario veñen definidos polas funcionalidades ás cales teñen acceso. En termos xerais existen moitos grupos de usuarios: anónimos, novos, rexistrados, bloqueados, confirmados, verificados, administradores, etc.
