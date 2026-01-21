@@ -74,6 +74,13 @@ O sistema contará cos seguintes tipos de usuarios:
 > *EXPLICACION* Neste apartado deben describirse os recursos necesarios, dende o punto de vista do usuario, para poder operar coa aplicación web. Habitualmente consiste nun navegador web actualizado e unha conexión a internet.
 Se é necesario algún hardware ou software adicional, deberá indicarse.
 
+Para o uso da aplicación web, o usuario necesitará:
+
+- Un dispositivo con navegador web actualizado (Chrome, Firefox, Edge, Safari, etc.).
+- Conexión a internet estable.
+
+Non será necesario ningún hardware nin software adicional máis alá dun navegador compatible.
+
 ## 5- Normativa
 
 > *EXPLICACION* Investigarase que normativa vixente afecta ao desenvolvemento do proxecto e de que maneira. O proxecto debe adaptarse ás esixencias legais dos territorios onde vai operar.
