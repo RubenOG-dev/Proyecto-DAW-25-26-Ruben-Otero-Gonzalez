@@ -63,6 +63,12 @@ Cada funcionalidade implica datos de entrada (accións do usuario, formularios o
 > - Usuario xenérico, que terá acceso a ...
 > - Usuario técnico, que poderá...
 
+O sistema contará cos seguintes tipos de usuarios:
+
+- **Usuario anónimo**: pode acceder á páxina principal e consultar información básica dos videoxogos, pero non pode valorar nin comentar.
+- **Usuario rexistrado**: pode iniciar sesión, realizar valoracións, escribir opinións e xestionar o seu perfil.
+- **Administrador**: ten acceso ás funcionalidades de xestión e moderación, podendo controlar usuarios e contido xerado na plataforma.
+
 ## 4- Contorno operacional
 
 > *EXPLICACION* Neste apartado deben describirse os recursos necesarios, dende o punto de vista do usuario, para poder operar coa aplicación web. Habitualmente consiste nun navegador web actualizado e unha conexión a internet.
