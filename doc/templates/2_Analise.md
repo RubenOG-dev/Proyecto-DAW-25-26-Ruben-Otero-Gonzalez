@@ -84,16 +84,12 @@ Non será necesario ningún hardware nin software adicional máis alá dun naveg
 ## 5- Normativa
 
 > *EXPLICACION* Investigarase que normativa vixente afecta ao desenvolvemento do proxecto e de que maneira. O proxecto debe adaptarse ás esixencias legais dos territorios onde vai operar.
-> 
-> Pola natureza dos sistema de información, unha lei que se vai a ter que mencionar de forma obrigatoria é la [Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDPGDD)](https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673). O ámbito da LOPDPGDD é nacional. Se a aplicación está pensada para operar a nivel europeo, tamén se debe facer referencia á [General Data Protection Regulation (GDPR)](https://eur-lex.europa.eu/eli/reg/2016/679/oj). Na documentación debe afirmarse que o proxecto cumpre coa normativa vixente.
->
-> Para cumplir a LOPDPGDD e/ou GDPR debe ter un apartado na web onde se indique quen é a persoa responsable do tratamento dos datos e para que fins se van utilizar. Habitualmente esta información estructúrase nos seguintes apartados:
->
-> - Aviso legal.
-> - Política de privacidade.
-> - Política de cookies.
->
-> É acosenllable ver [exemplos de webs](https://www.spotify.com/es/legal/privacy-policy/) que conteñan textos legais referenciando a LOPDPGDD ou GDPR.
+
+GameMatcher, como aplicación web que recolle e xestiona datos persoais de usuarios rexistrados, cumprirá coa normativa vixente en materia de protección de datos, en particular coa [Lei Orgánica 3/2018, de Protección de Datos Persoais e garantía dos dereitos dixitais (LOPDPGDD)](https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673), así como co [Regulamento Xeral de Protección de Datos (GDPR)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) a nivel europeo.
+
+A plataforma incluirá os correspondentes apartados legais accesibles desde a web: aviso legal, política de privacidade e política de cookies. O usuario deberá aceptar a política de privacidade no momento do rexistro, sendo informado da finalidade do tratamento dos seus datos, que se limitará exclusivamente ao funcionamento da aplicación (xestión de contas, valoracións e participación na comunidade).
+
+O responsable do tratamento dos datos será GameMatcher, garantindo en todo momento os dereitos de acceso, rectificación, cancelación e eliminación dos datos persoais por parte dos usuarios.
 
 ## 6- Melloras futuras
 
