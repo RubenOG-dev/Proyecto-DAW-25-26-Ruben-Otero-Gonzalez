@@ -1,11 +1,13 @@
 # Anteproxecto Fin de Ciclo  
 ## Aplicación web de recomendación e comparación de videoxogos
 
-- [Anteproxecto fin de ciclo](#anteproxecto-fin-de-ciclo)
+- [Anteproxecto Fin de Ciclo](#anteproxecto-fin-de-ciclo)
+  - [Aplicación web de recomendación e comparación de videoxogos](#aplicación-web-de-recomendación-e-comparación-de-videoxogos)
   - [1- Descrición do proxecto](#1--descrición-do-proxecto)
   - [2- Empresa](#2--empresa)
     - [2.1- Idea de negocio](#21--idea-de-negocio)
     - [2.2- Xustificación da idea](#22--xustificación-da-idea)
+      - [Análise DAFO](#análise-dafo)
     - [2.3- Segmento de clientes](#23--segmento-de-clientes)
     - [2.4- Competencia](#24--competencia)
     - [2.5- Proposta de valor](#25--proposta-de-valor)
@@ -15,9 +17,12 @@
       - [2.7.2- Ingresos](#272--ingresos)
     - [2.8- Viabilidade](#28--viabilidade)
       - [2.8.1- Viabilidade técnica](#281--viabilidade-técnica)
-      - [2.8.2 - Viabilidade económica](#28--viabilidade-económica)
+      - [2.8.2- Viabilidade económica](#282--viabilidade-económica)
       - [2.8.3- Conclusión](#283--conclusión)
   - [3- Requirimentos técnicos](#3--requirimentos-técnicos)
+    - [Infraestrutura](#infraestrutura)
+    - [Backend](#backend)
+    - [Frontend](#frontend)
   - [4- Planificación](#4--planificación)
 
 ## 1- Descrición do proxecto
@@ -271,6 +276,7 @@ O **frontend** será desenvolvido con:
 
 - **HTML5** e **CSS3** para estruturar e estilizar a interface.
 - **JavaScript**, empregando chamadas asincrónicas mediante **fetch/AJAX** para interactuar co backend e actualizar a información sen recargar a páxina.
+- **Librerías JavaScript**, integrarase Chart.js para a representación visual de datos, como por exemplo os xogos mellor valorados .
 - **Bootstrap** para acelerar o deseño responsive e aproveitar compoñentes predefinidos como botóns, formularios, táboas e modais.
 - **Flexbox e CSS Grid** para personalizar layouts e garantir unha experiencia adaptativa a distintos tamaños de pantalla (móbil, tablet e escritorio).
 
