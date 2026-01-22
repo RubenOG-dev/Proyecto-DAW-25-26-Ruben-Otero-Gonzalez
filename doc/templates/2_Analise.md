@@ -8,11 +8,8 @@
   - [5- Normativa](#5--normativa)
   - [6- Melloras futuras](#6--melloras-futuras)
 
-> *EXPLICACION*: Este documento describe os requirimentos para "nome do proxecto" especificando que funcionalidade ofrecerá e de que xeito.
 
 ## 1- Descrición Xeral
-
->*EXPLICACION*: Descrición Xeral do proxecto
 
 O proxecto consiste nunha plataforma web orientada a afeccionados aos videoxogos, na que se poderá consultar información actualizada de xogos, descubrir novos títulos e realizar valoracións por parte da comunidade.
 
@@ -23,20 +20,6 @@ As valoracións e opinións dos videoxogos serán xeradas polos propios usuarios
 O sistema desenvolverase como unha aplicación web con backend en PHP seguindo o patrón MVC e cunha base de datos MySQL para a xestión de usuarios, valoracións e contido propio.
 
 ## 2- Funcionalidades
-
->*EXPLICACION* Describir que servizos ou operacións se van poder realizar por medio do noso proxecto, indicando que actores interveñen en cada caso.
->
-> Enumeradas, de maneira que na fase de deseño poidamos definir o diagrama ou configuración correspondente a cada funcionalidade.
-> Cada función ten uns datos de entrada e uns datos de saída. Entre os datos de entrada e de saída, realízase un proceso, que debe ser explicado.
-
-Exemplo:
-
-| Acción   |  Descrición        |
-|----------|--------------------|
-| Alta de productos   | Dar de alta os productos na base de datos|
-| Modificar productos | Modificación de productos na base de datos|
-| Presentación dos productos  | Mostra dos productos por medio da páxina web |
-
 
 A continuación descríbense as principais funcionalidades do sistema, indicando os actores implicados e o proceso realizado en cada caso:
 
@@ -56,13 +39,6 @@ Cada funcionalidade implica datos de entrada (accións do usuario, formularios o
 
 ## 3- Tipos de usuarios
 
-> *EXPLICACION* Describir os tipos de usuario que poderán acceder ao noso sistema. Habitualmente os tipos de usuario veñen definidos polas funcionalidades ás cales teñen acceso. En termos xerais existen moitos grupos de usuarios: anónimos, novos, rexistrados, bloqueados, confirmados, verificados, administradores, etc.
->
-> Exemplo:
->
-> - Usuario xenérico, que terá acceso a ...
-> - Usuario técnico, que poderá...
-
 O sistema contará cos seguintes tipos de usuarios:
 
 - **Usuario anónimo**: pode acceder á páxina principal e consultar información básica dos videoxogos, pero non pode valorar nin comentar.
@@ -70,9 +46,6 @@ O sistema contará cos seguintes tipos de usuarios:
 - **Administrador**: ten acceso ás funcionalidades de xestión e moderación, podendo controlar usuarios e contido xerado na plataforma.
 
 ## 4- Contorno operacional
-
-> *EXPLICACION* Neste apartado deben describirse os recursos necesarios, dende o punto de vista do usuario, para poder operar coa aplicación web. Habitualmente consiste nun navegador web actualizado e unha conexión a internet.
-Se é necesario algún hardware ou software adicional, deberá indicarse.
 
 Para o uso da aplicación web, o usuario necesitará:
 
@@ -83,8 +56,6 @@ Non será necesario ningún hardware nin software adicional máis alá dun naveg
 
 ## 5- Normativa
 
-> *EXPLICACION* Investigarase que normativa vixente afecta ao desenvolvemento do proxecto e de que maneira. O proxecto debe adaptarse ás esixencias legais dos territorios onde vai operar.
-
 GameMatcher, como aplicación web que recolle e xestiona datos persoais de usuarios rexistrados, cumprirá coa normativa vixente en materia de protección de datos, en particular coa [Lei Orgánica 3/2018, de Protección de Datos Persoais e garantía dos dereitos dixitais (LOPDPGDD)](https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673), así como co [Regulamento Xeral de Protección de Datos (GDPR)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) a nivel europeo.
 
 A plataforma incluirá os correspondentes apartados legais accesibles desde a web: aviso legal, política de privacidade e política de cookies. O usuario deberá aceptar a política de privacidade no momento do rexistro, sendo informado da finalidade do tratamento dos seus datos, que se limitará exclusivamente ao funcionamento da aplicación (xestión de contas, valoracións e participación na comunidade).
@@ -92,8 +63,6 @@ A plataforma incluirá os correspondentes apartados legais accesibles desde a we
 O responsable do tratamento dos datos será GameMatcher, garantindo en todo momento os dereitos de acceso, rectificación, cancelación e eliminación dos datos persoais por parte dos usuarios.
 
 ## 6- Melloras futuras
-
-> *EXPLICACION* É posible que o noso proxecto se centre en resolver un problema concreto que se poderá ampliar no futuro con novas funcionalidades, novas interfaces, etc.
 
 En futuras versións de *GameMatcher* **poderán incorporarse** funcionalidades sociais avanzadas, como o seguimento doutros usuarios ou a interacción mediante comentarios nas valoracións. Ademais, está prevista a posible integración de sistemas baseados en intelixencia artificial orientados á recomendación personalizada de videoxogos segundo os gustos, hábitos e valoracións previas dos usuarios, podendo ofrecer estas funcionalidades avanzadas como un servizo diferencial para usuarios premium, incrementando así o valor engadido da plataforma e as súas vías de monetización.
 
