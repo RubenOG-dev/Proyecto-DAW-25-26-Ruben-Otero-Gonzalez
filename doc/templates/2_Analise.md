@@ -95,4 +95,6 @@ O responsable do tratamento dos datos será GameMatcher, garantindo en todo mome
 
 > *EXPLICACION* É posible que o noso proxecto se centre en resolver un problema concreto que se poderá ampliar no futuro con novas funcionalidades, novas interfaces, etc.
 
+En futuras versións de *GameMatcher* **poderán incorporarse** funcionalidades sociais avanzadas, como o seguimento doutros usuarios ou a interacción mediante comentarios nas valoracións. Ademais, está prevista a posible integración de sistemas baseados en intelixencia artificial orientados á recomendación personalizada de videoxogos segundo os gustos, hábitos e valoracións previas dos usuarios, podendo ofrecer estas funcionalidades avanzadas como un servizo diferencial para usuarios premium, incrementando así o valor engadido da plataforma e as súas vías de monetización.
+
 [**<-Anterior**](../../README.md)
