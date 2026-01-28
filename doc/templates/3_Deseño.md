@@ -20,6 +20,8 @@
 >
 >Deben incluírse o(s) tipo(s) de usuario implicados en cada caso de uso.
 
+![CasosDeUsoGameMatcher](../img/CasosDeUsoGameMatcher.jpg)
+
 ## 3- Diagrama de Base de Datos
 
 > *EXPLICACIÓN:* Neste apartado incluiranse os diagramas relacionados coa Base de Datos:
