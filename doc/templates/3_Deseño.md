@@ -30,7 +30,7 @@
 > Pódese entregar a captura do phpMyAdmin se se emprega MariaDB como Modelo relacional.
 
 ![ER_Proxecto_Videoxogos](../img/ER_proxecto_videoxogos.png)
-<br>
+---
 ![MR_Proxecto_Videoxogos](../img/MER_GameMatcher.jpg)
 
 ## 4- Deseño de interface de usuarios
