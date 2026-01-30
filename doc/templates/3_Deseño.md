@@ -21,5 +21,6 @@
 ![MR_Proxecto_Videoxogos](../img/MER_GameMatcher.jpg)
 
 ## 4- Deseño de interface de usuarios
-![Enlace a mockups en Figma](https://www.figma.com/design/zZixQwAAGmkDk2Xc79SOiO/GameMatcher?node-id=2-27&t=hcmXhg3YDC0xTb4U-1)
+[Enlace a mockups en Figma](https://www.figma.com/design/zZixQwAAGmkDk2Xc79SOiO/GameMatcher?node-id=2-27&t=hcmXhg3YDC0xTb4U-1)
+>
 [**<-Anterior**](../../README.md)
