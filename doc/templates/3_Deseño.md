@@ -4,7 +4,6 @@
   - [1- Diagrama da arquitectura](#1--diagrama-da-arquitectura)
   - [2- Casos de uso](#2--casos-de-uso)
   - [3- Diagrama de Base de Datos](#3--diagrama-de-base-de-datos)
-  - [](#)
   - [4- Deseño de interface de usuarios](#4--deseño-de-interface-de-usuarios)
 
 ## 1- Diagrama da arquitectura
@@ -18,7 +17,7 @@
 ## 3- Diagrama de Base de Datos
 
 ![ER_Proxecto_Videoxogos](../img/ModeloER.jpg)
----
+>
 ![MER_Proxecto_Videoxogos](../img/MER_GameMatcher.jpg)
 
 ## 4- Deseño de interface de usuarios
