@@ -18,7 +18,7 @@
 
 ![ER_Proxecto_Videoxogos](../img/ModeloER.jpg)
 >
-![MER_Proxecto_Videoxogos](../img/MER_GameMatcher.jpg)
+![MER_Proxecto_Videoxogos](../img/MER_GameMatcher.png)
 
 ## 4- Deseño de interface de usuarios
 [Enlace a mockups en Figma](https://www.figma.com/design/zZixQwAAGmkDk2Xc79SOiO/GameMatcher?node-id=2-27&t=hcmXhg3YDC0xTb4U-1)
