@@ -16,7 +16,7 @@
 
 ## 3- Diagrama de Base de Datos
 
-![ER_Proxecto_Videoxogos](../img/ModeloER.jpg)
+![ER_Proxecto_Videoxogos](../img/ER_proxecto_videoxogos.png)
 >
 ![MER_Proxecto_Videoxogos](../img/MER_GameMatcher.png)
 
