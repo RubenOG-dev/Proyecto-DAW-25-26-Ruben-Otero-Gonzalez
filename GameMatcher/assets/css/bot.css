@@ -1,0 +1,180 @@
+/*=============================================
+=            CSS DEL BOT                      =
+=============================================*/
+
+#chat-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, #5865F2, #7b8cff);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    z-index: 1000;
+    transition: transform 0.2s ease;
+}
+
+#chat-bubble:hover {
+    transform: scale(1.1);
+}
+
+#chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 340px;
+    height: 450px;
+    background: #1c1f2b;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    overflow: hidden;
+    z-index: 1000;
+    animation: fadeInUp 0.3s ease;
+}
+
+.chat-hidden {
+    display: none !important;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-header {
+    background: #5865F2;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chat-close {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#chat-close:hover {
+    opacity: 1;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin: 8px 0;
+    padding: 10px 14px;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background: #2a2e3d;
+    align-self: flex-start;
+    color: #eef0f2;
+    border-bottom-left-radius: 2px;
+}
+
+.user-message {
+    background: #5865F2;
+    align-self: flex-end;
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-quick {
+    background: transparent;
+    border: 1px solid #5865F2;
+    color: #7b8cff;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-quick:hover {
+    background: #5865F2;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.bot-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+    display: block;
+}
+
+.typing {
+    font-size: 12px;
+    color: #7b8cff;
+    opacity: 0.8;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.chat-input-container {
+    display: flex;
+    border-top: 1px solid #333;
+    background: #2a2e3d;
+}
+
+.chat-input-container input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+}
+
+.chat-input-container button {
+    background: transparent;
+    border: none;
+    color: #5865F2;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.chat-input-container button:hover {
+    color: #7b8cff;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+/*=====  End of CSS del BOT  ======*/

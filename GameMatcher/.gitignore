@@ -1,0 +1,5 @@
+.vscode/sftp.json
+node_modules/
+vendor/
+.DS_Store
+Thumbs.db
