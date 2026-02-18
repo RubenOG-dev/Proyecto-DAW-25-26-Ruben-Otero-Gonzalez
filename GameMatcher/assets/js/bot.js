@@ -1,41 +1,67 @@
-/*=============================================
-=            JS del BOT ACTUALIZADO           =
-=============================================*/
-
 document.addEventListener("DOMContentLoaded", () => {
   const bubble = document.getElementById("chat-bubble");
   const chatWindow = document.getElementById("chat-window");
-  const closeBtn = document.getElementById("chat-close");
+  const closeBtn = document.getElementById("chat-close"); 
+  const minimizeBtn = document.getElementById("chat-minimize"); 
   const messages = document.getElementById("chat-messages");
   const input = document.getElementById("chat-input");
   const sendBtn = document.getElementById("chat-send");
 
+  // Rutas actualizadas: al entrar por index.php, las rutas son relativas a la raíz
+  const BOT_AVATAR = "img/robot-vectorial-graident-ai.png";
+  const USER_AVATAR = "img/avatar.png";
+
   if (!bubble) return;
+
+  function sendWelcomeMessage() {
+    const welcomeHTML = `👋 Hola! Soy Botti el asistente de GameMatcher.<br><br>Podes escribirme o hacer click en estos atajos:
+                <div class="chat-buttons">
+                    <button class="btn-quick" onclick="sendQuickAction('top semana', event)"> Top Semana</button>
+                    <button class="btn-quick" onclick="sendQuickAction('top mes', event)"> Top Mes</button>
+                    <button class="btn-quick" onclick="sendQuickAction('buscar ', event)"> Buscar</button>
+                </div>`;
+    addBotMessage(welcomeHTML, true);
+  }
 
   bubble.addEventListener("click", () => {
     chatWindow.classList.toggle("chat-hidden");
-
-    if (!chatWindow.dataset.opened) {
-      const welcomeHTML = `👋 Ola! Soy el asistente de GameMatcher.<br><br>Podes escribirme o hacer click en estos atajos:
-                <div class="chat-buttons">
-                    <button class="btn-quick" onclick="sendQuickAction('top')">🏆 Top 3</button>
-                    <button class="btn-quick" onclick="sendQuickAction('buscar ')">🔍 Buscar</button>
-                </div>`;
-      addBotMessage(welcomeHTML, true);
-      chatWindow.dataset.opened = true;
+    if (!chatWindow.dataset.opened && !chatWindow.classList.contains("chat-hidden")) {
+      sendWelcomeMessage();
+      chatWindow.dataset.opened = "true";
     }
   });
 
-  window.sendQuickAction = function (text) {
+  window.sendQuickAction = function (text, event) {
+    if (event && event.target) {
+      const container = event.target.closest('.chat-buttons');
+      if (container) {
+        const buttons = container.querySelectorAll('button');
+        buttons.forEach(btn => {
+          btn.disabled = true;
+          btn.classList.add('btn-disabled');
+        });
+      }
+    }
+
     if (text === "buscar ") {
-      input.value = "buscar ";
+      input.value = "Buscar ";
       input.focus();
     } else {
       sendMessage(text);
     }
   };
 
-  closeBtn.addEventListener("click", () => {
+  if (minimizeBtn) {
+    minimizeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      chatWindow.classList.add("chat-hidden");
+    });
+  }
+
+  closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    messages.innerHTML = "";
+    delete chatWindow.dataset.opened;
     chatWindow.classList.add("chat-hidden");
   });
 
@@ -52,69 +78,82 @@ document.addEventListener("DOMContentLoaded", () => {
     input.value = "";
     showTyping();
 
-    const fetchPromise = fetch("api/bots.php", {
+    // Fetch actualizado para usar el Front Controller
+    fetch("index.php?controller=Bot&action=responder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: text }),
-    }).then(res => {
-      if (!res.ok) throw new Error("Error en el servidor");
-      return res.json();
-    });
-
-    const timerPromise = new Promise(resolve => setTimeout(resolve, 1500));
-
-    Promise.all([fetchPromise, timerPromise])
-      .then(([data]) => {
+    })
+      .then((res) => res.json())
+      .then((data) => {
         removeTyping();
         addBotMessage(data.response);
 
-        // Si el PHP nos manda opciones múltiples, creamos botones de selección
+        if (data.gameLink) {
+          setTimeout(() => {
+            const linkHTML = `
+              <div class="chat-buttons">
+                <a href="${data.gameLink}" target="_blank" class="btn-details">
+                   Ver mas detalles
+                </a>
+              </div>`;
+            addBotMessage(linkHTML, true);
+          }, 400);
+        }
+
         if (data.options && data.options.length > 0) {
           setTimeout(() => {
-            let optionsHTML = `Atopei varios resultados, cal buscas?<div class="chat-buttons">`;
-            data.options.forEach(opt => {
-              optionsHTML += `<button class="btn-quick" onclick="sendQuickAction('${opt.name}')">🎯 ${opt.name}</button>`;
+            let optionsHTML = `Cuál de ellos buscas? <div class="chat-buttons">`;
+            data.options.forEach((opt) => {
+              optionsHTML += `<button class="btn-quick" onclick="sendQuickAction('${opt.name}', event)"> ${opt.name}</button>`;
             });
             optionsHTML += `</div>`;
             addBotMessage(optionsHTML, true);
           }, 600);
-        } else {
-          // Si es una respuesta normal, hacemos la pregunta de seguimiento de siempre
+        } else if (!data.gameLink) {
           setTimeout(() => {
             const followUpHTML = `
-              ¿Quieres consultar algo mas? 🎮
+              ¿Quieres consultar algo más?
               <div class="chat-buttons">
-                  <button class="btn-quick" onclick="sendQuickAction('top')">🏆 Ver Top 3</button>
-                  <button class="btn-quick" onclick="sendQuickAction('buscar ')">🔍 Buscar otro</button>
+                  <button class="btn-quick" onclick="sendQuickAction('top semana', event)"> Top Semana</button>
+                  <button class="btn-quick" onclick="sendQuickAction('top mes', event)"> Top Mes</button>
+                  <button class="btn-quick" onclick="sendQuickAction('buscar ', event)"> Buscar otro</button>
               </div>`;
             addBotMessage(followUpHTML, true);
-          }, 800);
+          }, 1200);
         }
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .catch(() => {
         removeTyping();
-        addBotMessage("Noo, he tenido un error de conexión con el servidor.");
+        addBotMessage("Noo, he tenido un error de conexión.");
       });
   }
 
   function addUserMessage(text) {
-    const msg = document.createElement("div");
-    msg.className = "message user-message";
-    msg.textContent = text;
-    messages.appendChild(msg);
+    const wrapper = document.createElement("div");
+    wrapper.className = "message-wrapper user-wrapper";
+    wrapper.innerHTML = `
+        <div class="avatar" style="background-image: url('${USER_AVATAR}')"></div>
+        <div class="message user-message">${text}</div>
+    `;
+    messages.appendChild(wrapper);
     scrollToBottom();
   }
 
   function addBotMessage(content, isHTML = false) {
-    const msg = document.createElement("div");
-    msg.className = "message bot-message";
-    if (isHTML) {
-      msg.innerHTML = content;
-    } else {
-      msg.innerHTML = content.replace(/\n/g, "<br>");
-    }
-    messages.appendChild(msg);
+    const wrapper = document.createElement("div");
+    wrapper.className = "message-wrapper bot-wrapper";
+
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "message bot-message";
+
+    if (isHTML) msgDiv.innerHTML = content;
+    else msgDiv.innerText = content;
+
+    wrapper.innerHTML = `<div class="avatar" style="background-image: url('${BOT_AVATAR}')"></div>`;
+    wrapper.appendChild(msgDiv);
+
+    messages.appendChild(wrapper);
     scrollToBottom();
   }
 

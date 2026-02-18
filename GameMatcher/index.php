@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="gl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameMatcher - Home</title>
-    <link rel="stylesheet" href="assets/css/bot.css"> 
-</head>
-<body>
+<?php
+require_once "app/globals.php";
 
-    <h1>🚀 GameMatcher Online!</h1>
-    <p>O subdominio <strong>campechano.rial.com.es</strong> xa está operativo.</p>
-    <p>Data actual: <?php echo date("d/m/Y H:i:s"); ?></p>
+include_once CONTROLLER_PATH . "MainController.php";
+include_once CONTROLLER_PATH . "GamesController.php";
+include_once CONTROLLER_PATH . "BotController.php";
 
-    <div id="chat-bubble">💬</div>
+session_start();
 
-    <div id="chat-window" class="chat-hidden">
-        <div class="chat-header">
-            <span>🎮 GameMatcher Bot</span>
-            <span id="chat-close">✖</span>
-        </div>
-        <div id="chat-messages" class="chat-messages">
-            </div>
-        <div class="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Pregúntame algo...">
-            <button id="chat-send">Enviar</button>
-        </div>
-    </div>
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
-    <script src="assets/js/bot.js"></script>
-</body>
-</html>
+$controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'MainController';
+$action = isset($_GET['action']) ? $_GET['action'] : 'principal';
+
+try {
+    if (class_exists($controller)) {
+        $object = new $controller();
+        if (method_exists($object, $action)) {
+            $object->$action();
+        } else {
+            throw new Exception("Acción no encontrada");
+        }
+    } else {
+        throw new Exception("Controlador no encontrado");
+    }
+} catch (Throwable $th) {
+    $object = new MainController();
+    $object->principal();
+}
