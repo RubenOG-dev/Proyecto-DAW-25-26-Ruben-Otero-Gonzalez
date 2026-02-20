@@ -1,6 +1,13 @@
 <?php
 require_once "app/globals.php";
 
+/* echo "<pre style='color: #00ff00; background: #000; padding: 10px; font-size: 12px; border: 2px solid green;'>";
+echo "DEBUG RUTA: " . VIEW_PATH . "\n";
+echo "ARCHIVO MOBILE EXISTE?: " . (file_exists(VIEW_PATH . "main_mobile.php") ? "SI ✅" : "NO ❌") . "\n";
+echo "ARCHIVO DESKTOP EXISTE?: " . (file_exists(VIEW_PATH . "main_desktop.php") ? "SI ✅" : "NO ❌") . "\n";
+echo "USER AGENT: " . $_SERVER['HTTP_USER_AGENT'] . "\n";
+echo "</pre>"; */
+
 include_once CONTROLLER_PATH . "MainController.php";
 include_once CONTROLLER_PATH . "GamesController.php";
 include_once CONTROLLER_PATH . "BotController.php";

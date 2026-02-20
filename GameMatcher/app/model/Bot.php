@@ -1,57 +1,88 @@
 <?php
 class Bot {
-    private $apiKey = "d12a9754d101459685631ed6177bc24d";
-
     public function getResponse($message) {
         $messageLow = mb_strtolower(trim($message));
         $options = [];
         $gameLink = null;
-        $response = "Ups, no entiendo eso. Pero puedo ayudarte con: 'top' o 'buscar [juego]'";
+        $rating = null;
+        $added = null;
+        $categories = null;
+        $response = "Ups, no entiendo eso. Prueba con: 'top semana' o 'buscar [juego]'";
 
         if (str_contains($messageLow, "top") || str_contains($messageLow, "ranking")) {
             $hoy = date('Y-m-d');
             if (str_contains($messageLow, "semanal") || str_contains($messageLow, "semana")) {
                 $inicio = date('Y-m-d', strtotime('-7 days'));
-                $titulo = "Top de la Semana";
-                $url = "https://api.rawg.io/api/games?key={$this->apiKey}&dates=$inicio,$hoy&ordering=-added&page_size=3";
+                $titulo = "TOP SEMANAL"; 
+                $url = "https://api.rawg.io/api/games?key=" . RAWG_API_KEY . "&dates=$inicio,$hoy&ordering=-added&page_size=3";
             } elseif (str_contains($messageLow, "mensual") || str_contains($messageLow, "mes")) {
                 $inicio = date('Y-m-d', strtotime('-30 days'));
-                $titulo = "Top del Mes";
-                $url = "https://api.rawg.io/api/games?key={$this->apiKey}&dates=$inicio,$hoy&ordering=-added&page_size=3";
+                $titulo = "TOP MENSUAL";
+                $url = "https://api.rawg.io/api/games?key=" . RAWG_API_KEY . "&dates=$inicio,$hoy&ordering=-added&page_size=3";
             } else {
-                $titulo = "Top Juegos de la Historia:";
-                $url = "https://api.rawg.io/api/games?key={$this->apiKey}&ordering=-rating&page_size=3";
+                $titulo = "TOP HISTÓRICO";
+                $url = "https://api.rawg.io/api/games?key=" . RAWG_API_KEY . "&ordering=-rating&page_size=3";
             }
 
             $data = $this->callAPI($url);
             if ($data && isset($data['results'])) {
-                $response = "**$titulo**\n";
+                $response = "<div style='text-align:center; font-weight:bold; margin-bottom:10px; color:#a685ff; border-bottom:1px solid #444;'>$titulo</div>";
+                
                 foreach ($data['results'] as $index => $game) {
-                    $name = $game['name'];
-                    $rating = $game['rating'] ?? 'N/A';
+                    $gName = $game['name'];
+                    $gRating = $game['rating'] ?? '0';
                     $year = $game['released'] ? substr($game['released'], 0, 4) : 'N/A';
-                    $response .= ($index + 1) . ". $name ($year) - ⭐ $rating\n";
+                    
+                    $response .= "<table style='width:100%; border-collapse:collapse; margin-bottom:12px;'>";
+                    $response .= "<tr><td style='font-weight:bold; color:#fff;'>" . ($index + 1) . ". $gName</td></tr>";
+                    $response .= "<tr><td style='font-size:0.85em; color:#bbb; padding-left:15px;'>🗓️ Año: $year</td></tr>";
+                    $response .= "<tr><td style='font-size:0.85em; color:#bbb; padding-left:15px;'>⭐ Rating: $gRating / 5</td></tr>";
+                    $response .= "</table>";
                 }
             }
-        } else {
+        } 
+        else {
             $term = str_replace("buscar ", "", $messageLow);
-            $urlSearch = "https://api.rawg.io/api/games?key={$this->apiKey}&search=" . urlencode($term) . "&page_size=5";
+            $urlSearch = "https://api.rawg.io/api/games?key=" . RAWG_API_KEY . "&search=" . urlencode($term) . "&page_size=5";
             $data = $this->callAPI($urlSearch);
 
             if ($data && !empty($data['results'])) {
-                $firstGame = $data['results'][0];
-                if (strtolower($firstGame['name']) == $term) {
-                    $response = "**" . $firstGame['name'] . "**\nLanzamiento: " . ($firstGame['released'] ? substr($firstGame['released'], 0, 4) : 'N/A') . "\nValoración: " . ($firstGame['rating'] ?? 'S/N') . " / 5";
-                    $gameLink = "juego.php?id=" . $firstGame['id']; 
-                } else {
-                    $response = "Encontré varios resultados...";
-                    foreach ($data['results'] as $game) {
-                        $options[] = ["name" => $game['name']];
-                    }
+                $game = $data['results'][0]; 
+                $rating = $game['rating'] ?? '0';
+                $addedVal = $game['added'] ?? 0;
+                $added = number_format($addedVal, 0, ',', '.');
+                $categories = !empty($game['genres']) ? implode(", ", array_column($game['genres'], 'name')) : "General";
+                $gameLink = "index.php?controller=Games&action=detalle&id=" . $game['id'];
+
+                $response = "¿Es **" . $game['name'] . "** el juego que buscas?";
+                
+                foreach ($data['results'] as $g) {
+                    $options[] = ["name" => $g['name']];
                 }
+
+                return [
+                    "response" => $response, 
+                    "options" => $options, 
+                    "rawResults" => $data['results'],
+                    "gameName" => $game['name'],
+                    "gameLink" => $gameLink,
+                    "rating" => $rating,
+                    "added" => $addedVal,
+                    "categories" => $categories
+                ];
+            } else if (str_contains($messageLow, "buscar")) {
+                $response = "No encontré ningún juego que se llame así.";
             }
         }
-        return ["response" => $response, "options" => $options, "gameLink" => $gameLink];
+
+        return [
+            "response" => $response, 
+            "options" => $options, 
+            "gameLink" => $gameLink,
+            "rating" => $rating,
+            "added" => $added,
+            "categories" => $categories
+        ];
     }
 
     private function callAPI($url) {

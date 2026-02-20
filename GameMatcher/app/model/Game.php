@@ -1,6 +1,5 @@
 <?php
-// app/models/Game.php
-require_once __DIR__ . './Conexion.php';
+require_once __DIR__ . '/Conexion.php';
 
 class Game {
     private $db;
@@ -8,20 +7,26 @@ class Game {
     public function __construct() {
         $this->db = (new Conexion())->conectar();
     }
-    public function asegurarJuegoReferenciado($rawg_id, $nombre) {
-        $sql = "SELECT rawg_game_id FROM JUEGO WHERE rawg_game_id = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([':id' => $rawg_id]);
 
-        if (!$stmt->fetch()) {
-            // No existe, lo insertamos con los datos mínimos
-            $insert = "INSERT INTO JUEGO (rawg_game_id, nome_game) VALUES (:id, :nome)";
-            $stmtInsert = $this->db->prepare($insert);
-            $stmtInsert->execute([
-                ':id' => $rawg_id,
-                ':nome' => $nombre
-            ]);
+    /**
+     * Obtiene los mejores juegos desde la API de RAWG
+     */
+    public function getTopRatedFromApi($cantidad = 6) {
+        $api_key = RAWG_API_KEY; 
+        $url = "https://api.rawg.io/api/games?key=$api_key&ordering=+rating&page_size=$cantidad";
+
+        try {
+            $ctx = stream_context_create(['http' => ['timeout' => 3]]); 
+            $response = @file_get_contents($url, false, $ctx);
+            
+            if ($response === false) return [];
+
+            $data = json_decode($response, true);
+            return $data['results'] ?? [];
+            
+        } catch (Exception $e) {
+            // Podrías loguear el error aquí: error_log($e->getMessage());
+            return [];
         }
-        return $rawg_id;
     }
 }
