@@ -8,9 +8,6 @@ class Game {
         $this->db = (new Conexion())->conectar();
     }
 
-    /**
-     * Obtiene los mejores juegos desde la API de RAWG
-     */
     public function getTopRatedFromApi($cantidad = 6) {
         $api_key = RAWG_API_KEY; 
         $url = "https://api.rawg.io/api/games?key=$api_key&ordering=+rating&page_size=$cantidad";
@@ -25,7 +22,6 @@ class Game {
             return $data['results'] ?? [];
             
         } catch (Exception $e) {
-            // Podrías loguear el error aquí: error_log($e->getMessage());
             return [];
         }
     }

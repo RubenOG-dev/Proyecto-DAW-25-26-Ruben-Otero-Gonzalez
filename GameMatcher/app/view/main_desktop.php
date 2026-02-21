@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameMatcher - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bot.css">
     <link rel="stylesheet" href="assets/css/main_desktop.css">
+    <link rel="stylesheet" href="assets/css/bot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="home-layout">
@@ -38,52 +38,27 @@
         </div>
     </section>
 
+    <!-- <?php include_once("bot.php"); ?> -->
     <div id="chat-bubble">
-        <img src="assets/img/robot-vectorial-graident-ai.png" alt="Botti">
-    </div>
+    <img src="assets/img/robot-vectorial-graident-ai.png" alt="Botti">
+</div>
 
-    <div id="chat-window" class="chat-hidden">
-        <div class="chat-header">
-            <span>BOTTI</span>
-            <div class="header-actions">
-                <span id="chat-minimize">−</span>
-                <span id="chat-close">✖</span>
-            </div>
-        </div>
-        <div id="chat-messages" class="chat-messages"></div>
-        <div class="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Pregúntame algo...">
-            <button id="chat-send">ENVIAR</button>
+<div id="chat-window" class="chat-hidden">
+    <div class="chat-header">
+        <span>BOTTI</span>
+        <div class="header-actions">
+            <span id="chat-minimize">−</span>
+            <span id="chat-close">✖</span>
         </div>
     </div>
+    <div id="chat-messages" class="chat-messages"></div>
+    <div class="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Pregúntame algo...">
+        <button id="chat-send">ENVIAR</button>
+    </div>
+</div>
 
-    <footer class="main-footer">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <img src="assets/img/logo.png" alt="Logo" class="footer-logo-img">
-                
-            </div>
-            
-            <div class="footer-info">
-                <div class="footer-nav">
-                    <a href="index.php?controller=Main&action=about">Sobre nosotros</a>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-                <div class="footer-legal">
-                    <a href="index.php?controller=Main&action=privacy">Política de privacidad</a>
-                    <a href="index.php?controller=Main&action=cookies">Política de cookies</a>
-                </div>
-            </div>
-
-            <div class="footer-copyright">
-                <p>2026 © Rubén Otero Gzl</p>
-            </div>
-        </div>
-    </footer>
+    <?php include_once("footer_desktop.php"); ?>
 
     <script src="assets/js/main_desktop.js"></script>
     <script src="assets/js/bot.js"></script>
