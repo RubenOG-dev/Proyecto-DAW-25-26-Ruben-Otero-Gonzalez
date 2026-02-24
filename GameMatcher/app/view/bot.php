@@ -1,10 +1,10 @@
 <div id="chat-bubble">
-    <img src="assets/img/robot-vectorial-graident-ai.png" alt="Botti">
+    <img src="assets/img/robot-vectorial-graident-ai.png" alt="Cames">
 </div>
 
 <div id="chat-window" class="chat-hidden">
     <div class="chat-header">
-        <span>BOTTI</span>
+        <span>CAMES</span>
         <div class="header-actions">
             <span id="chat-minimize">−</span>
             <span id="chat-close">✖</span>

@@ -32,9 +32,10 @@
         </section>
 
         <div class="action-container">
-            <a href="..." class="btn-join-mobile">Únete A Nosotros!!</a>
+            <a href="index.php?controller=User&action=mostrarAuth" class="btn-join-mobile">Únete A Nosotros!!</a>
         </div>
     </main>
+    
     <?php include_once("footer_mobile.php"); ?>
     <script src="assets/js/main_mobile.js"></script>
 </body>

@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const typing = document.createElement("div");
     typing.className = "typing";
     typing.id = "typing-indicator";
-    typing.textContent = "Botti está escribiendo...";
+    typing.textContent = "Cames está escribiendo...";
     messages.appendChild(typing);
     scrollToBottom();
   };
@@ -265,14 +265,14 @@ document.addEventListener("DOMContentLoaded", () => {
         compareMode ? handleCompareSearch(text, data) : handleNormalSearch(data);
       }).catch(() => {
         removeTyping();
-        addMessage("Error de conexión con Botti.", false);
+        addMessage("Error de conexión con Cames.", false);
       });
   };
 
   bubble.addEventListener("click", () => {
     chatWindow.classList.toggle("chat-hidden");
     if (!chatWindow.dataset.opened && !chatWindow.classList.contains("chat-hidden")) {
-      showMainOptions("👋 ¡Hola! Soy Botti.<br><br>¿En qué puedo ayudarte hoy?");
+      showMainOptions("👋 ¡Hola! Soy Cames.<br><br>¿En qué puedo ayudarte hoy?");
       chatWindow.dataset.opened = "true";
     }
   });
