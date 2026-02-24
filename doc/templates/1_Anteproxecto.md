@@ -154,6 +154,8 @@ GameMatcher sitúase nun punto intermedio entre estas solucións, ofrecendo unha
 O principal valor que *GameMatcher* aporta ao mercado é a **posibilidade de tomar decisións rápidas e informadas** sobre que videoxogos mercar ou probar, ao centralizar nunha única plataforma comparacións, recomendacións e valoracións xeradas pola propia comunidade de usuarios, fronte a sistemas baseados exclusivamente en críticas profesionais. Este enfoque permite unha experiencia máis personalizada e próxima aos intereses reais dos xogadores. Isto fai que os usuarios escollan esta aplicación fronte a servizos máis xerais ou fragmentados, e que as empresas (clientes) dispoñan dun canal atractivo para publicidade ou promoción.
 Ademais, *GameMatcher* garante a fiabilidade da información mediante o uso de **fontes externas recoñecidas para os datos básicos dos videoxogos**, combinadas con **valoracións realizadas exclusivamente por usuarios rexistrados**. Deste xeito, a plataforma ofrece información actualizada e opinións reais, independentes de intereses comerciais, o que supón un valor engadido tanto para os usuarios finais como para as empresas que utilicen a plataforma como canle de promoción ou publicidade.
 
+Para mellorar a experiencia de usuario (UX), a aplicación inclúe un asistente virtual integrado (Cames). A diferenza das interfaces estáticas, este sistema ofrece un feedback activo durante o rexistro e o acceso, comunicando ao usuario de forma visual e conversacional o éxito ou erro das súas accións tras interactuar co servidor.
+
 ---
 
 ### 2.6- Forma xurídica
@@ -284,6 +286,8 @@ O uso combinado de **Bootstrap** e **CSS3** permite:
 - Aproveitar a estrutura responsive e os compoñentes listos de Bootstrap.
 - Mantelo flexible e personalizable coas túas propias regras de CSS, adaptando estilos, cores, tamaños e disposicións específicas.
 - Garantir unha interface amigable, clara e usable para os usuarios, onde a información de xogos, rankings, filtros e foros sexa fácil de consultar e interactuar.
+
+Interacción asíncrona avanzada: Uso da API Fetch para xestionar a comunicación co backend sen recargar a páxina. Isto permite alimentar un sistema de chatbot (Cames) que procesa as respostas JSON do servidor e as traduce en mensaxes dinámicas para o usuario, eliminando tempos de espera innecesarios e mellorando a fluidez da web.
 
 ---
 

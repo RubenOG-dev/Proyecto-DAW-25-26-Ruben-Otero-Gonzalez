@@ -19,6 +19,8 @@ As valoracións e opinións dos videoxogos serán xeradas polos propios usuarios
 
 O sistema desenvolverase como unha aplicación web con backend en PHP seguindo o patrón MVC e cunha base de datos MySQL para a xestión de usuarios, valoracións e contido propio.
 
+A aplicación destaca pola súa interactividade, integrando un asistente de interface (Cames). Este compoñente encárgase de xestionar a lóxica de resposta das peticións asíncronas, guiando ao usuario en tempo real e humanizando o fluxo de traballo (workflow) do sistema.
+
 ## 2- Funcionalidades
 
 A continuación descríbense as principais funcionalidades do sistema, indicando os actores implicados e o proceso realizado en cada caso:
@@ -34,6 +36,7 @@ A continuación descríbense as principais funcionalidades do sistema, indicando
 | Xestión de valoracións | O usuario pode editar ou eliminar as súas propias valoracións. |
 | Xestión do foro | O usuario rexistrado pode crear, modificar e eliminar comentarios nos foros da comunidade. |
 | Panel de administración | O administrador pode xestionar usuarios e moderar contido inapropiado. |
+| Feedback conversacional | O sistema utiliza un asistente (Cames) para notificar de xeito asíncrono o resultado das operacións de usuario (login, rexistro, erros de validación). |
 
 Cada funcionalidade implica datos de entrada (accións do usuario, formularios ou seleccións) e datos de saída (información mostrada por pantalla, mensaxes de confirmación ou erro), procesados polo backend seguindo a lóxica do sistema.
 

@@ -35,7 +35,7 @@
             <a href="index.php?controller=User&action=mostrarAuth" class="btn-join-mobile">Únete A Nosotros!!</a>
         </div>
     </main>
-    
+    <?php include_once("bot.php"); ?>
     <?php include_once("footer_mobile.php"); ?>
     <script src="assets/js/main_mobile.js"></script>
 </body>
