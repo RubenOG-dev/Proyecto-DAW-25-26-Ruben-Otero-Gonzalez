@@ -3,7 +3,7 @@
 class MainController {
     
     public function principal() {
-        include_once VIEW_PATH . 'main.php';
+        include_once VIEW_PATH . 'landing.php';
     }
 
     public function error() {
