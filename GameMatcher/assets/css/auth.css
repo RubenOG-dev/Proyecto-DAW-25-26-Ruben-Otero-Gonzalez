@@ -1,27 +1,48 @@
+/* ============================================================
+    1. VARIABLES Y RESET (Sincronizado con Home)
+   ============================================================ */
 :root {
-    --dark-bg: #1e293b;
+    /* Variables de Desktop */
+    --primary-color: #ae69ea;
+    --secondary-color: #a685ff;
+    --bg-dark-pc: #1E293B;
+    --bg-card: #6366F1;
+    --text-white-pc: #f8fafc;
+    --text-gray-pc: #99b1c3;
+
+    /* Variables de Mobile */
+    --bg-dark-m: #1e293b;
+    --news-box-m: #cbd5e1;
+    --primary-lila-m: #6d6eff;
+    --btn-purple-m: #6366f1;
+    --text-white-m: #ffffff;
+    --text-muted-m: #94a3b8;
+    --cards-background-m: #1e1e1e;
+
+    /* Variables específicas de Auth (Manteniendo compatibilidad) */
     --lila-accent: #6d6eff;
-    --lila-light: #94a3b8;
-    --text-white: #ffffff;
-    --text-gray:#99b1c3;
-    --card-border: #cbd5e1;
     --input-bg: #e2e8f0;
 }
 
 body, html {
-    height: 100%;
+    height: 100vh;
+    width: 100%;
     margin: 0;
-    background-color: var(--dark-bg);
+    padding: 0;
+    background-color: var(--bg-dark-pc);
     color: white;
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden !important; /* Bloqueo estricto */
 }
 
+/* ============================================================
+    2. ESTRUCTURA Y LAYOUT (Optimizado No-Scroll)
+   ============================================================ */
 .auth-container {
     display: flex;
     flex-direction: column;
-    grid-template-rows: auto 1fr auto;
-    flex: 1;
+    height: 100vh;
+    width: 100%;
 }
 
 .auth-card-wrapper {
@@ -29,7 +50,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
+    min-height: 0; 
 }
 
 .auth-card {
@@ -38,42 +60,50 @@ body, html {
     border: 6px solid rgba(203, 213, 225, 0.4);
     width: 100%;
     max-width: 420px;
-    padding: 30px 20px;
+    padding: 25px 20px;
     color: #334155;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.desktop-only { display: flex !important; flex-direction: column; min-height: 100vh; }
+/* --- OPTIMIZACIÓN REGISTRO DESKTOP --- */
+.auth-card:has(#register-pane-d.active) {
+    max-width: 700px; 
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.desktop-only:has(#register-pane-d.active) .main-logo {
+    max-height: 60px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.desktop-only { 
+    display: flex !important; 
+    flex-direction: column; 
+    height: 100vh; 
+    width: 100%;
+}
+
 .mobile-only { display: none !important; }
 
-@media (max-width: 480px) {
-    .auth-card {
-        border-radius: 20px;
-        padding: 20px 15px;
-        border-width: 4px;
-    }
-    .main-logo { max-height: 80px; }
-}
-
-@media (max-width: 768px) {
-    .desktop-only { display: none !important; }
-    .mobile-only { display: flex !important; flex-direction: column; min-height: 100vh;}
-    
-    /* Bloqueo de scroll para que la tarjeta de login no baile */
-    body, html { overflow: hidden; height: 100vh; }
-}
-
+/* ============================================================
+    3. ELEMENTOS DE INTERFAZ
+   ============================================================ */
 .main-logo {
     display: block;
-    margin: 30px auto 15px auto;
-    max-height: 90px;
+    margin: 25px auto 15px auto;
+    max-height: 85px;
     width: auto;
+    transition: all 0.3s ease;
 }
 
 .text-lila-label {
     color: #6366f1;
     font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 3px;
 }
 
 .custom-input {
@@ -81,15 +111,20 @@ body, html {
     border: 1px solid #cbd5e1;
     border-radius: 10px;
     color: #475569;
-    padding: 12px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 15px;
     transition: all 0.3s;
+}
+
+#register-pane-d .custom-input {
+    padding: 8px 12px;
 }
 
 .custom-input:focus {
     background-color: #fff;
     border-color: var(--lila-accent);
     box-shadow: 0 0 0 0.2rem rgba(124, 105, 239, 0.25);
+    outline: none;
 }
 
 .btn-auth-submit {
@@ -97,7 +132,7 @@ body, html {
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 14px;
+    padding: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -111,12 +146,8 @@ body, html {
     color: #94a3b8;
     font-size: 0.75rem;
     border: none;
-    padding-bottom: 10px;
-}
-
-.tab-content {
-    width: 100%;
-    min-height: auto;
+    padding-bottom: 8px;
+    background: none;
 }
 
 .nav-tabs .nav-link.active {
@@ -125,67 +156,96 @@ body, html {
     border-bottom: 3px solid #6366f1;
 }
 
-/* --- FOOTER ADAPTATIVO --- */
+/* ============================================================
+    4. FOOTER (Sincronizado con el estilo solicitado)
+   ============================================================ */
+
+/* Footer Desktop */
 .desktop-only .main-footer {
-    background: linear-gradient(to right, 
-    rgba(18, 18, 32, 0.98) 25%, 
-    rgba(18, 18, 32, 0.6) 50%, 
-    transparent 100%);
-    padding: 10px 8%;
+    background: #0f172a; 
+    padding: 0 8%;
     border-top: 1px solid #333;
     flex-shrink: 0;
-    height: 8vh;
+    height: 70px;
+    display: flex;
+    align-items: center;
 }
-.desktop-only .main-footer .footer-top{
+
+.desktop-only .main-footer .footer-top {
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.desktop-only .main-footer .footer-top .footer-info {
+    display: flex;
     align-items: center;
     gap: 30px;
 }
-.desktop-only .main-footer .footer-top .footer-info{
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-.desktop-only .footer-nav, .desktop-only .footer-legal{
-    display: flex;
-    gap: 25px;
-    list-style: none;
-}
-.desktop-only .footer-logo-img{
-    height: 50px;
-}
+
+.desktop-only .footer-logo-img { height: 40px; }
 
 .footer-info a {
-    color: var(--text-gray);
+    color: var(--text-gray-pc);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: color 0.3s;
 }
 
-.footer-social { display: flex; gap: 15px; }
-.footer-social a { font-size: 1.1rem; color: white; }
-.footer-copyright { color: #666; font-size: 1rem; }
+.footer-info a:hover { color: white; }
 
+.footer-social { display: flex; gap: 15px; }
+.footer-social a { font-size: 1rem; color: white; opacity: 0.8; }
+.footer-social a:hover { opacity: 1; }
+
+.footer-copyright { color: #64748b; font-size: 0.85rem; }
+.footer-copyright p{ margin: 0;}
+
+/* Footer Mobile */
 .mobile-only .mobile-footer {
-    border-top: 1px solid var(--lila-accent);
-    padding: 15px 10px;
+    border-top: 1px solid var(--primary-lila-m);
+    padding: 20px;
     background: var(--bg-dark-m);
-    margin-top: 40px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0px;
-    height: 8vh;
+    flex-shrink: 0;
 }
 
-.mobile-only .footer-links-main { display: flex; flex-direction: column; }
+.mobile-only .footer-links-main { display: flex; flex-direction: column; gap: 5px; }
 .mobile-only .footer-links-main a { font-size: 0.75rem; text-decoration: none; color: white; }
-.mobile-only .about-us { color: var(--lila-accent) !important; font-weight: bold; }
-.mobile-only .social-icons { display: flex; gap: 10px; }
-.mobile-only .social-icons a {  color: #ffffff; font-size: 1.1rem;}
-.mobile-only .footer-legal { display: flex; flex-direction: column; text-align: right; }
-.mobile-only .footer-legal a { color: var(--text-muted-m); text-decoration: none; font-size: 0.7rem; }
-.mobile-only .copy { text-align: center; padding: 20px 0;}
-.mobile-only .copyright { color: #64748b; font-size: 0.73Nrem; padding-top:20px ;}
+.mobile-only .social-icons { display: flex; gap: 12px; }
+.mobile-only .social-icons a { color: white; font-size: 1rem; }
+.mobile-only .footer-legal { text-align: right; }
+.mobile-only .footer-legal a { color: var(--text-muted-m); text-decoration: none; font-size: 0.7rem; display: block; }
+.mobile-only .copyright { color: #64748b; font-size: 0.73rem; }
+
+/* ============================================================
+    5. RESPONSIVE / MOBILE 
+   ============================================================ */
+@media (max-width: 768px) {
+    html, body { 
+        overflow-y: auto !important; 
+        height: auto; 
+    }
+    
+    .desktop-only { display: none !important; }
+    .mobile-only { 
+        display: flex !important; 
+        flex-direction: column; 
+        min-height: 100vh;
+    }
+
+    .auth-card {
+        max-width: 100% !important;
+        border-radius: 20px;
+        padding: 20px 15px;
+        border-width: 4px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-logo { max-height: 70px; }
+}

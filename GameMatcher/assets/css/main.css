@@ -1,0 +1,298 @@
+/* --- RESET GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- CONTROL DE VISIBILIDAD --- */
+@media (min-width: 769px) {
+    .mobile-only { display: none; }
+    .desktop-only { display: block; }
+}
+
+@media (max-width: 768px) {
+    .desktop-only { display: none; }
+    .mobile-only { display: block; }
+}
+
+/* --- ESTILOS ESCRITORIO (Desktop) --- */
+.main-header {
+    background-color: #1a1c2c;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #2a2a2a;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { height: 40px; }
+.logo h1 { font-size: 1.6rem; font-weight: 900; }
+.logo h1 span { color: #a685ff; }
+
+.btn-logout {
+    background: #6366f1;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.btn-logout:hover { background: #4f46e5; }
+
+/* Hero Desktop */
+.hero-section {
+    height: 450px;
+    background: url('../img/super-heroes.png') center/cover no-repeat;
+    position: relative;
+}
+
+.hero-overlay {
+    background: linear-gradient(to right, rgba(18, 18, 18, 0.95) 35%, rgba(18, 18, 18, 0.2) 100%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    max-width: 450px;
+    color: #bbbbbb;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.hero-highlight {
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Secciones y Carrusel Desktop */
+.section-container {
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #bbbbbb;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carousel-content {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 10px;
+    width: 85%;
+    flex-wrap: nowrap;
+}
+
+.carousel-content::-webkit-scrollbar { display: none; }
+
+.game-card {
+    flex: 0 0 auto;
+    width: 200px;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.game-card:hover { transform: translateY(-10px); }
+
+.game-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.game-card h5 {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #efefef;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Foro Mockup Desktop */
+.forum-preview {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.forum-header {
+    background: #b0c4de;
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.forum-body img { width: 100%; display: block; }
+
+.center-btn { margin-top: 25px; }
+
+.btn-blue {
+    background: #6366f1;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- ESTILOS MÓVIL (Mobile Adaptado a Imagen 2) --- */
+.mobile-header {
+    background: #1a1c2c;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.mob-logo { height: 35px; }
+
+.btn-logout-mob {
+    background: #6366f1;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Corrección Hero Móvil */
+.mobile-only .hero-section {
+    height: auto; /* Permite que el contenedor crezca con el texto */
+    min-height: 60vh; /* Asegura que la imagen de fondo sea visible */
+    background: url('../img/super-heroes.png') center/cover no-repeat;
+    display: flex;
+}
+
+.mobile-only .hero-overlay {
+    /* Gradiente vertical: oscuro abajo para que el texto resalte */
+    background: linear-gradient(to bottom, rgba(18, 18, 18, 0.6) 0%, rgba(18, 18, 18, 1) 100%);
+    padding: 40px 20px;
+    height: 100%;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.mobile-only .hero-content {
+    width: 100%;
+}
+
+.mobile-only .hero-content h2 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.mobile-only .hero-content p {
+    width: 100% !important; /* Elimina el 50vw para usar todo el ancho como en la Imagen 2 */
+    max-width: 90%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #eeeeee;
+}
+
+.mobile-only .hero-highlight {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Carrusel Móvil */
+.carousel-content-mob {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 20px;
+    background-color: #121212;
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel-content-mob::-webkit-scrollbar { display: none; }
+
+.carousel-content-mob .game-card {
+    width: 150px; /* Tamaño equilibrado */
+}
+
+.carousel-content-mob .game-card img {
+    height: 210px;
+    border-radius: 12px;
+}
+
+/* Botones de acción móvil */
+.mob-actions {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #121212;
+}
+
+.btn-mob {
+    background: #6366f1;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-dark { background: #2a2a2a; }
+
+/* Ajuste Mockup Foro Móvil */
+.mobile-only .forum-preview {
+    margin: 20px;
+    width: auto;
+}

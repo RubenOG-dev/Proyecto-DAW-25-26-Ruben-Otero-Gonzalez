@@ -5,19 +5,26 @@ class User {
     public function __construct($pdoConexion = null) {
         if ($pdoConexion) {
             $this->db = $pdoConexion;
-        }else{
+        } else {
             global $pdo;
             if (!$pdo) {
                 throw new Exception("La conexión a la base de datos no está disponible", 1);
-                
             }
-            $this->db=$pdo;
+            $this->db = $pdo;
         }
     }
 
     public function registrar($nombre, $email, $password) {
         try {
+            $checkSql = "SELECT id_usuario FROM USUARIO WHERE email = :email";
+            $checkStmt = $this->db->prepare($checkSql);
+            $checkStmt->execute([':email' => $email]);
+            if ($checkStmt->fetch()) {
+                return false;
+            }
+
             $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+
             $sql = "INSERT INTO USUARIO (nombre, contrasenha, email, tipo_usuario, activo) 
                     VALUES (:nombre, :pass, :email, 'free', 1)";
             
@@ -28,7 +35,6 @@ class User {
                 ':email'  => $email
             ]);
         } catch (PDOException $e) {
-            // Opcional: registrar error en log
             return false;
         }
     }

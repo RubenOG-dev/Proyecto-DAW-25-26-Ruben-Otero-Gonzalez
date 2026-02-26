@@ -5,44 +5,63 @@ document.addEventListener("DOMContentLoaded", () => {
      * Muestra el feedback de éxito o error en el contenedor adecuado (Desktop o Mobile)
      */
     const mostrarMensajeUI = (mensaje, tipo) => {
-        // Detectamos si el contenedor móvil está visible para saber dónde poner el mensaje
         const isMobileVisible = window.getComputedStyle($d.querySelector('.mobile-only')).display !== 'none';
         const feedbackId = isMobileVisible ? "feedback-mobile" : "feedback-desktop";
         const feedback = $d.getElementById(feedbackId);
 
         if (feedback) {
             feedback.className = `alert alert-${tipo} d-flex align-items-center animate__animated animate__fadeInUp auth-feedback`;
+
+            const mensajeSeguro = mensaje.replace(/[<>&"']/g, m => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": "&#39;" }[m]));
+
             feedback.innerHTML = `
                 <i class="fas ${tipo === "danger" ? "fa-exclamation-circle" : "fa-check-circle"} me-2"></i>
-                <div style="font-size: 0.85rem;">${mensaje}</div>
+                <div style="font-size: 0.85rem;">${mensajeSeguro}</div>
             `;
             feedback.classList.remove("d-none");
-            
-            // Scroll suave para asegurar que el usuario vea el mensaje
+
             feedback.scrollIntoView({ behavior: "smooth", block: "center" });
         }
     };
 
-    /**
-     * Procesa el envío de los formularios mediante Fetch
-     */
+
     const enviarFormulario = async (form, action) => {
-        // Validación nativa de Bootstrap/HTML5
+
         if (!form.checkValidity()) {
             form.classList.add("was-validated");
             return;
+        }
+
+        const emailInput = form.querySelector('input[type="email"]');
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (emailInput && !emailRegex.test(emailInput.value)) {
+            mostrarMensajeUI("O formato do correo electrónico non é válido.", "danger");
+            return;
+        }
+
+        if (action === "procesarRegistro") {
+            const pass = form.querySelector('input[name="password"]');
+            const confirm = form.querySelector('input[name="password_confirm"]');
+            if (pass && pass.value.length < 8) {
+                mostrarMensajeUI("A contrasinal debe ter polo menos 8 caracteres.", "danger");
+                return;
+            }
+            if (pass && confirm && pass.value !== confirm.value) {
+                mostrarMensajeUI("As contrasinais non coinciden.", "danger");
+                return;
+            }
         }
 
         const formData = new FormData(form);
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.innerHTML;
 
-        // Ocultamos todos los feedbacks previos antes de enviar
         $d.querySelectorAll('.auth-feedback').forEach(f => f.classList.add('d-none'));
 
-        // Estado de carga
         btn.disabled = true;
         btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Procesando...';
+        const inputs = form.querySelectorAll('input');
+        inputs.forEach(i => i.readOnly = true);
 
         try {
             const response = await fetch(`./index.php?controller=User&action=${action}`, {
@@ -56,31 +75,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (result.success) {
                 mostrarMensajeUI(result.message, "success");
-                
+
                 if (action === "procesarLogin") {
-                    // Redirección tras login exitoso
-                    setTimeout(() => window.location.href = "index.php?controller=User&action=principal", 1200);
+                    const redirectUrl = result.redirect || "index.php?controller=User&action=mostrarMain";
+                    setTimeout(() => window.location.href = redirectUrl, 1200);
                 } else {
-                    // Limpieza tras registro exitoso
                     form.reset();
                     form.classList.remove("was-validated");
+                    inputs.forEach(i => i.readOnly = false);
                 }
             } else {
                 mostrarMensajeUI(result.message, "danger");
+                inputs.forEach(i => i.readOnly = false);
             }
         } catch (error) {
             console.error("Error:", error);
             mostrarMensajeUI("Error de conexión con el servidor", "danger");
+            inputs.forEach(i => i.readOnly = false);
         } finally {
-            // Restaurar botón
             btn.disabled = false;
             btn.innerHTML = originalText;
         }
     };
 
-    // --- ASIGNACIÓN DE EVENTOS PARA TODOS LOS FORMULARIOS ---
-    
-    // Mapeo manual para evitar cualquier error de duplicidad
     const loginForms = ["loginFormDesktop", "loginFormMobile"];
     const registerForms = ["registerFormDesktop", "registerFormMobile"];
 

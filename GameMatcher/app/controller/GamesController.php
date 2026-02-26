@@ -4,11 +4,7 @@ class GamesController {
 
     public function listarTop() {
         header('Content-Type: application/json');
-        
-        $hoy = date('Y-m-d');
-        $inicio = date('Y-m-d', strtotime('-30 days'));
-        
-        $url = "https://api.rawg.io/api/games?key=" . RAWG_API_KEY . "&dates=$inicio,$hoy&ordering=-metacritic&page_size=6";
+        $url = "https://api.rawg.io/api/games?key=" . RAWG_API_KEY . "&ordering=-added&page_size=40";
 
         echo $this->peticionApi($url);
     }

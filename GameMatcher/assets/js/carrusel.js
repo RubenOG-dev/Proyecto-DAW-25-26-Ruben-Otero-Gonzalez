@@ -1,51 +1,82 @@
 document.addEventListener("DOMContentLoaded", () => {
-    cargarCarrusel();
+    cargarContenido("games-carousel");
+    cargarContenido("games-carousel-mob");
 });
 
-async function cargarCarrusel() {
-    const contenedor = document.getElementById("games-carousel");
-
+async function cargarContenido(containerId) {
+    const contenedor = document.getElementById(containerId);
     if (!contenedor) return;
+
+    // Mantenemos tu spinner
+    contenedor.innerHTML = '<div class="spinner-border text-light" role="status"><span class="visually-hidden">Cargando...</span></div>';
 
     try {
         const response = await fetch("index.php?controller=Games&action=listarTop");
-        
-        if (!response.ok) throw new Error("Error en la petición al servidor");
+        if (!response.ok) throw new Error("Error en la petición");
         
         const data = await response.json();
-
         contenedor.innerHTML = "";
 
         if (data.results && data.results.length > 0) {
-            data.results.forEach(juego => {
-                const card = crearTarjetaJuego(juego);
-                contenedor.appendChild(card);
+            // USAMOS 20 JUEGOS COMO SOLICITASTE
+            const juegos = data.results.slice(0, 20);
+
+            juegos.forEach(juego => {
+                const div = document.createElement("div");
+                div.className = "game-card";
+
+                div.innerHTML = `
+                    <div class="game-card-inner" onclick="window.location.href='index.php?controller=Games&action=detalle&id=${juego.id}'" style="cursor:pointer">
+                        <img src="${juego.background_image || 'assets/img/default-game.jpg'}" 
+                             alt="${juego.name}" 
+                             loading="lazy">
+                        <h5 style="margin-top:10px; font-size:0.9rem; font-weight: bold; color: #fff;">${juego.name}</h5>
+                    </div>
+                `;
+                contenedor.appendChild(div);
             });
         } else {
-            contenedor.innerHTML = "<p class='text-white'>Non se atoparon xogos neste momento.</p>";
+            contenedor.innerHTML = "<p class='text-muted'>Non hai xogos destacados neste momento.</p>";
         }
 
-    } catch (error) {
-        console.error("Erro cargando o carrusel:", error);
-        contenedor.innerHTML = "<p class='text-danger'>Erro ao conectar co servidor.</p>";
+        // Lógica de botones (Mantenida al 100%)
+        if (containerId === "games-carousel") {
+            const next = document.getElementById("nextBtn");
+            const prev = document.getElementById("prevBtn");
+
+            // Ajustamos el scrollAmount para que la transición sea fluida según el tamaño de las tarjetas
+            const scrollAmount = 400;
+
+            if (next) {
+                next.onclick = () => {
+                    contenedor.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                };
+            }
+            if (prev) {
+                prev.onclick = () => {
+                    contenedor.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                };
+            }
+
+            verificarFlechas(contenedor, prev, next);
+            contenedor.addEventListener('scroll', () => verificarFlechas(contenedor, prev, next));
+        }
+
+    } catch (e) {
+        console.error("Error cargando carrusel:", e);
+        contenedor.innerHTML = "<p class='text-danger'>Error ao cargar o catálogo.</p>";
     }
 }
-function crearTarjetaJuego(juego) {
-    const div = document.createElement("div");
-    div.className = "game-card-container";
-    div.innerHTML = `
-        <div class="card bg-dark border-0 shadow-sm h-100" style="width: 200px; cursor: pointer;" onclick="window.location.href='index.php?controller=Games&action=detalle&id=${juego.id}'">
-            <div class="position-relative">
-                <img src="${juego.background_image}" class="card-img-top rounded shadow" alt="${juego.name}" style="height: 280px; object-fit: cover;">
-                <div class="rating-badge position-absolute top-0 end-0 m-2 badge bg-primary">
-                    ⭐ ${juego.rating}
-                </div>
-            </div>
-            <div class="card-body p-2">
-                <h5 class="card-title text-white h6 text-truncate mb-0">${juego.name}</h5>
-                <p class="card-text text-secondary small">${juego.released ? juego.released.split('-')[0] : 'N/A'}</p>
-            </div>
-        </div>
-    `;
-    return div;
+
+/**
+ * Función extra para mejorar la UI: Oculta o atenúa las flechas según el scroll
+ */
+function verificarFlechas(cnt, p, n) {
+    if (!p || !n) return;
+    p.style.opacity = cnt.scrollLeft <= 0 ? "0.2" : "1";
+    p.style.pointerEvents = cnt.scrollLeft <= 0 ? "none" : "auto";
+
+    const reachedEnd = cnt.scrollLeft + cnt.offsetWidth >= cnt.scrollWidth - 10;
+    n.style.opacity = reachedEnd ? "0.2" : "1";
+    n.style.pointerEvents = reachedEnd ? "none" : "auto";
 }

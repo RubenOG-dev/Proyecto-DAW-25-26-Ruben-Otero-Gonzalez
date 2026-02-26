@@ -24,12 +24,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    
 }
 
+/* Bloqueo de scroll global para mantener el diseño en una sola pantalla */
 html, body {
-    height: 100%;
+    height: 100vh;
     width: 100%;
+    overflow: hidden !important;
     font-family: 'Roboto', sans-serif;
     background-color: var(--bg-dark-m);
 }
@@ -41,7 +42,11 @@ html, body {
 @media (max-width: 768px) {
     .desktop-only { display: none !important; }
     .mobile-only { display: block !important; }
-    .mobile-body{ display: flex !important; }
+    .mobile-body { 
+        display: flex !important; 
+        overflow-y: auto !important; /* Permitimos scroll solo en móvil si el contenido es largo */
+    }
+    html, body { overflow: auto !important; height: auto; } /* Mobile necesita poder desplazarse */
 }
 
 /* ============================================================
@@ -51,19 +56,21 @@ html, body {
     background-color: var(--bg-dark-pc);
     color: var(--text-white-pc);
     line-height: 1.6;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 .desktop-only .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 8%;
+    padding: 0 8%;
     background-color: rgba(18, 18, 32, 0.95);
-    flex-shrink: 0;
+    flex-shrink: 0; /* Impide que el header se encoja */
+    height: 70px; /* Altura fija para control exacto */
     z-index: 1000;
     border-bottom: 1px solid #333;
 }
@@ -74,8 +81,8 @@ html, body {
     gap: 12px;
 }
 
-.desktop-only .logo img { height: 50px; }
-.desktop-only .logo h1 { font-size: 1.8rem; font-weight: 900; }
+.desktop-only .logo img { height: 45px; }
+.desktop-only .logo h1 { font-size: 1.6rem; font-weight: 900; }
 .desktop-only .logo h1 span { color: var(--primary-color); }
 
 .desktop-only .nav-menu { display: flex; gap: 20px; }
@@ -84,10 +91,10 @@ html, body {
     text-decoration: none;
     color: white;
     background: var(--primary-color);
-    padding: 10px 20px;
+    padding: 8px 18px;
     border-radius: 5px;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -99,67 +106,77 @@ html, body {
     transform: translateY(-2px);
 }
 
+/* Contenedor principal que se expande */
 .desktop-only .hero-section {
     position: relative;
     width: 100%;
     background-image: url('../img/super-heroes.png'); 
-    background-size: 135%;
+    background-size: 140%;
     background-position: center right;
     background-repeat: no-repeat;
-    height: 84vh;
+    flex-grow: 1; /* Toma todo el espacio disponible */
+    flex-shrink: 1;
+    min-height: 0; /* Crucial para que flexbox permita encogimiento */
+    overflow: hidden;
 }
 
 .desktop-only .hero-overlay {
     width: 100%;
+    height: 100%;
     background: linear-gradient(to right, 
-    rgba(18, 18, 32, 0.98) 25%, 
-    rgba(18, 18, 32, 0.6) 50%, 
-    transparent 100%);
+        rgba(18, 18, 32, 0.98) 25%, 
+        rgba(18, 18, 32, 0.6) 50%, 
+        transparent 100%);
     display: flex;
-    flex: 1;
     align-items: center;
-    min-height: 100%;
 }
 
 .desktop-only .hero-content {
-    max-width: 900px;
+    max-width: 950px;
     padding-left: 8%;
+    padding-right: 5%;
     animation: fadeIn 1s ease-out;
-    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* Tipografía adaptativa basada en la altura de pantalla (vh) */
 .desktop-only .hero-content h2 {
-    font-size: 3.2rem;
+    font-size: clamp(3rem, 5vh, 3rem);
     font-weight: 900;
     line-height: 1.1;
-    margin-bottom: 15px;
+    margin-bottom: 1.5vh;
 }
 
 .desktop-only .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1.4rem, 2.5vh, 1.3rem);
     color: var(--secondary-color);
-    margin-bottom: 15px;
+    margin-bottom: 2vh;
 }
 
 .desktop-only .hero-description {
-    font-size: 1rem;
     color: var(--text-gray-pc);
-    margin-bottom: 25px;
-    max-width: 800px;
+    margin-bottom: 3vh;
+    max-width: 700px;
 }
 
-.desktop-only .hero-description p { margin-bottom: 10px; font-size: 16px; }
+.desktop-only .hero-description p { 
+    margin-bottom: 1vh; 
+    font-size: clamp(1.1rem, 1.8vh, 1rem);
+    line-height: 1.5;
+}
 
 .desktop-only .btn-join {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary-color), #483d8b);
     color: white;
     width: fit-content;
-    padding: 18px 20px;
+    padding: 1.8vh 20px;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: clamp(1.4rem, 2vh, 2rem);
     text-transform: uppercase;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(106, 90, 205, 0.4);
@@ -175,11 +192,10 @@ html, body {
     line-height: 1.4;
     width: 100%;
     min-height: 100vh;
+    display: flex;
     flex-direction: column;
     margin: 0;
 }
-
-
 
 .mobile-only .mobile-header {
     top: 0;
@@ -191,11 +207,10 @@ html, body {
     padding: 15px 20px;
     background: var(--bg-dark-m);
     border-bottom: var(--primary-lila-m) solid 1px;
-    margin-top: auto;
 }
 
 .mobile-only .logo-container img {
-    height: 40px;
+    height: 35px;
     display: block;
 }
 
@@ -210,159 +225,141 @@ html, body {
     background: #5051cb;
     color: white;
     text-decoration: none;
-    padding: 6px 12px;
+    padding: 5px 10px;
     border-radius: 5px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-align: center;
     width: fit-content;
 }
 
 .mobile-only main {
-    display: flex;
-    flex:1;
-    max-width: 100%;
-    padding: 10px 20px;
+    flex: 1;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     align-items: center;
 }
 
 .mobile-only .intro-text {
     display: flex;
     flex-direction: column;
-    width: 90%;
-    margin-top: 20px;
-    gap: 10px;
+    width: 100%;
+    gap: 12px;
 }
 
 .mobile-only .intro-text h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 900;
     line-height: 1.2;
 }
 
 .mobile-only .intro-text p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .mobile-only .italic {
     font-style: italic;
-    margin-top: 20px;
+    color: var(--secondary-color);
 }
 
 .mobile-only .action-container {
     text-align: center;
-    margin: 15px 0;
-    width: fit-content;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .mobile-only .btn-join-mobile {
-    display: inline-block;
-    width: fit-content;
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
     background: var(--btn-purple-m);
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 900;
-    font-style: italic;
-    padding: 14px;
-    border-radius: 15px;
+    padding: 16px;
+    border-radius: 12px;
     text-transform: uppercase;
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-    animation: pulse-animation 2s infinite ease-in-out;
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
 }
 
 /* ============================================================
-   4. ANIMACIONES Y ESTILOS COMPARTIDOS
+   4. ANIMACIONES
    ============================================================ */
 @keyframes pulse-animation {
     0% { transform: scale(1); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); }
-    50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5); }
+    50% { transform: scale(1.03); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5); }
     100% { transform: scale(1); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateX(-30px); }
+    from { opacity: 0; transform: translateX(-20px); }
     to { opacity: 1; transform: translateX(0); }
-}
-
-/* Media Query intermedio para ajustes de Desktop */
-@media (max-width: 992px) and (min-width: 769px) {
-    .desktop-only .hero-content h2 { font-size: 2.2rem; }
-    .desktop-only .hero-section { background-size: cover; }
 }
 
 /* ============================================================
    5. FOOTER (Desktop / Mobile)
    ============================================================ */
-/* Estilos Footer Desktop */
 .desktop-only .main-footer {
-    background: linear-gradient(to right, 
-    rgba(18, 18, 32, 0.98) 25%, 
-    rgba(18, 18, 32, 0.6) 50%, 
-    transparent 100%);
-    padding: 10px 8%;
+    background: #0f172a; /* Color sólido para evitar transparencias que muestren el Hero detrás */
+    padding: 0 8%;
     border-top: 1px solid #333;
-    flex-shrink: 0;
-    height: 8vh;
+    flex-shrink: 0; /* Impide que el footer se aplaste */
+    height: 70px;
+    display: flex;
+    align-items: center;
 }
-.desktop-only .main-footer .footer-top{
+
+.desktop-only .main-footer .footer-top {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
-}
-.desktop-only .main-footer .footer-top .footer-info{
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-.desktop-only .footer-nav, .desktop-only .footer-legal{
-    display: flex;
-    gap: 25px;
-    list-style: none;
-}
-.desktop-only .footer-logo-img{
-    height: 50px;
 }
 
+.desktop-only .main-footer .footer-top .footer-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.desktop-only .footer-logo-img { height: 40px; }
+
 .footer-info a {
-    color: var(--text-gray);
+    color: var(--text-gray-pc);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: color 0.3s;
 }
 
+.footer-info a:hover { color: white; }
+
 .footer-social { display: flex; gap: 15px; }
-.footer-social a { font-size: 1.1rem; color: white; }
-.footer-copyright { color: #666; font-size: 1rem; }
+.footer-social a { font-size: 1rem; color: white; opacity: 0.8; }
+.footer-social a:hover { opacity: 1; }
+
+.footer-copyright { color: #64748b; font-size: 0.85rem;}
 
 /* Estilos Footer Mobile */
 .mobile-only .mobile-footer {
     border-top: 1px solid var(--primary-lila-m);
-    padding: 15px 10px;
+    padding: 20px;
     background: var(--bg-dark-m);
-    margin-top: 40px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0px;
-    height: 8vh;
-    align-items: center;
+    flex-shrink: 0;
 }
 
-.mobile-only .footer-links-main { display: flex; flex-direction: column; }
-.mobile-only .footer-links-main a { font-size: 0.8rem; text-decoration: none; color: white; }
-.mobile-only .about-us { color: var(--primary-lila-m) !important; font-weight: bold; }
-.mobile-only .social-icons { display: flex; gap: 10px; }
-.mobile-only .social-icons a {  color: var(--text-white); font-size: 1.1rem;}
-.mobile-only .footer-legal { display: flex; flex-direction: column; text-align: right; }
-.mobile-only .footer-legal a { color: var(--text-muted-m); text-decoration: none; font-size: 0.7rem; }
-.mobile-only .copy { text-align: center;}
-.mobile-only .copyright { color: #64748b; font-size: 0.75rem; }
+.mobile-only .footer-links-main { display: flex; flex-direction: column; gap: 5px; }
+.mobile-only .footer-links-main a { font-size: 0.75rem; text-decoration: none; color: white; }
+.mobile-only .social-icons { display: flex; gap: 12px; }
+.mobile-only .social-icons a { color: white; font-size: 1rem; }
+.mobile-only .footer-legal { text-align: right; }
+.mobile-only .footer-legal a { color: var(--text-muted-m); text-decoration: none; font-size: 0.7rem; display: block; }
