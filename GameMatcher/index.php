@@ -1,5 +1,8 @@
 <?php
 require_once "app/globals.php";
+require_once "app/model/Conexion.php"; 
+$con = new Conexion();
+$pdo = $con->conectar();
 
 include_once CONTROLLER_PATH . "MainController.php";
 include_once CONTROLLER_PATH . "GamesController.php";
@@ -26,6 +29,7 @@ try {
         throw new Exception("Controlador no encontrado: " . $controllerName);
     }
 } catch (Throwable $th) {
+    // Si hay un error serio, volvemos a la principal
     $object = new MainController();
     $object->principal();
 }

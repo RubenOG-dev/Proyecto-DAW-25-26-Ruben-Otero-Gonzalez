@@ -9,14 +9,14 @@
             <div class="footer-nav">
                 <a href="#">Sobre nosotros</a>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
             <div class="footer-legal">
-                <a href="#">Política de privacidad</a>
-                <a href="#">Política de cookies</a>
+                <a href="index.php?controller=Main&action=privacy">Política de privacidad</a>
+                <a href="index.php?controller=Main&action=cookies">Política de cookies</a>
             </div>
         </div>
 

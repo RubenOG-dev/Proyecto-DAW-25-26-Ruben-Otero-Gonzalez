@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>GameMatcher - Móvil</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main_mobile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/landing_mobile.css">
+    <link rel="stylesheet" href="/assets/css/bot.css">
 </head>
 
 <body class="mobile-body">
@@ -37,7 +38,8 @@
     </main>
     <?php include_once("bot.php"); ?>
     <?php include_once("footer_mobile.php"); ?>
-    <script src="assets/js/main_mobile.js"></script>
+    <script src="assets/js/landing_mobile.js"></script>
+    <script src="assets/js/bot.js"></script>
 </body>
 
 </html>

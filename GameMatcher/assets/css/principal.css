@@ -1,0 +1,170 @@
+/* --- Variables y Reset --- */
+:root {
+  --purple-gm: #6e57e0;
+  --dark-gm: #0d1222;
+  --gray-forum: #cad5e2;
+}
+
+.main-wrapper {
+  background-color: var(--dark-gm);
+  overflow-x: hidden;
+}
+.text-italic {
+  font-style: italic;
+  font-weight: 800;
+}
+.btn-purple {
+  background: var(--purple-gm);
+  color: white;
+  padding: 12px 35px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+}
+.btn-purple:hover {
+  background: #5a45c7;
+  color: white;
+}
+
+/* --- Hero --- */
+.hero-section {
+  min-height: 60vh;
+  background:
+    linear-gradient(rgba(13, 18, 34, 0.7), var(--dark-gm)),
+    url("../img/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- Slider --- */
+.game-card img {
+  width: 220px;
+  border-radius: 12px;
+  transition: 0.4s;
+  opacity: 0.5;
+}
+.game-card.active img {
+  transform: scale(1.1);
+  opacity: 1;
+  border: 3px solid var(--purple-gm);
+}
+.slider-arrow {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* --- Forum Mockup --- */
+.forum-mockup {
+  max-width: 850px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--gray-forum);
+}
+.forum-bar {
+  background: #b0c4de;
+  color: #333;
+  padding: 8px;
+  font-weight: bold;
+}
+
+/* --- Estilos Base (Desktop) --- */
+.hero-box {
+  min-height: 70vh;
+  background:
+    linear-gradient(180deg, rgba(13, 18, 34, 0.5) 0%, #0d1222 100%),
+    url("../img/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.text-italic {
+  font-style: italic;
+  font-weight: 900;
+  color: white;
+}
+.btn-gm {
+  background: #6e57e0;
+  color: white;
+  padding: 12px 40px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.g-card img {
+  width: 220px;
+  border-radius: 10px;
+  transition: 0.3s;
+  opacity: 0.5;
+}
+.g-card.active img {
+  opacity: 1;
+  transform: scale(1.1);
+  border: 3px solid #6e57e0;
+}
+
+.mockup-container {
+  max-width: 850px;
+  background: #cad5e2;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.mockup-header {
+  background: #b0c4de;
+  padding: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* --- Ajustes Mobile (Responsivo) --- */
+@media (max-width: 991px) {
+  .hero-content {
+    text-align: center;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-desc {
+    font-size: 0.9rem;
+  }
+  .btn-logout {
+    width: 100%;
+    display: block;
+    border: 1px solid white;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .g-card img {
+    width: 280px;
+  } /* Solo se ve el activo */
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 768px) {
+  .item-hide-mobile {
+    display: none !important;
+  }
+  .hero-content {
+    text-align: center;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .game-card.active img {
+    width: 280px;
+  }
+  .section-subtitle {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+}

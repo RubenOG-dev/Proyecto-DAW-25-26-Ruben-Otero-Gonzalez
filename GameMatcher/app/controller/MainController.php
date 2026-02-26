@@ -4,16 +4,12 @@ require_once MODEL_PATH . 'Game.php';
 class MainController {
     
     public function principal() {
-        // 1. Detección de dispositivo
-        $isMobile = $this->checkDevice();
-
-        // 2. Lógica de Negocio: Pedir datos al Modelo
+        /* $isMobile = $this->checkDevice();
         $gameModel = new Game();
         $mejoresJuegos = $gameModel->getTopRatedFromApi(6);
-
-        // 3. Carga de vistas
-        $view = $isMobile ? "main_mobile.php" : "main_desktop.php";
-        include_once VIEW_PATH . $view;
+        $view = $isMobile ? "landing_mobile.php" : "landing_desktop.php"; 
+        include_once VIEW_PATH . $view;*/
+        include_once VIEW_PATH . 'landing.php';
     }
 
     /**

@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>GameMatcher - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main_desktop.css">
+    <link rel="stylesheet" href="assets/css/landing_desktop.css">
     <link rel="stylesheet" href="assets/css/bot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -35,16 +35,15 @@
                     <p>Únete a otros jugadores, comparte tu opinión y encuentra tu próxima gran aventura.</p>
                 </div>
 
-                <a href="index.php?controller=User&action=register" class="btn-join">Únete A Nosotros!!</a>
+                <a href="index.php?controller=User&action=mostrarAuth" class="btn-join">Únete A Nosotros!!</a>
             </div>
         </div>
     </section>
 
     <?php include_once("bot.php"); ?>
+    <?php include_once("footer.php"); ?>
 
-    <?php include_once("footer_desktop.php"); ?>
-
-    <script src="assets/js/main_desktop.js"></script>
+    <script src="assets/js/landing_desktop.js"></script>
     <script src="assets/js/bot.js"></script>
 </body>
 

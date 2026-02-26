@@ -1,0 +1,368 @@
+/* ============================================================
+   1. RESET Y CONFIGURACIÓN BASE (COMÚN)
+   ============================================================ */
+:root {
+    /* Variables de Desktop */
+    --primary-color: #ae69ea;
+    --secondary-color: #a685ff;
+    --bg-dark-pc: #1E293B;
+    --bg-card: #6366F1;
+    --text-white-pc: #f8fafc;
+    --text-gray-pc: #99b1c3;
+
+    /* Variables de Mobile */
+    --bg-dark-m: #1e293b;
+    --news-box-m: #cbd5e1;
+    --primary-lila-m: #6d6eff;
+    --btn-purple-m: #6366f1;
+    --text-white-m: #ffffff;
+    --text-muted-m: #94a3b8;
+    --cards-background-m: #1e1e1e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-dark-m);
+}
+
+/* Control de visibilidad de los contenedores principales */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+@media (max-width: 768px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+    .mobile-body{ display: flex !important; }
+}
+
+/* ============================================================
+   2. ESTILOS DESKTOP (Sección .desktop-only)
+   ============================================================ */
+.home-layout {
+    background-color: var(--bg-dark-pc);
+    color: var(--text-white-pc);
+    line-height: 1.6;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.desktop-only .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8%;
+    background-color: rgba(18, 18, 32, 0.95);
+    flex-shrink: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+.desktop-only .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.desktop-only .logo img { height: 50px; }
+.desktop-only .logo h1 { font-size: 1.8rem; font-weight: 900; }
+.desktop-only .logo h1 span { color: var(--primary-color); }
+
+.desktop-only .nav-menu { display: flex; gap: 20px; }
+
+.desktop-only .btn-header-alt {
+    text-decoration: none;
+    color: white;
+    background: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+.desktop-only .btn-header-alt:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.desktop-only .hero-section {
+    position: relative;
+    width: 100%;
+    background-image: url('../img/super-heroes.png'); 
+    background-size: 135%;
+    background-position: center right;
+    background-repeat: no-repeat;
+    height: 84vh;
+}
+
+.desktop-only .hero-overlay {
+    width: 100%;
+    background: linear-gradient(to right, 
+    rgba(18, 18, 32, 0.98) 25%, 
+    rgba(18, 18, 32, 0.6) 50%, 
+    transparent 100%);
+    display: flex;
+    flex: 1;
+    align-items: center;
+    min-height: 100%;
+}
+
+.desktop-only .hero-content {
+    max-width: 900px;
+    padding-left: 8%;
+    animation: fadeIn 1s ease-out;
+    min-height: 70vh;
+}
+
+.desktop-only .hero-content h2 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.desktop-only .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.desktop-only .hero-description {
+    font-size: 1rem;
+    color: var(--text-gray-pc);
+    margin-bottom: 25px;
+    max-width: 800px;
+}
+
+.desktop-only .hero-description p { margin-bottom: 10px; font-size: 16px; }
+
+.desktop-only .btn-join {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), #483d8b);
+    color: white;
+    width: fit-content;
+    padding: 18px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(106, 90, 205, 0.4);
+    animation: pulse-animation 2s infinite ease-in-out;
+}
+
+/* ============================================================
+   3. ESTILOS MOBILE (Sección .mobile-only)
+   ============================================================ */
+.mobile-body {
+    background-color: var(--bg-dark-m);
+    color: var(--text-white-m);
+    line-height: 1.4;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+
+
+
+.mobile-only .mobile-header {
+    top: 0;
+    position: sticky;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--bg-dark-m);
+    border-bottom: var(--primary-lila-m) solid 1px;
+    margin-top: auto;
+}
+
+.mobile-only .logo-container img {
+    height: 40px;
+    display: block;
+}
+
+.mobile-only .header-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.mobile-only .btn-small {
+    background: #5051cb;
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+    width: fit-content;
+}
+
+.mobile-only main {
+    display: flex;
+    flex:1;
+    max-width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.mobile-only .intro-text {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.mobile-only .intro-text h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.mobile-only .intro-text p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.mobile-only .italic {
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.mobile-only .action-container {
+    text-align: center;
+    margin: 15px 0;
+    width: fit-content;
+}
+
+.mobile-only .btn-join-mobile {
+    display: inline-block;
+    width: fit-content;
+    background: var(--btn-purple-m);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 900;
+    font-style: italic;
+    padding: 14px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    animation: pulse-animation 2s infinite ease-in-out;
+}
+
+/* ============================================================
+   4. ANIMACIONES Y ESTILOS COMPARTIDOS
+   ============================================================ */
+@keyframes pulse-animation {
+    0% { transform: scale(1); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Media Query intermedio para ajustes de Desktop */
+@media (max-width: 992px) and (min-width: 769px) {
+    .desktop-only .hero-content h2 { font-size: 2.2rem; }
+    .desktop-only .hero-section { background-size: cover; }
+}
+
+/* ============================================================
+   5. FOOTER (Desktop / Mobile)
+   ============================================================ */
+/* Estilos Footer Desktop */
+.desktop-only .main-footer {
+    background: linear-gradient(to right, 
+    rgba(18, 18, 32, 0.98) 25%, 
+    rgba(18, 18, 32, 0.6) 50%, 
+    transparent 100%);
+    padding: 10px 8%;
+    border-top: 1px solid #333;
+    flex-shrink: 0;
+    height: 8vh;
+}
+.desktop-only .main-footer .footer-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+.desktop-only .main-footer .footer-top .footer-info{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.desktop-only .footer-nav, .desktop-only .footer-legal{
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+.desktop-only .footer-logo-img{
+    height: 50px;
+}
+
+.footer-info a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.footer-social { display: flex; gap: 15px; }
+.footer-social a { font-size: 1.1rem; color: white; }
+.footer-copyright { color: #666; font-size: 1rem; }
+
+/* Estilos Footer Mobile */
+.mobile-only .mobile-footer {
+    border-top: 1px solid var(--primary-lila-m);
+    padding: 15px 10px;
+    background: var(--bg-dark-m);
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px;
+    height: 8vh;
+    align-items: center;
+}
+
+.mobile-only .footer-links-main { display: flex; flex-direction: column; }
+.mobile-only .footer-links-main a { font-size: 0.8rem; text-decoration: none; color: white; }
+.mobile-only .about-us { color: var(--primary-lila-m) !important; font-weight: bold; }
+.mobile-only .social-icons { display: flex; gap: 10px; }
+.mobile-only .social-icons a {  color: var(--text-white); font-size: 1.1rem;}
+.mobile-only .footer-legal { display: flex; flex-direction: column; text-align: right; }
+.mobile-only .footer-legal a { color: var(--text-muted-m); text-decoration: none; font-size: 0.7rem; }
+.mobile-only .copy { text-align: center;}
+.mobile-only .copyright { color: #64748b; font-size: 0.75rem; }
