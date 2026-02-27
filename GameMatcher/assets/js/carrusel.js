@@ -7,7 +7,6 @@ async function cargarContenido(containerId) {
     const contenedor = document.getElementById(containerId);
     if (!contenedor) return;
 
-    // Mantenemos tu spinner
     contenedor.innerHTML = '<div class="spinner-border text-light" role="status"><span class="visually-hidden">Cargando...</span></div>';
 
     try {
@@ -18,7 +17,6 @@ async function cargarContenido(containerId) {
         contenedor.innerHTML = "";
 
         if (data.results && data.results.length > 0) {
-            // USAMOS 20 JUEGOS COMO SOLICITASTE
             const juegos = data.results.slice(0, 20);
 
             juegos.forEach(juego => {
@@ -39,12 +37,9 @@ async function cargarContenido(containerId) {
             contenedor.innerHTML = "<p class='text-muted'>Non hai xogos destacados neste momento.</p>";
         }
 
-        // Lógica de botones (Mantenida al 100%)
         if (containerId === "games-carousel") {
             const next = document.getElementById("nextBtn");
             const prev = document.getElementById("prevBtn");
-
-            // Ajustamos el scrollAmount para que la transición sea fluida según el tamaño de las tarjetas
             const scrollAmount = 400;
 
             if (next) {
@@ -68,9 +63,6 @@ async function cargarContenido(containerId) {
     }
 }
 
-/**
- * Función extra para mejorar la UI: Oculta o atenúa las flechas según el scroll
- */
 function verificarFlechas(cnt, p, n) {
     if (!p || !n) return;
     p.style.opacity = cnt.scrollLeft <= 0 ? "0.2" : "1";

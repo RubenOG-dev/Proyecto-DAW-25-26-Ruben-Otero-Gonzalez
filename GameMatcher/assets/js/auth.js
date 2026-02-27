@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const $d = document;
 
-    /**
-     * Muestra el feedback de éxito o error en el contenedor adecuado (Desktop o Mobile)
-     */
     const mostrarMensajeUI = (mensaje, tipo) => {
         const isMobileVisible = window.getComputedStyle($d.querySelector('.mobile-only')).display !== 'none';
         const feedbackId = isMobileVisible ? "feedback-mobile" : "feedback-desktop";

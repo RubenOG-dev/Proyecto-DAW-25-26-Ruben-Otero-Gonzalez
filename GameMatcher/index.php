@@ -29,7 +29,6 @@ try {
         throw new Exception("Controlador no encontrado: " . $controllerName);
     }
 } catch (Throwable $th) {
-    // Si hay un error serio, volvemos a la principal
     $object = new MainController();
     $object->principal();
 }

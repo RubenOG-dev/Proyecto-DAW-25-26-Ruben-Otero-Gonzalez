@@ -1,25 +1,15 @@
-/* ============================================================
-    1. VARIABLES Y RESET (Sincronizado con Home)
-   ============================================================ */
 :root {
-    /* Variables de Desktop */
     --primary-color: #ae69ea;
     --secondary-color: #a685ff;
-    --bg-dark-pc: #1E293B;
+    --bg-dark: #1E293B;
     --bg-card: #6366F1;
-    --text-white-pc: #f8fafc;
-    --text-gray-pc: #99b1c3;
-
-    /* Variables de Mobile */
-    --bg-dark-m: #1e293b;
+    --text-white: #f8fafc;
+    --text-gray: #99b1c3;
     --news-box-m: #cbd5e1;
     --primary-lila-m: #6d6eff;
     --btn-purple-m: #6366f1;
     --text-white-m: #ffffff;
-    --text-muted-m: #94a3b8;
     --cards-background-m: #1e1e1e;
-
-    /* Variables específicas de Auth (Manteniendo compatibilidad) */
     --lila-accent: #6d6eff;
     --input-bg: #e2e8f0;
 }
@@ -29,15 +19,19 @@ body, html {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-dark-pc);
+    background-color: var(--bg-dark);
     color: white;
     font-family: 'Roboto', sans-serif;
-    overflow: hidden !important; /* Bloqueo estricto */
+    overflow: hidden !important;
 }
 
-/* ============================================================
-    2. ESTRUCTURA Y LAYOUT (Optimizado No-Scroll)
-   ============================================================ */
+header{
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .auth-container {
     display: flex;
     flex-direction: column;
@@ -66,7 +60,6 @@ body, html {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* --- OPTIMIZACIÓN REGISTRO DESKTOP --- */
 .auth-card:has(#register-pane-d.active) {
     max-width: 700px; 
     padding-top: 15px;
@@ -74,7 +67,7 @@ body, html {
 }
 
 .desktop-only:has(#register-pane-d.active) .main-logo {
-    max-height: 60px;
+    max-height: 70px;
     margin-top: 15px;
     margin-bottom: 10px;
 }
@@ -86,15 +79,12 @@ body, html {
     width: 100%;
 }
 
-.mobile-only { display: none !important; }
+.mobile-only { display: none !important;}
 
-/* ============================================================
-    3. ELEMENTOS DE INTERFAZ
-   ============================================================ */
 .main-logo {
     display: block;
     margin: 25px auto 15px auto;
-    max-height: 85px;
+    max-height: 105px;
     width: auto;
     transition: all 0.3s ease;
 }
@@ -157,7 +147,7 @@ body, html {
 }
 
 /* ============================================================
-    4. FOOTER (Sincronizado con el estilo solicitado)
+    4. FOOTER
    ============================================================ */
 
 /* Footer Desktop */
@@ -205,25 +195,21 @@ body, html {
 /* Footer Mobile */
 .mobile-only .mobile-footer {
     border-top: 1px solid var(--primary-lila-m);
-    padding: 20px;
     background: var(--bg-dark-m);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-shrink: 0;
 }
 
-.mobile-only .footer-links-main { display: flex; flex-direction: column; gap: 5px; }
+.mobile-only .footer-links-main { display: flex; flex-direction: column; gap: 2px; margin-top: 5px;}
 .mobile-only .footer-links-main a { font-size: 0.75rem; text-decoration: none; color: white; }
 .mobile-only .social-icons { display: flex; gap: 12px; }
 .mobile-only .social-icons a { color: white; font-size: 1rem; }
 .mobile-only .footer-legal { text-align: right; }
 .mobile-only .footer-legal a { color: var(--text-muted-m); text-decoration: none; font-size: 0.7rem; display: block; }
-.mobile-only .copyright { color: #64748b; font-size: 0.73rem; }
+.mobile-only .copyright { color: #64748b; font-size: 0.73rem; margin: 0;}
 
-/* ============================================================
-    5. RESPONSIVE / MOBILE 
-   ============================================================ */
 @media (max-width: 768px) {
     html, body { 
         overflow-y: auto !important; 
@@ -242,7 +228,7 @@ body, html {
         border-radius: 20px;
         padding: 20px 15px;
         border-width: 4px;
-        margin-top: 10px;
+        margin-bottom:10px;
     }
 }
 

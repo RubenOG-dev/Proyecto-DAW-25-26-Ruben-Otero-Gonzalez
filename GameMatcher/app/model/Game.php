@@ -8,14 +8,9 @@ class Game {
         $this->db = (new Conexion())->conectar();
     }
 
-    /**
-     * Obtiene los juegos en tendencia de la API.
-     * @param int $cantidad Número de juegos a recuperar (ahora 40)
-     */
     public function getTopRatedFromApi($cantidad = 20) {
         $api_key = RAWG_API_KEY; 
         
-        // -added es el estándar de RAWG para "Popularidad/Tendencia"
         $url = "https://api.rawg.io/api/games?key=$api_key&ordering=-added&page_size=$cantidad";
 
         try {

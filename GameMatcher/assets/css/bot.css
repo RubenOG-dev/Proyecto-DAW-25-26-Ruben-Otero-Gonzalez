@@ -17,7 +17,7 @@
    ========================================= */
 #chat-bubble {
   position: fixed;
-  bottom: 25px;
+  bottom: 35px;
   right: 25px;
   width: 65px;
   height: 65px;
@@ -192,7 +192,6 @@
   border-radius: 50%;
   background-size: cover;
   flex-shrink: 0;
-  background-color: transparent;
 }
 
 .message {
@@ -310,8 +309,8 @@
   #chat-bubble {
     width: 50px;
     height: 50px;
-    bottom: 85px; 
-    right: 20px;
+    bottom: 60px; 
+    right: 15px;
   }
 
   #chat-bubble img {

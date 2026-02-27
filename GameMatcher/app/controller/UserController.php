@@ -24,16 +24,12 @@ class UserController
         include_once VIEW_PATH . "main.php";
     }
 
-    /**
-     * Requisito 4.1.1: Seguridad y Validación de datos (Sanitización)
-     */
     public function procesarRegistro()
     {
         if (ob_get_length()) ob_clean();
         header('Content-Type: application/json');
 
         try {
-            // REQUISITO 4.1.1: Sanitización de entradas para evitar XSS
             $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
             $apellidos = filter_input(INPUT_POST, 'apellidos', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
@@ -64,16 +60,12 @@ class UserController
         exit;
     }
 
-    /**
-     * Requisito 4.1.1: Comunicación asíncrona y Seguridad
-     */
     public function procesarLogin()
     {
         if (ob_get_length()) ob_clean();
         header('Content-Type: application/json');
 
         try {
-            // REQUISITO 4.1.1: Validación de datos de entrada
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
             $password = $_POST['password'] ?? '';
 

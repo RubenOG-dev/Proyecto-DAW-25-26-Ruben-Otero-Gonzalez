@@ -1,23 +1,15 @@
-/* ============================================================
-   1. RESET Y CONFIGURACIÓN BASE (COMÚN)
-   ============================================================ */
 :root {
-    /* Variables de Desktop */
     --primary-color: #ae69ea;
     --secondary-color: #a685ff;
     --bg-dark-pc: #1E293B;
-    --bg-card: #6366F1;
     --text-white-pc: #f8fafc;
     --text-gray-pc: #99b1c3;
 
-    /* Variables de Mobile */
     --bg-dark-m: #1e293b;
-    --news-box-m: #cbd5e1;
     --primary-lila-m: #6d6eff;
     --btn-purple-m: #6366f1;
     --text-white-m: #ffffff;
     --text-muted-m: #94a3b8;
-    --cards-background-m: #1e1e1e;
 }
 
 * {
@@ -26,16 +18,13 @@
     padding: 0;
 }
 
-/* Bloqueo de scroll global para mantener el diseño en una sola pantalla */
 html, body {
     height: 100vh;
-    width: 100%;
     overflow: hidden !important;
     font-family: 'Roboto', sans-serif;
     background-color: var(--bg-dark-m);
 }
 
-/* Control de visibilidad de los contenedores principales */
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 
@@ -44,13 +33,13 @@ html, body {
     .mobile-only { display: block !important; }
     .mobile-body { 
         display: flex !important; 
-        overflow-y: auto !important; /* Permitimos scroll solo en móvil si el contenido es largo */
+        overflow-y: auto !important;
     }
-    html, body { overflow: auto !important; height: auto; } /* Mobile necesita poder desplazarse */
+    html, body { overflow: auto !important; height: auto; }
 }
 
 /* ============================================================
-   2. ESTILOS DESKTOP (Sección .desktop-only)
+   2. ESTILOS DESKTOP
    ============================================================ */
 .home-layout {
     background-color: var(--bg-dark-pc);
@@ -69,8 +58,8 @@ html, body {
     align-items: center;
     padding: 0 8%;
     background-color: rgba(18, 18, 32, 0.95);
-    flex-shrink: 0; /* Impide que el header se encoja */
-    height: 70px; /* Altura fija para control exacto */
+    flex-shrink: 0;
+    height: 70px;
     z-index: 1000;
     border-bottom: 1px solid #333;
 }
@@ -106,7 +95,6 @@ html, body {
     transform: translateY(-2px);
 }
 
-/* Contenedor principal que se expande */
 .desktop-only .hero-section {
     position: relative;
     width: 100%;
@@ -114,9 +102,8 @@ html, body {
     background-size: 140%;
     background-position: center right;
     background-repeat: no-repeat;
-    flex-grow: 1; /* Toma todo el espacio disponible */
-    flex-shrink: 1;
-    min-height: 0; /* Crucial para que flexbox permita encogimiento */
+    flex-grow: 1;
+    min-height: 0;
     overflow: hidden;
 }
 
@@ -141,9 +128,8 @@ html, body {
     justify-content: center;
 }
 
-/* Tipografía adaptativa basada en la altura de pantalla (vh) */
 .desktop-only .hero-content h2 {
-    font-size: clamp(3rem, 5vh, 3rem);
+    font-size: clamp(2.5rem, 5vh, 4rem);
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 1.5vh;
@@ -164,7 +150,6 @@ html, body {
 .desktop-only .hero-description p { 
     margin-bottom: 1vh; 
     font-size: clamp(1.1rem, 1.8vh, 1rem);
-    line-height: 1.5;
 }
 
 .desktop-only .btn-join {
@@ -184,7 +169,7 @@ html, body {
 }
 
 /* ============================================================
-   3. ESTILOS MOBILE (Sección .mobile-only)
+   3. ESTILOS MOBILE
    ============================================================ */
 .mobile-body {
     background-color: var(--bg-dark-m);
@@ -194,7 +179,6 @@ html, body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    margin: 0;
 }
 
 .mobile-only .mobile-header {
@@ -307,10 +291,10 @@ html, body {
    5. FOOTER (Desktop / Mobile)
    ============================================================ */
 .desktop-only .main-footer {
-    background: #0f172a; /* Color sólido para evitar transparencias que muestren el Hero detrás */
+    background: #0f172a;
     padding: 0 8%;
     border-top: 1px solid #333;
-    flex-shrink: 0; /* Impide que el footer se aplaste */
+    flex-shrink: 0;
     height: 70px;
     display: flex;
     align-items: center;
@@ -349,17 +333,18 @@ html, body {
 /* Estilos Footer Mobile */
 .mobile-only .mobile-footer {
     border-top: 1px solid var(--primary-lila-m);
-    padding: 20px;
     background: var(--bg-dark-m);
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     flex-shrink: 0;
 }
 
-.mobile-only .footer-links-main { display: flex; flex-direction: column; gap: 5px; }
+.mobile-only .footer-links-main { display: flex; flex-direction: column; gap: 2px; margin-top: 5px;}
 .mobile-only .footer-links-main a { font-size: 0.75rem; text-decoration: none; color: white; }
 .mobile-only .social-icons { display: flex; gap: 12px; }
 .mobile-only .social-icons a { color: white; font-size: 1rem; }
 .mobile-only .footer-legal { text-align: right; }
 .mobile-only .footer-legal a { color: var(--text-muted-m); text-decoration: none; font-size: 0.7rem; display: block; }
+.mobile-only .copyright { color: #64748b; font-size: 0.73rem; }
