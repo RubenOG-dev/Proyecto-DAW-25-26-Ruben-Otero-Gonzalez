@@ -1,0 +1,348 @@
+/* --- VARIABLES --- */
+:root {
+    --bg-main: #151515;
+    --bg-card: #202020;
+    --accent: #a685ff;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+}
+
+/* --- BASE --- */
+body.rawg-theme {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.rawg-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR --- */
+.sidebar-filters {
+    padding: 20px;
+    background: var(--bg-main);
+}
+
+.sidebar-filters h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 25px 0 15px 0;
+    color: #fff;
+}
+
+.nav-icon {
+    width: 32px;
+    height: 32px;
+    background: #333;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1.1rem;
+}
+
+/* Ocultar checkbox real */
+.nav-item input[type="checkbox"] {
+    display: none;
+}
+
+.nav-item:hover {
+    color: #fff;
+}
+
+.nav-item:hover .nav-icon {
+    background: #fff;
+    color: #000;
+}
+
+/* Estado Activo */
+.nav-item.active, 
+.nav-item:has(input:checked) {
+    color: #fff;
+    font-weight: bold;
+}
+
+.nav-item.active .nav-icon,
+.nav-item:has(input:checked) .nav-icon {
+    background: #fff;
+    color: #000;
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.filter-section select,
+.search-container input {
+    width: 100%;
+    background: #333;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin: 20px 0 20px 0;
+    border-radius: 8px;
+}
+
+.search-container {
+    width: 100%;
+}
+
+.genre-list label {
+    display: block;
+    color: var(--text-secondary);
+    text-transform: none;
+    font-weight: normal;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.genre-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    filter: grayscale(0.6);
+    transition: all 0.2s;
+}
+
+.nav-item:hover .genre-img {
+    filter: grayscale(0);
+}
+
+/* Botón toggle de la sidebar */
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    color: #666;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* --- GRID MASONRY --- */
+.main-content {
+    padding: 30px;
+}
+
+.games-grid {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+    align-items: flex-start; 
+}
+
+.game-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* --- TARJETAS DINÁMICAS --- */
+.game-card-catalog {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    overflow: visible;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.25s ease;
+    background: var(--bg-card);
+}
+
+.game-card-catalog:hover {
+    transform: scale(1.02);
+    z-index: 100;
+}
+
+.game-card-catalog::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg-card);
+    border-radius: 12px;
+    z-index: -1;
+    transition: all 0.25s ease;
+}
+
+.game-card-catalog:hover::before {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.card-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-info {
+    padding: 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.card-info h3 {
+    margin: 8px 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.platform-icons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- SECCIÓN EXTRA (EXPANSIÓN) --- */
+.extra-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.game-card-catalog:hover .extra-content {
+    max-height: 400px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+.info-row span:first-child { color: #666; }
+.info-row span:last-child { color: var(--text-primary); text-align: right; }
+
+/* Metacritic */
+.metacritic-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 3;
+    background: rgba(0,0,0,0.5);
+}
+
+.metacritic-badge.high { color: #6dc849; border-color: #6dc849; }
+.metacritic-badge.med { color: #fdca52; border-color: #fdca52; }
+.metacritic-badge.low { color: #fc4b37; border-color: #fc4b37; }
+.metacritic-badge.hide { display: none; }
+
+/* SKELETON LOADER */
+.skeleton-card {
+    width: 100%;
+    height: 320px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    animation: skeleton-pulse 1.5s infinite;
+}
+
+@keyframes skeleton-pulse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.skeleton-img { height: 180px; background: #2a2a2a; margin-bottom: 15px; }
+.skeleton-text { height: 20px; background: #2a2a2a; margin: 10px 15px; border-radius: 4px; width: 80%; }
+.skeleton-meta { height: 15px; background: #2a2a2a; margin: 0 15px; border-radius: 4px; width: 40%; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+    #col-2 { display: none; }
+}
+
+@media (max-width: 1024px) {
+    .rawg-layout { grid-template-columns: 1fr; }
+    .sidebar-filters { display: none; }
+}
+
+@media (max-width: 800px) {
+    #col-1 { display: none; }
+    .games-grid { flex-direction: column; }
+}
+
+/* Botones y otros estilos */
+.btn-rawg {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-show-more-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
