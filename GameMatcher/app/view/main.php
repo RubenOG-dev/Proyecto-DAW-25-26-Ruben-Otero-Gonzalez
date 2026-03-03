@@ -68,7 +68,7 @@ $nombreUsuario = $_SESSION['nombre'] ?? 'Jugador';
             <div class="forum-preview">
                 <div class="forum-header">Foro de Anuncios/Novedades</div>
                 <div class="forum-body">
-                    <img src="assets/img/forum_preview.png" alt="Foro">
+                    <img src="assets/img/foro.png" alt="Foro">
                 </div>
             </div>
             <div class="center-btn">
