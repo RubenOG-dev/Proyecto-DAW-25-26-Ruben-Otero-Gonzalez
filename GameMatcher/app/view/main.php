@@ -9,6 +9,7 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 $nombreUsuario = $_SESSION['nombre'] ?? 'Jugador';
+$tipoUsuario   = $_SESSION['tipo_usuario'] ?? 'free';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,8 +24,8 @@ $nombreUsuario = $_SESSION['nombre'] ?? 'Jugador';
     <link rel="stylesheet" href="assets/css/bot.css">
 </head>
 
-<body>
-
+<body data-user-name="<?php echo htmlspecialchars($_SESSION['nombre']); ?>"
+    data-user-type="<?php echo htmlspecialchars($tipoUsuario); ?>">
     <div class="desktop-only">
         <header class="main-header">
             <div class="logo">
@@ -108,6 +109,7 @@ $nombreUsuario = $_SESSION['nombre'] ?? 'Jugador';
     </div>
 
     <?php include_once("bot.php"); ?>
+    <script src="assets/js/loader.js"></script>
     <script src="assets/js/bot.js"></script>
     <script src="assets/js/carrusel.js"></script>
 </body>

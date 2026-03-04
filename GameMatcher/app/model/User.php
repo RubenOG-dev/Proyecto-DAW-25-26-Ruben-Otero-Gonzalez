@@ -1,8 +1,10 @@
 <?php
-class User {
+class User
+{
     private $db;
 
-    public function __construct($pdoConexion = null) {
+    public function __construct($pdoConexion = null)
+    {
         if ($pdoConexion) {
             $this->db = $pdoConexion;
         } else {
@@ -14,7 +16,8 @@ class User {
         }
     }
 
-    public function registrar($nombre, $email, $password) {
+    public function registrar($nombre, $email, $password)
+    {
         try {
             $checkSql = "SELECT id_usuario FROM USUARIO WHERE email = :email";
             $checkStmt = $this->db->prepare($checkSql);
@@ -27,7 +30,7 @@ class User {
 
             $sql = "INSERT INTO USUARIO (nombre, contrasenha, email, tipo_usuario, activo) 
                     VALUES (:nombre, :pass, :email, 'free', 1)";
-            
+
             $stmt = $this->db->prepare($sql);
             return $stmt->execute([
                 ':nombre' => $nombre,
@@ -39,7 +42,8 @@ class User {
         }
     }
 
-    public function login($email, $password) {
+    public function login($email, $password)
+    {
         try {
             $sql = "SELECT * FROM USUARIO WHERE email = :email AND activo = 1";
             $stmt = $this->db->prepare($sql);
@@ -55,4 +59,30 @@ class User {
             return false;
         }
     }
+
+    public function registrarSesionBD($id_usuario)
+    {
+        $token = bin2hex(random_bytes(16));
+        $sql = "INSERT INTO SESION (id_usuario, token, data_inicio) VALUES (:id, :token, NOW())";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute(['id' => $id_usuario, 'token' => $token]);
+    }
+
+    public function cerrarSesionBD($id_usuario)
+    {
+        $sql = "UPDATE SESION SET data_fin = NOW() WHERE id_usuario = :id AND data_fin IS NULL";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute(['id' => $id_usuario]);
+    }
+
+    public function hacerPremium($id_usuario) {
+    try {
+        $sql = "UPDATE USUARIO SET tipo_usuario = 'premium' WHERE id_usuario = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id_usuario);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        return false;
+    }
+}
 }

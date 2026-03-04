@@ -116,32 +116,30 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const welcomeUser = () => {
-    const nombreUsuario = $d.body.dataset.userName || "Gamer";
-    showTyping();
-    setTimeout(() => {
-      removeTyping();
+  const nombreUsuario = $d.body.dataset.userName || "Gamer";
+  const tipoUsuario = $d.body.dataset.userType || "free"; 
 
-      if (window.userSession && window.userSession.isLoggedIn) {
-        addMessage(
-          `👋 Hola <b>${nombreUsuario}</b>, encantada de verte por aquí.`,
-          false,
-          true,
-        );
-      } else {
-        addMessage("👋 ¡Hola! Soy Cames.", false);
-        if (window.userSession && window.userSession.isLanding) {
-          addMessage(
-            "¿Ya tienes cuenta? Si es así, puedes <a href='index.php?controller=User&action=mostrarAuth' style='color:#a685ff; font-weight:bold;'>iniciar sesión aquí</a> para guardar tus progresos.",
-            false,
-            true,
-          );
-        }
-      }
-      setTimeout(() => {
-        showMainOptions("¿En qué puedo ayudarte hoy?");
-      }, 800);
-    }, 1000);
-  };
+  const isLoggedIn = nombreUsuario !== "Gamer";
+
+  showTyping();
+  setTimeout(() => {
+    removeTyping();
+
+    if (isLoggedIn) {
+      const corona = tipoUsuario === 'premium' ? "💎 " : "";
+      const mensajePremium = tipoUsuario === 'premium' ? "<br><small style='color:#ffd700'>Estatus: Miembro Premium</small>" : "";
+
+      addMessage(
+        `👋 Hola ${corona}<b>${nombreUsuario}</b>, encantada de verte por aquí.${mensajePremium}`,
+        false,
+        true,
+      );
+    }
+    setTimeout(() => {
+      showMainOptions("¿En que podo axudarte hoxe?");
+    }, 800);
+  }, 1000);
+};
 
   // ==========================================
   // LÓGICA DE INTERACCIÓN Y BÚSQUEDA
@@ -410,6 +408,16 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((r) => r.json())
       .then((data) => {
         removeTyping();
+        if (data.options && data.options.length > 0 && data.options[0].link) {
+          addMessage(data.response, false, true);
+          const html = `<div class="chat-buttons">` +
+            data.options.map(opt =>
+              `<button class="btn-quick" onclick="window.location.href='${opt.link}'">${opt.name}</button>`
+            ).join("") +
+            `</div>`;
+          addMessage(html, false, true);
+          return;
+        }
         compareMode
           ? handleCompareSearch(text, data)
           : handleNormalSearch(data);

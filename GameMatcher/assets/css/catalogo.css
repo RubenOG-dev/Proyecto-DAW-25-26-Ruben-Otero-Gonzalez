@@ -23,6 +23,101 @@ body.rawg-theme {
 }
 
 /* --- SIDEBAR --- */
+
+/* Contenedor principal */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+    user-select: none;
+}
+
+/* Cabecera del selector (lo que siempre se ve) */
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-secondary);
+}
+
+.dropdown-header:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.dropdown-header .arrow {
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+/* Lista de opciones (el desplegable) */
+.dropdown-list {
+    position: absolute;
+    top: 110%; /* Aparece justo debajo */
+    left: 0;
+    right: 0;
+    background: #202020;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    max-height: 200px; /* Altura para unas 5 opciones */
+    overflow-y: auto;
+    z-index: 1000;
+    display: none; /* Oculto por defecto */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Mostrar cuando esté abierto */
+.custom-dropdown.open .dropdown-list {
+    display: block;
+}
+
+.custom-dropdown.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* Cada opción individual */
+.dropdown-option {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdown-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Scrollbar personalizada para que no sea la fea del sistema */
+.dropdown-list::-webkit-scrollbar {
+    width: 6px;
+}
+.dropdown-list::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+.order-arrow {
+    margin-left: auto;
+    opacity: 0;
+    transition: transform 0.3s ease;
+    margin-right: 20px;
+}
+
+.nav-item.order-filter.active .order-arrow {
+    opacity: 1;
+}
+
+.nav-item.order-filter.active.ascending .order-arrow {
+    transform: rotate(180deg);
+}
+
 .sidebar-filters {
     padding: 20px;
     background: var(--bg-main);
@@ -73,16 +168,26 @@ body.rawg-theme {
 }
 
 /* Estado Activo */
-.nav-item.active, 
 .nav-item:has(input:checked) {
     color: #fff;
     font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
 }
 
-.nav-item.active .nav-icon,
 .nav-item:has(input:checked) .nav-icon {
     background: #fff;
     color: #000;
+}
+
+.nav-item:has(input:checked) .genre-img {
+    filter: grayscale(0);
+}
+
+/* Ocultar el checkbox real para que parezca un botón moderno */
+.platform-check,
+.genre-check {
+    display: none;
 }
 
 .filter-section {
@@ -155,7 +260,7 @@ body.rawg-theme {
     display: flex;
     gap: 25px;
     width: 100%;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .game-column {
@@ -186,7 +291,10 @@ body.rawg-theme {
 .game-card-catalog::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: var(--bg-card);
     border-radius: 12px;
     z-index: -1;
@@ -256,10 +364,17 @@ body.rawg-theme {
     color: var(--text-secondary);
 }
 
-.info-row span:first-child { color: #666; }
-.info-row span:last-child { color: var(--text-primary); text-align: right; }
+.info-row span:first-child {
+    color: #666;
+}
 
-/* Metacritic */
+.info-row span:last-child {
+    color: var(--text-primary);
+    text-align: right;
+}
+
+/* --- Bloque Metacritic Completo con Tooltip --- */
+
 .metacritic-badge {
     position: absolute;
     top: 10px;
@@ -269,14 +384,97 @@ body.rawg-theme {
     font-weight: bold;
     font-size: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 3;
-    background: rgba(0,0,0,0.5);
+    z-index: 10;
+    /* Subimos un poco el nivel base */
+    background: rgba(0, 0, 0, 0.7);
+    /* Un poco más oscuro para que lea bien el número */
+    cursor: help;
 }
 
-.metacritic-badge.high { color: #6dc849; border-color: #6dc849; }
-.metacritic-badge.med { color: #fdca52; border-color: #fdca52; }
-.metacritic-badge.low { color: #fc4b37; border-color: #fc4b37; }
-.metacritic-badge.hide { display: none; }
+/* Colores según nota */
+.metacritic-badge.high {
+    color: #6dc849;
+    border-color: #6dc849;
+}
+
+.metacritic-badge.med {
+    color: #fdca52;
+    border-color: #fdca52;
+}
+
+.metacritic-badge.low {
+    color: #fc4b37;
+    border-color: #fc4b37;
+}
+
+.metacritic-badge.hide {
+    display: none;
+}
+
+/* El cuerpo del bocadillo (Tooltip) */
+.metacritic-badge::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    /* Cambiamos bottom por top para que aparezca dentro de la imagen y no se corte por arriba */
+    top: 130%;
+    right: 0;
+    background: #1a1a1a;
+    color: #ffffff !important;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: normal;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+
+    /* Estado inicial (oculto) */
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+    transform: translateY(-10px);
+    /* Efecto de subir desde arriba */
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+/* La flechita (apuntando hacia arriba ahora) */
+.metacritic-badge::before {
+    content: '';
+    position: absolute;
+    top: 110%;
+    /* Alineada con el top del tooltip */
+    right: 10px;
+    border: 6px solid transparent;
+    border-bottom-color: #1a1a1a;
+    /* Flecha hacia arriba */
+
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover: Mostrar bocadillo */
+.metacritic-badge:hover::after,
+.metacritic-badge:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Bordes de colores en el bocadillo al hacer hover */
+.metacritic-badge.high:hover::after {
+    border: 1px solid #6dc849;
+}
+
+.metacritic-badge.med:hover::after {
+    border: 1px solid #fdca52;
+}
+
+.metacritic-badge.low:hover::after {
+    border: 1px solid #fc4b37;
+}
 
 /* SKELETON LOADER */
 .skeleton-card {
@@ -291,36 +489,117 @@ body.rawg-theme {
 .skeleton-card::after {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     animation: skeleton-pulse 1.5s infinite;
 }
 
 @keyframes skeleton-pulse {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
-.skeleton-img { height: 180px; background: #2a2a2a; margin-bottom: 15px; }
-.skeleton-text { height: 20px; background: #2a2a2a; margin: 10px 15px; border-radius: 4px; width: 80%; }
-.skeleton-meta { height: 15px; background: #2a2a2a; margin: 0 15px; border-radius: 4px; width: 40%; }
+.skeleton-img {
+    height: 180px;
+    background: #2a2a2a;
+    margin-bottom: 15px;
+}
+
+.skeleton-text {
+    height: 20px;
+    background: #2a2a2a;
+    margin: 10px 15px;
+    border-radius: 4px;
+    width: 80%;
+}
+
+.skeleton-meta {
+    height: 15px;
+    background: #2a2a2a;
+    margin: 0 15px;
+    border-radius: 4px;
+    width: 40%;
+}
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1200px) {
-    #col-2 { display: none; }
+    #col-2 {
+        display: none;
+    }
 }
 
 @media (max-width: 1024px) {
-    .rawg-layout { grid-template-columns: 1fr; }
-    .sidebar-filters { display: none; }
+    .rawg-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-filters {
+        display: none;
+    }
 }
 
 @media (max-width: 800px) {
-    #col-1 { display: none; }
-    .games-grid { flex-direction: column; }
+    #col-1 {
+        display: none;
+    }
+
+    .games-grid {
+        flex-direction: column;
+    }
 }
 
-/* Botones y otros estilos */
+.btn-reset-filters {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-reset-filters i {
+    font-size: 0.8rem;
+}
+
+.btn-reset-filters:hover {
+    background: rgba(255, 68, 68, 0.1);
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+.btn-back {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+    padding: 10px 0px 10px 0px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
 .btn-rawg {
     background: #fff;
     color: #000;

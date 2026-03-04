@@ -10,6 +10,7 @@ class GamesController
         $genres = isset($_GET['genres']) ? $_GET['genres'] : '';
         $platforms = isset($_GET['platforms']) ? $_GET['platforms'] : '';
         $ordering = isset($_GET['ordering']) ? $_GET['ordering'] : '';
+        $dates = isset($_GET['dates']) ? $_GET['dates'] : '';
 
         $pageSize = 40;
 
@@ -19,6 +20,7 @@ class GamesController
         if ($genres !== '') $url .= "&genres=" . $genres;
         if ($platforms !== '') $url .= "&platforms=" . $platforms;
         if ($ordering !== '') $url .= "&ordering=" . $ordering;
+        if ($dates !== '') $url .= "&dates=" . $dates;
 
         $json = $this->peticionApi($url);
 

@@ -20,7 +20,8 @@ class UserController
         include_once VIEW_PATH . "auth.php";
     }
 
-    public function mostrarMain(){
+    public function mostrarMain()
+    {
         include_once VIEW_PATH . "main.php";
     }
 
@@ -84,6 +85,8 @@ class UserController
                 $_SESSION['nombre'] = $user['nombre'];
                 $_SESSION['tipo_usuario'] = $user['tipo_usuario'];
 
+                $model->registrarSesionBD($user['id_usuario']);
+
                 echo json_encode([
                     'success' => true,
                     'message' => '¡Ola de novo, ' . htmlspecialchars($user['nombre'], ENT_QUOTES, 'UTF-8') . '!',
@@ -101,7 +104,15 @@ class UserController
     public function logout()
     {
         if (session_status() === PHP_SESSION_NONE) session_start();
+
+        if (isset($_SESSION['id_usuario'])) {
+            $model = new User();
+            $model->cerrarSesionBD($_SESSION['id_usuario']);
+        }
+
+        session_unset();
         session_destroy();
+
         header("Location: index.php");
         exit;
     }
@@ -116,4 +127,22 @@ class UserController
         }
         return false;
     }
+
+    public function comprarPremium() {
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
+    if (!isset($_SESSION['id_usuario'])) {
+        header("Location: index.php?controller=User&action=mostrarAuth");
+        exit;
+    }
+
+    $model = new User();
+    if ($model->hacerPremium($_SESSION['id_usuario'])) {
+        $_SESSION['tipo_usuario'] = 'premium';
+
+        header("Location: index.php?controller=MainController&action=principal&upgrade=success");
+    } else {
+        header("Location: index.php?controller=MainController&action=principal&upgrade=error");
+    }
+}
 }

@@ -1,3 +1,14 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['id_usuario'])) {
+    header("Location: index.php?controller=MainController&action=principal");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
