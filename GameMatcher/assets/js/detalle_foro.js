@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setReply(idPost, nombreUsuario) {
   const isMobile = window.innerWidth <= 768;
-  // IDs actualizados para coincidir con tu HTML
   const ids = {
     textarea: isMobile ? "textarea-mobile" : "main-textarea",
     input: isMobile ? "id_post_padre_mobile" : "id_post_padre",
