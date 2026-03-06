@@ -1,6 +1,6 @@
 <?php
 require_once "app/globals.php";
-require_once "app/model/Conexion.php"; 
+require_once "app/model/Conexion.php";
 $con = new Conexion();
 $pdo = $con->conectar();
 
@@ -8,6 +8,8 @@ include_once CONTROLLER_PATH . "MainController.php";
 include_once CONTROLLER_PATH . "GamesController.php";
 include_once CONTROLLER_PATH . "BotController.php";
 include_once CONTROLLER_PATH . "UserController.php";
+include_once CONTROLLER_PATH . "ForoController.php";
+include_once CONTROLLER_PATH . "AdminController.php";
 
 session_start();
 

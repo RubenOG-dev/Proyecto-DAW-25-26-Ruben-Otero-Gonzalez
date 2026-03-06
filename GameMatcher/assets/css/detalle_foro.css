@@ -1,0 +1,364 @@
+@import url("lista_foros.css");
+
+:root {
+  --bg-dark-core: #0d0f17;
+  --gamer-purple: #6366f1;
+  --gamer-pink: #d946ef;
+  --gamer-cyan: #22d3ee;
+  --gamer-green: #22c55e;
+  --gamer-dark-blue: #1e293b;
+  --card-glass: rgba(13, 15, 23, 0.95);
+  --text-neon: #e2e8f0;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --neon-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+  --border-soft: rgba(255, 255, 255, 0.08);
+}
+
+body.detail-page {
+  background-color: var(--bg-dark-core);
+  color: var(--text-main);
+  margin: 0;
+  font-family: inherit;
+}
+
+#main-textarea {
+  height: 15px !important;
+}
+
+.foro-main-card {
+  width: 100%;
+  max-width: 900px;
+  margin: 10px auto;
+  background: var(--card-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+
+.foro-header-detail {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  max-height: fit-content;
+}
+
+.foro-header-detail h1 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-top: 10px;
+  color: var(--text-main);
+  border-left: 5px solid var(--gamer-green);
+  padding-left: 15px;
+}
+
+.btn-back {
+  text-decoration: none;
+  color: var(--gamer-cyan);
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  color: var(--gamer-purple);
+  text-shadow: 0 0 8px var(--gamer-purple);
+}
+
+.post-card {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--gamer-purple);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: background 0.2s;
+}
+
+.post-card:hover {
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.desktop-only {
+  max-height: 100vh;
+}
+
+.container {
+  padding: 0;
+  display: flex;
+  flex: 1;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 5px;
+}
+
+.post-author {
+  font-weight: bold;
+  color: #22c55e !important;
+  font-size: 0.9rem;
+}
+
+.post-date {
+  color: #64748b;
+}
+
+.post-body {
+  color: var(--text-neon);
+  line-height: 1.5;
+}
+
+.reply-area,
+.mobile-reply {
+  margin-top: 5px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  color: white !important;
+  font-family: inherit;
+  box-sizing: border-box;
+  resize: vertical;
+  transition: 0.3s;
+}
+
+textarea:focus {
+  border-color: var(--gamer-cyan) !important;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+  outline: none;
+}
+
+.btn-enviar {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: white;
+  background: var(--gamer-purple) !important;
+  transition: 0.3s;
+}
+
+.btn-enviar:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.reply-badge,
+#reply-indicator {
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid var(--gamer-cyan);
+  color: var(--gamer-cyan);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.btn-cancel-reply {
+  background: none;
+  border: none;
+  color: var(--gamer-pink);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 40px;
+  color: #64748b;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  display: block;
+  color: var(--gamer-purple);
+  filter: drop-shadow(0 0 10px var(--gamer-purple));
+}
+
+.respuestas-hilo {
+  margin-left: 40px;
+  margin-top: 10px;
+  border-left: 2px solid #6366f1;
+  padding-left: 20px;
+}
+
+.reply-card {
+  background: rgba(15, 23, 42, 0.5) !important;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  margin-top: 10px;
+  position: relative;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.reply-card::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 20px;
+  width: 20px;
+  height: 2px;
+  background: #2d3748;
+}
+
+.reply-author {
+  color: #ae69ea;
+  font-weight: 600;
+}
+
+.mensajes-wrapper {
+  max-height: 45vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gamer-purple) transparent;
+  scroll-behavior: smooth;
+}
+
+.mensajes-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mensajes-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mensajes-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--gamer-purple);
+  border-radius: 20px;
+  border: transparent;
+}
+
+.reply-area {
+  padding-top: 10px;
+  background: var(--card-glass);
+}
+
+@media (max-width: 768px) {
+  .foro-main-card {
+    padding: 15px;
+    margin: 5px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    max-height: 92vh;
+  }
+  .mobile-body {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .mobile-foro-title h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .post-card.mobile-post {
+    padding: 15px;
+    background: rgba(20, 20, 30, 0.8) !important;
+    border-left: 3px solid var(--gamer-pink) !important;
+  }
+
+  .mobile-reply {
+    background: var(--bg-dark-core);
+    border-top: 1px solid var(--border-soft);
+    padding: 15px;
+    backdrop-filter: blur(15px);
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+  }
+
+  .mensajes-wrapper {
+    max-height: 50vh;
+    padding-right: 5px;
+  }
+
+  .respuestas-hilo {
+    margin-left: 15px;
+    padding-left: 10px;
+  }
+
+  .reply-card::before {
+    width: 10px;
+    left: -10px;
+  }
+
+  #main-textarea {
+    height: 60px !important;
+    font-size: 14px;
+  }
+
+  .btn-enviar {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  .post-meta {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-required-notice {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px dashed var(--gamer-purple);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.login-required-notice a {
+  color: var(--gamer-cyan);
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+
+.login-required-notice a:hover {
+  border-bottom-color: var(--gamer-cyan);
+  text-shadow: 0 0 8px var(--gamer-cyan);
+}

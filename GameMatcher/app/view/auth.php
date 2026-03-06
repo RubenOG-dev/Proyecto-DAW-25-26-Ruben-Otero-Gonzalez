@@ -15,7 +15,8 @@ if (isset($_SESSION['id_usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameMatcher - Registro / Login</title>
+    <title>GameMatcher - Registro / Inicio de Sesión</title>
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -51,7 +52,7 @@ if (isset($_SESSION['id_usuario'])) {
                             <form id="loginFormDesktop" novalidate>
                                 <div class="mb-3 text-start">
                                     <label class="form-label text-lila-label">Correo electrónico</label>
-                                    <input type="email" name="email" class="form-control custom-input" placeholder="fjhernandezjz@gmail.com" required>
+                                    <input type="email" name="email" class="form-control custom-input" placeholder="ejemplo@correo.com" required>
                                 </div>
                                 <div class="mb-4 text-start">
                                     <label class="form-label text-lila-label">Contraseña</label>
@@ -76,7 +77,7 @@ if (isset($_SESSION['id_usuario'])) {
                                 </div>
                                 <div class="mb-2 text-start">
                                     <label class="form-label text-lila-label">Correo electrónico</label>
-                                    <input type="email" name="email" class="form-control custom-input" placeholder="fjhernandezjz@gmail.com" required>
+                                    <input type="email" name="email" class="form-control custom-input" placeholder="ejemplo@correo.com" required>
                                 </div>
                                 <div class="mb-2 text-start">
                                     <label class="form-label text-lila-label">Contraseña</label>
@@ -84,7 +85,7 @@ if (isset($_SESSION['id_usuario'])) {
                                 </div>
                                 <div class="mb-3 text-start">
                                     <label class="form-label text-lila-label">Repetir Contraseña</label>
-                                    <input type="password" name="password_confirm" class="form-control custom-input" placeholder="Confirme contraseña" required>
+                                    <input type="password" name="password_confirm" class="form-control custom-input" placeholder="Confirme su contraseña" required>
                                 </div>
                                 <div class="form-check mb-4 text-start">
                                     <input class="form-check-input" type="checkbox" id="termsDesktop" required>
@@ -128,7 +129,7 @@ if (isset($_SESSION['id_usuario'])) {
                             <form id="loginFormMobile" novalidate>
                                 <div class="mb-3 text-start">
                                     <label class="form-label text-lila-label">Correo electrónico</label>
-                                    <input type="email" name="email" class="form-control custom-input" placeholder="fjhernandezjz@gmail.com" required>
+                                    <input type="email" name="email" class="form-control custom-input" placeholder="ejemplo@correo.com" required>
                                 </div>
                                 <div class="mb-4 text-start">
                                     <label class="form-label text-lila-label">Contraseña</label>
@@ -162,7 +163,7 @@ if (isset($_SESSION['id_usuario'])) {
                                 </div>
                                 <div class="mb-3 text-start">
                                     <label class="form-label text-lila-label">Repetir Contraseña</label>
-                                    <input type="password" name="password_confirm" class="form-control custom-input" required>
+                                    <input type="password" name="password_confirm" class="form-control custom-input" placeholder="Confirme su contraseña" required>
                                 </div>
                                 <div class="form-check mb-4 text-start">
                                     <input class="form-check-input" type="checkbox" id="termsMobile" required>

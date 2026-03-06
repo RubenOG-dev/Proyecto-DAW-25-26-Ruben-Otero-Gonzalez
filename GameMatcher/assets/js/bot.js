@@ -116,30 +116,25 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const welcomeUser = () => {
-  const nombreUsuario = $d.body.dataset.userName || "Gamer";
-  const tipoUsuario = $d.body.dataset.userType || "free"; 
+    const nombreUsuario = $d.body.dataset.userName || "Gamer";
+    const isLoggedIn = nombreUsuario !== "Gamer";
 
-  const isLoggedIn = nombreUsuario !== "Gamer";
-
-  showTyping();
-  setTimeout(() => {
-    removeTyping();
-
-    if (isLoggedIn) {
-      const corona = tipoUsuario === 'premium' ? "💎 " : "";
-      const mensajePremium = tipoUsuario === 'premium' ? "<br><small style='color:#ffd700'>Estatus: Miembro Premium</small>" : "";
-
-      addMessage(
-        `👋 Hola ${corona}<b>${nombreUsuario}</b>, encantada de verte por aquí.${mensajePremium}`,
-        false,
-        true,
-      );
-    }
+    showTyping();
     setTimeout(() => {
-      showMainOptions("¿En que podo axudarte hoxe?");
-    }, 800);
-  }, 1000);
-};
+      removeTyping();
+
+      if (isLoggedIn) {
+        addMessage(
+          `👋 Hola <b>${nombreUsuario}</b>, encantada de verte por aquí.`,
+          false,
+          true,
+        );
+      }
+      setTimeout(() => {
+        showMainOptions("¿En que puedo ayudarte hoy?");
+      }, 800);
+    }, 1000);
+  };
 
   // ==========================================
   // LÓGICA DE INTERACCIÓN Y BÚSQUEDA
@@ -410,10 +405,14 @@ document.addEventListener("DOMContentLoaded", () => {
         removeTyping();
         if (data.options && data.options.length > 0 && data.options[0].link) {
           addMessage(data.response, false, true);
-          const html = `<div class="chat-buttons">` +
-            data.options.map(opt =>
-              `<button class="btn-quick" onclick="window.location.href='${opt.link}'">${opt.name}</button>`
-            ).join("") +
+          const html =
+            `<div class="chat-buttons">` +
+            data.options
+              .map(
+                (opt) =>
+                  `<button class="btn-quick" onclick="window.location.href='${opt.link}'">${opt.name}</button>`,
+              )
+              .join("") +
             `</div>`;
           addMessage(html, false, true);
           return;

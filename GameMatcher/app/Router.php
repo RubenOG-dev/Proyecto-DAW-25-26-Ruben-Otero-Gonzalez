@@ -6,6 +6,9 @@ include_once CONTROLLER_PATH . "MainController.php";
 include_once CONTROLLER_PATH . "GamesController.php";
 include_once CONTROLLER_PATH . "BotController.php";
 include_once CONTROLLER_PATH . "UserController.php";
+include_once CONTROLLER_PATH . "ForoController.php";
+include_once CONTROLLER_PATH . "AdminController.php";
+require_once 'app/helper/ForoHelper.php';
 
 session_start();
 

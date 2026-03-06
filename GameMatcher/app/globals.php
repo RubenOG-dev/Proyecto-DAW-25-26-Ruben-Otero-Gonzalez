@@ -8,4 +8,5 @@ define("CONTROLLER_PATH", BASE_PATH . "app/controller/");
 define("VIEW_PATH", BASE_PATH . "app/view/");
 define("IMG_PATH", "assets/img/");
 define("CSS_PATH", "assets/css/");
+define("HELPER_PATH", "app/helper/");
 define("RAWG_API_KEY", "d12a9754d101459685631ed6177bc24d");

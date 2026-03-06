@@ -57,7 +57,6 @@
 #chat-tooltip {
   position: absolute;
   bottom: 80px;
-  /* Separación de la burbuja */
   right: 0;
   background: white;
   color: #1e293b;
@@ -238,7 +237,7 @@
   }
 }
 
-/* BOTONES DE ACCIÓN RÁPIDA (Recuperados) */
+/* BOTONES DE ACCIÓN RÁPIDA */
 .chat-buttons {
   display: flex;
   flex-wrap: wrap;

@@ -3,6 +3,7 @@ require_once MODEL_PATH . 'Bot.php';
 
 class BotController
 {
+    /* --- Gestión de respuestas del Bot --- */
     public function responder()
     {
         header('Content-Type: application/json');
@@ -13,13 +14,14 @@ class BotController
             return;
         }
 
+        /* --- Control de límites para usuarios Free --- */
         if ($_SESSION['tipo_usuario'] === 'free') {
             if (!isset($_SESSION['bot_usage'])) $_SESSION['bot_usage'] = 0;
 
             $limite = 5;
             if ($_SESSION['bot_usage'] >= $limite) {
                 echo json_encode([
-                    "response" => "⚠️ <b>Límite acadado.</b> Como usuario GRATIS tes un máximo de $limite consultas. <br><br> ¿Queres desbloquear o poder ilimitado?",
+                    "response" => "⚠️ <b>Límite alcanzado.</b> Como usuario GRATIS tienes un máximo de $limite consultas. <br><br> ¿Quieres desbloquear el poder ilimitado?",
                     "options" => [
                         ["name" => "💎 HACERME PREMIUM", "link" => "index.php?controller=User&action=comprarPremium"]
                     ]
@@ -29,17 +31,19 @@ class BotController
             $_SESSION['bot_usage']++;
         }
 
+        /* --- Procesamiento del mensaje --- */
         $input = json_decode(file_get_contents("php://input"), true);
         $message = $input['message'] ?? '';
 
         if (empty(trim($message))) {
-            echo json_encode(["response" => "O mensaxe non puede estar baleiro."]);
+            echo json_encode(["response" => "El mensaje no puede estar vacío."]);
             return;
         }
 
         $bot = new Bot();
         $result = $bot->getResponse($message);
 
+        /* --- Información de uso restante --- */
         if ($_SESSION['tipo_usuario'] === 'free') {
             $restantes = 5 - $_SESSION['bot_usage'];
             $result['response'] .= "<br><br><small style='color: #888;'>Consultas restantes: $restantes</small>";

@@ -18,6 +18,7 @@ $tipoUsuario   = $_SESSION['tipo_usuario'] ?? 'free';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>GameMatcher - Home</title>
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -73,7 +74,7 @@ $tipoUsuario   = $_SESSION['tipo_usuario'] ?? 'free';
                 </div>
             </div>
             <div class="center-btn">
-                <a href="index.php?controller=Forums&action=listar" class="btn-blue">
+                <a href="index.php?controller=Foro&action=mostrarListaForos" class="btn-blue">
                     <i class="fas fa-comments"></i> FOROS
                 </a>
             </div>
@@ -102,14 +103,13 @@ $tipoUsuario   = $_SESSION['tipo_usuario'] ?? 'free';
             <div class="carousel-content-mob" id="games-carousel-mob"></div>
             <div class="mob-actions">
                 <a href="index.php?controller=Games&action=catalogo" class="btn-mob">CATÁLOGO</a>
-                <a href="index.php?controller=Forums&action=listar" class="btn-mob btn-dark">FOROS</a>
+                <a href="index.php?controller=Foro&action=mostrarListaForos" class="btn-mob btn-dark">FOROS</a>
             </div>
         </main>
         <?php include_once("footer_mobile.php"); ?>
     </div>
 
     <?php include_once("bot.php"); ?>
-    <script src="assets/js/loader.js"></script>
     <script src="assets/js/bot.js"></script>
     <script src="assets/js/carrusel.js"></script>
 </body>

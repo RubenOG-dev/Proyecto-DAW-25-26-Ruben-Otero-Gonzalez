@@ -38,12 +38,12 @@ class UserController
             $passConfirm = $_POST['password_confirm'] ?? '';
 
             if (empty($nombre) || empty($email) || empty($pass)) {
-                echo json_encode(['success' => false, 'message' => 'Por favor, completa todos os campos obrigatorios.']);
+                echo json_encode(['success' => false, 'message' => 'Por favor, completa todos los campos obrigatorios.']);
                 exit;
             }
 
             if ($pass !== $passConfirm) {
-                echo json_encode(['success' => false, 'message' => 'As contrasinais non coinciden.']);
+                echo json_encode(['success' => false, 'message' => 'Las contraseñas no coinciden.']);
                 exit;
             }
 
@@ -51,12 +51,12 @@ class UserController
             $model = new User();
 
             if ($model->registrar($nombreCompleto, $email, $pass)) {
-                echo json_encode(['success' => true, 'message' => '¡Rexistro exitoso! Xa podes entrar.']);
+                echo json_encode(['success' => true, 'message' => '¡Rejistro exitoso! Ya puedes entrar.']);
             } else {
-                echo json_encode(['success' => false, 'message' => 'Erro: O email xa existe ou hai un problema coa base de datos.']);
+                echo json_encode(['success' => false, 'message' => 'Error: El email ya existe o hay un error con la base de datos.']);
             }
         } catch (Exception $e) {
-            echo json_encode(['success' => false, 'message' => 'Erro interno: ' . $e->getMessage()]);
+            echo json_encode(['success' => false, 'message' => 'Error interno: ' . $e->getMessage()]);
         }
         exit;
     }
@@ -71,7 +71,7 @@ class UserController
             $password = $_POST['password'] ?? '';
 
             if (empty($email) || empty($password)) {
-                echo json_encode(['success' => false, 'message' => 'Email e contrasinal son obrigatorios.']);
+                echo json_encode(['success' => false, 'message' => 'El email y la contraseña son obligatorios.']);
                 exit;
             }
 
@@ -89,14 +89,14 @@ class UserController
 
                 echo json_encode([
                     'success' => true,
-                    'message' => '¡Ola de novo, ' . htmlspecialchars($user['nombre'], ENT_QUOTES, 'UTF-8') . '!',
+                    'message' => '¡Hola de nuevo, ' . htmlspecialchars($user['nombre'], ENT_QUOTES, 'UTF-8') . '!',
                     'redirect' => 'index.php?controller=User&action=mostrarMain'
                 ]);
             } else {
-                echo json_encode(['success' => false, 'message' => 'Email ou contrasinal incorrectos.']);
+                echo json_encode(['success' => false, 'message' => 'Email o contraseña incorrectos.']);
             }
         } catch (Exception $e) {
-            echo json_encode(['success' => false, 'message' => 'Erro no servidor: ' . $e->getMessage()]);
+            echo json_encode(['success' => false, 'message' => 'Error en el servidor: ' . $e->getMessage()]);
         }
         exit;
     }

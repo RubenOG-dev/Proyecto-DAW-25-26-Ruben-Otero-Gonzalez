@@ -1,0 +1,102 @@
+async function traducirDescripciones() {
+    const ids = ["target-description-desktop", "target-description-mobile"];
+    
+    for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+
+        const texto = el.innerText.trim();
+        if (texto.length < 10 || texto.includes("QUERY LIMIT")) continue;
+
+        const textoLimpio = texto.replace(/<\/?[^>]+(>|$)/g, "");
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(textoLimpio)}`;
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            const traducido = data[0].map(item => item[0]).join("");
+            el.innerHTML = `<p>${traducido}</p>`;
+        } catch (err) {
+            console.error("Error traduciendo " + id, err);
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    traducirDescripciones();
+
+    const carousels = document.querySelectorAll(".card-poster");
+
+    carousels.forEach((carousel) => {
+        let images = [];
+        try {
+            images = JSON.parse(carousel.dataset.images || "[]");
+        } catch (e) {
+            console.error("Error parseando imágenes del carrusel", e);
+            return;
+        }
+
+        if (images.length <= 1) return;
+
+        const imgElement = carousel.querySelector(".main-img");
+        const segments = carousel.querySelectorAll(".progress-segment");
+        let currentIndex = 0;
+        let autoPlayInterval = null;
+
+        const updateGallery = (index) => {
+            currentIndex = index;
+            
+            imgElement.classList.add("changing");
+
+            setTimeout(() => {
+                imgElement.src = images[currentIndex];
+                
+                segments.forEach((seg, i) => {
+                    seg.classList.toggle("active", i === currentIndex);
+                });
+                
+                imgElement.classList.remove("changing");
+            }, 150);
+        };
+
+        const startAuto = () => {
+            stopAuto();
+            autoPlayInterval = setInterval(() => {
+                let next = (currentIndex + 1) % images.length;
+                updateGallery(next);
+            }, 2500);
+        };
+
+        const stopAuto = () => {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        };
+
+        segments.forEach((seg) => {
+            seg.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const targetIdx = parseInt(seg.getAttribute("data-index"));
+                if (!isNaN(targetIdx)) {
+                    stopAuto();
+                    updateGallery(targetIdx);
+                }
+            });
+        });
+
+        carousel.addEventListener("click", () => {
+            stopAuto();
+            let next = (currentIndex + 1) % images.length;
+            updateGallery(next);
+        });
+
+        carousel.addEventListener("mouseenter", startAuto);
+        carousel.addEventListener("mouseleave", () => {
+            stopAuto();
+        });
+
+        if (window.innerWidth <= 768) {
+        }
+    });
+});

@@ -1,0 +1,339 @@
+/* ============================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ============================================================ */
+:root {
+  --primary-color: #ae69ea;
+  --secondary-color: #a685ff;
+  --bg-dark-m: #1e293b;
+  --primary-lila-m: #6d6eff;
+  --btn-purple-m: #6366f1;
+  --text-white-m: #ffffff;
+  --figma-blue: #94a3b8;
+  --text-dark: #1e293b;
+  --text-muted: #334155;
+  --text-header: #0f172a;
+  --text-gray-pc: #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg-dark-m);
+  color: white;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body.detail-page {
+  display: block;
+  min-height: 100vh;
+}
+
+.desktop-only {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.mobile-only {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh; 
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: flex !important; }
+}
+
+/* ============================================================
+   2. HEADERS (Desktop & Mobile)
+   ============================================================ */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8%;
+  background-color: rgba(18, 18, 32, 0.95);
+  height: 70px;
+  border-bottom: 1px solid #333;
+}
+
+.logo img { height: 45px; }
+
+.nav-menu { display: flex; gap: 20px; }
+
+.btn-header-alt {
+  text-decoration: none;
+  color: white;
+  background: var(--primary-color);
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.mobile-header {
+  top: 0;
+  position: sticky;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--bg-dark-m);
+  border-bottom: var(--primary-lila-m) solid 1px;
+}
+
+.logo-container img { height: 35px; }
+
+.header-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.btn-small {
+  background: #5051cb;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  width: fit-content;
+}
+
+/* ============================================================
+   3. CUERPO Y CONTENEDOR DE FOROS
+   ============================================================ */
+.container,
+.mobile-body {
+  flex: 1; /* Esto empuja el footer al fondo */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.container-foros {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--figma-blue);
+  border-radius: 25px;
+  padding: 30px;
+  color: var(--text-dark);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+}
+
+.tendencia-header h2 {
+  background-color: var(--btn-purple-m);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: 900;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* ============================================================
+   4. ACORDEÓN DE FOROS
+   ============================================================ */
+.foro-item {
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.foro-header {
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+  color: var(--text-header);
+  font-size: 1.1rem;
+}
+
+.foro-header:hover { background-color: rgba(255, 255, 255, 0.25); }
+
+.foro-header i {
+  transition: transform 0.3s ease;
+  color: var(--btn-purple-m);
+}
+
+.active-header { background-color: rgba(255, 255, 255, 0.3) !important; }
+
+.foro-content {
+  display: none;
+  background-color: #f8fafc;
+  padding: 20px 25px;
+  border-top: 2px solid var(--btn-purple-m);
+  animation: fadeIn 0.3s ease;
+}
+
+.mini-post {
+  display: flex;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.post-avatar {
+  font-size: 1.8rem;
+  color: var(--btn-purple-m);
+}
+
+.post-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-header);
+}
+
+.post-text p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.btn-explorar {
+  display: inline-block;
+  margin: 20px auto 0;
+  background-color: var(--btn-purple-m);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-explorar:hover {
+  transform: scale(1.05);
+  background-color: #4f46e5;
+}
+
+/* ============================================================
+   5. FOOTERS
+   ============================================================ */
+/* --- Desktop Footer --- */
+.desktop-only .main-footer {
+  background: #0f172a;
+  padding: 0 8%;
+  border-top: 1px solid #333;
+  flex-shrink: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.desktop-only .main-footer .footer-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.desktop-only .main-footer .footer-top .footer-info {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.desktop-only .footer-logo-img { height: 40px; }
+
+.footer-info a {
+  color: var(--text-gray-pc);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-info a:hover { color: white; }
+
+.footer-social { display: flex; gap: 15px; }
+.footer-social a {
+  font-size: 1rem;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+.footer-social a:hover { opacity: 1; }
+
+.footer-copyright { color: #64748b; font-size: 0.85rem; }
+
+/* --- Mobile Footer --- */
+.mobile-only .mobile-footer {
+  border-top: 1px solid var(--primary-lila-m);
+  background: var(--bg-dark-m);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+  flex-shrink: 0;
+}
+
+.mobile-only .footer-links-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-only .footer-links-main a {
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: white;
+}
+
+.mobile-only .social-icons { display: flex; gap: 12px; }
+.mobile-only .social-icons a { color: white; font-size: 1rem; }
+
+.mobile-only .footer-legal { text-align: right; }
+.mobile-only .footer-legal a {
+  color: var(--figma-blue);
+  text-decoration: none;
+  font-size: 0.7rem;
+  display: block;
+}
+
+.mobile-only .copyright { color: #64748b; font-size: 0.73rem; }
+
+/* ============================================================
+   6. ANIMACIONES Y RESPONSIVE EXTRAS
+   ============================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media screen and (max-width: 768px) {
+  .container-foros {
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+  .tendencia-header h2 { font-size: 1.1rem; }
+  .foro-header { padding: 15px; font-size: 1rem; }
+}

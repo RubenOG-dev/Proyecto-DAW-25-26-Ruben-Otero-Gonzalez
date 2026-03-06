@@ -34,7 +34,7 @@ async function cargarContenido(containerId) {
                 contenedor.appendChild(div);
             });
         } else {
-            contenedor.innerHTML = "<p class='text-muted'>Non hai xogos destacados neste momento.</p>";
+            contenedor.innerHTML = "<p class='text-muted'>No hay juegos destacados en este momento.</p>";
         }
 
         if (containerId === "games-carousel") {
@@ -59,7 +59,7 @@ async function cargarContenido(containerId) {
 
     } catch (e) {
         console.error("Error cargando carrusel:", e);
-        contenedor.innerHTML = "<p class='text-danger'>Error ao cargar o catálogo.</p>";
+        contenedor.innerHTML = "<p class='text-danger'>Error al cargar el catálogo.</p>";
     }
 }
 

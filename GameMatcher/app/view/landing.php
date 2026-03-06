@@ -16,6 +16,7 @@ if (isset($_SESSION['id_usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>GameMatcher</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/landing.css">
     <link rel="stylesheet" href="assets/css/bot.css">
@@ -30,7 +31,7 @@ if (isset($_SESSION['id_usuario'])) {
                 <h1>Game<span>Matcher</span></h1>
             </div>
             <nav class="nav-menu">
-                <a href="index.php?controller=Foro&action=listar" class="btn-header-alt"><i class="fas fa-comments"></i> FOROS</a>
+                <a href="index.php?controller=Foro&action=mostrarListaForos" class="btn-header-alt"><i class="fas fa-comments"></i> FOROS</a>
                 <a href="index.php?controller=Games&action=catalogo" class="btn-header-alt"><i class="fas fa-gamepad"></i> CATÁLOGO</a>
             </nav>
         </header>
@@ -57,7 +58,7 @@ if (isset($_SESSION['id_usuario'])) {
                 <img src="assets/img/logo.png" alt="Logo">
             </div>
             <div class="header-buttons">
-                <a href="index.php?controller=Foro&action=listar" class="btn-small"><i class="fas fa-comments"></i> FOROS</a>
+                <a href="index.php?controller=Foro&action=mostrarListaForos" class="btn-small"><i class="fas fa-comments"></i> FOROS</a>
                 <a href="index.php?controller=Games&action=catalogo" class="btn-small"><i class="fas fa-gamepad"></i> CATÁLOGO</a>
             </div>
         </header>
