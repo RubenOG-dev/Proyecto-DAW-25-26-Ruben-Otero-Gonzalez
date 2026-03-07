@@ -29,14 +29,21 @@ class User
             $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
             $sql = "INSERT INTO USUARIO (nombre, contrasenha, email, tipo_usuario, activo) 
-                    VALUES (:nombre, :pass, :email, 'free', 1)";
+                VALUES (:nombre, :pass, :email, 'free', 1)";
 
             $stmt = $this->db->prepare($sql);
-            return $stmt->execute([
+            $res = $stmt->execute([
                 ':nombre' => $nombre,
                 ':pass'   => $passwordHash,
                 ':email'  => $email
             ]);
+
+            // MODIFICACIÓN AQUÍ: Si el insert fue bien, devuelve el ID del usuario
+            if ($res) {
+                return $this->db->lastInsertId();
+            }
+
+            return false;
         } catch (PDOException $e) {
             return false;
         }
@@ -75,14 +82,15 @@ class User
         return $stmt->execute(['id' => $id_usuario]);
     }
 
-    public function hacerPremium($id_usuario) {
-    try {
-        $sql = "UPDATE USUARIO SET tipo_usuario = 'premium' WHERE id_usuario = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id', $id_usuario);
-        return $stmt->execute();
-    } catch (PDOException $e) {
-        return false;
+    public function hacerPremium($id_usuario)
+    {
+        try {
+            $sql = "UPDATE USUARIO SET tipo_usuario = 'premium' WHERE id_usuario = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id', $id_usuario);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
     }
-}
 }

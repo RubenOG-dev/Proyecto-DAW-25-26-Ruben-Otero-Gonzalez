@@ -17,6 +17,7 @@ class UserController
 
     public function mostrarAuth()
     {
+        $return_to = $_GET['return_to'] ?? null;
         include_once VIEW_PATH . "auth.php";
     }
 
@@ -26,40 +27,69 @@ class UserController
     }
 
     public function procesarRegistro()
-    {
-        if (ob_get_length()) ob_clean();
-        header('Content-Type: application/json');
+{
+    // Limpiamos cualquier salida previa para asegurar un JSON limpio
+    if (ob_get_length()) ob_clean();
+    header('Content-Type: application/json');
 
-        try {
-            $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
-            $apellidos = filter_input(INPUT_POST, 'apellidos', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
-            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
-            $pass = $_POST['password'] ?? '';
-            $passConfirm = $_POST['password_confirm'] ?? '';
+    try {
+        $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
+        $apellidos = filter_input(INPUT_POST, 'apellidos', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
+        $pass = $_POST['password'] ?? '';
+        $passConfirm = $_POST['password_confirm'] ?? '';
 
-            if (empty($nombre) || empty($email) || empty($pass)) {
-                echo json_encode(['success' => false, 'message' => 'Por favor, completa todos los campos obrigatorios.']);
-                exit;
-            }
-
-            if ($pass !== $passConfirm) {
-                echo json_encode(['success' => false, 'message' => 'Las contraseñas no coinciden.']);
-                exit;
-            }
-
-            $nombreCompleto = $nombre . " " . $apellidos;
-            $model = new User();
-
-            if ($model->registrar($nombreCompleto, $email, $pass)) {
-                echo json_encode(['success' => true, 'message' => '¡Rejistro exitoso! Ya puedes entrar.']);
-            } else {
-                echo json_encode(['success' => false, 'message' => 'Error: El email ya existe o hay un error con la base de datos.']);
-            }
-        } catch (Exception $e) {
-            echo json_encode(['success' => false, 'message' => 'Error interno: ' . $e->getMessage()]);
+        // Validación básica de campos
+        if (empty($nombre) || empty($email) || empty($pass)) {
+            echo json_encode(['success' => false, 'message' => 'Por favor, completa todos los campos obligatorios.']);
+            exit;
         }
-        exit;
+
+        if ($pass !== $passConfirm) {
+            echo json_encode(['success' => false, 'message' => 'Las contraseñas no coinciden.']);
+            exit;
+        }
+
+        $model = new User();
+        $nombreCompleto = trim($nombre . " " . $apellidos);
+        
+        // Intentar registro: Ahora $id_nuevo_usuario recibirá el ID de lastInsertId()
+        $id_nuevo_usuario = $model->registrar($nombreCompleto, $email, $pass);
+
+        if ($id_nuevo_usuario) {
+            // --- AUTO-LOGIN ---
+            if (session_status() === PHP_SESSION_NONE) session_start();
+            
+            $_SESSION['id_usuario'] = $id_nuevo_usuario;
+            $_SESSION['nombre'] = $nombre; // Guardamos solo el nombre de pila para saludar
+            $_SESSION['tipo_usuario'] = 'free'; // Valor inicial según tu INSERT en el modelo
+
+            // Registramos la sesión técnica en la tabla SESION
+            $model->registrarSesionBD($id_nuevo_usuario);
+
+            // --- REDIRECCIÓN INTELIGENTE ---
+            // Por defecto a principal
+            $redirectUrl = 'index.php?controller=MainController&action=principal';
+            
+            // Si el campo oculto 'return_to' tiene un ID de juego, redirigimos allí
+            if (!empty($_POST['return_to'])) {
+                $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . urlencode($_POST['return_to']);
+            }
+
+            echo json_encode([
+                'success' => true, 
+                'message' => '¡Registro exitoso! Hola, ' . htmlspecialchars($nombre) . '. Iniciando sesión...',
+                'redirect' => $redirectUrl
+            ]);
+        } else {
+            // Si el modelo devuelve false, es que el email ya está en uso
+            echo json_encode(['success' => false, 'message' => 'Error: El correo electrónico ya está registrado.']);
+        }
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => 'Error interno del servidor: ' . $e->getMessage()]);
     }
+    exit;
+}
 
     public function procesarLogin()
     {
@@ -87,10 +117,16 @@ class UserController
 
                 $model->registrarSesionBD($user['id_usuario']);
 
+                $redirectUrl = 'index.php?controller=User&action=mostrarMain';
+
+                if (!empty($_POST['return_to'])) {
+                    $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . $_POST['return_to'];
+                }
+
                 echo json_encode([
                     'success' => true,
                     'message' => '¡Hola de nuevo, ' . htmlspecialchars($user['nombre'], ENT_QUOTES, 'UTF-8') . '!',
-                    'redirect' => 'index.php?controller=User&action=mostrarMain'
+                    'redirect' => $redirectUrl
                 ]);
             } else {
                 echo json_encode(['success' => false, 'message' => 'Email o contraseña incorrectos.']);
@@ -127,22 +163,4 @@ class UserController
         }
         return false;
     }
-
-    public function comprarPremium() {
-    if (session_status() === PHP_SESSION_NONE) session_start();
-
-    if (!isset($_SESSION['id_usuario'])) {
-        header("Location: index.php?controller=User&action=mostrarAuth");
-        exit;
-    }
-
-    $model = new User();
-    if ($model->hacerPremium($_SESSION['id_usuario'])) {
-        $_SESSION['tipo_usuario'] = 'premium';
-
-        header("Location: index.php?controller=MainController&action=principal&upgrade=success");
-    } else {
-        header("Location: index.php?controller=MainController&action=principal&upgrade=error");
-    }
-}
 }

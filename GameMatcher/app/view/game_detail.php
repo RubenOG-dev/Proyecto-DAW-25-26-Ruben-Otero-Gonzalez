@@ -6,12 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title><?php echo $gameData['name']; ?> - GameMatcher</title>
     <link rel="stylesheet" href="assets/css/game_detail.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="icon" type="image/png" href="assets/img/logo2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body class="detail-page">
+    <div class="notification-container">
+        <?php if (isset($_GET['success'])): ?>
+            <div class="auto-hide success">
+                <i class="fas fa-check-circle"></i> ¡Tu valoración se ha guardado correctamente!
+            </div>
+        <?php endif; ?>
 
+        <?php if (isset($_GET['error'])): ?>
+            <div class="auto-hide error">
+                <i class="fas fa-times-circle"></i> Hubo un error al guardar tu reseña.
+            </div>
+        <?php endif; ?>
+    </div>
     <div class="desktop-only">
         <header class="main-header">
             <div class="logo">
@@ -62,24 +75,37 @@
                             </div>
                         <?php endif; ?>
 
-                        <div class="info-item">
-                            <span>Valoración:</span>
-                            <div class="stars">
-                                <?php
-                                $rating = $gameData['rating']; // Valor decimal, ej: 3.5 o 4.2
-                                for ($i = 1; $i <= 5; $i++) {
-                                    if ($rating >= $i) {
-                                        // Estrella completa
-                                        echo '<i class="fas fa-star"></i>';
-                                    } elseif ($rating >= ($i - 0.5)) {
-                                        // Media estrella
-                                        echo '<i class="fas fa-star-half-alt"></i>';
-                                    } else {
-                                        // Estrella vacía
-                                        echo '<i class="far fa-star"></i>';
+                        <div class="ratings-wrapper">
+                            <div class="info-item">
+                                <span>Valoración Global:</span>
+                                <div class="stars">
+                                    <?php
+                                    $ratingAPI = $gameData['rating'];
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        if ($ratingAPI >= $i) echo '<i class="fas fa-star"></i>';
+                                        elseif ($ratingAPI >= ($i - 0.5)) echo '<i class="fas fa-star-half-alt"></i>';
+                                        else echo '<i class="far fa-star"></i>';
                                     }
-                                }
-                                ?>
+                                    ?>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <span>Valoración Comunidad:</span>
+                                <div class="stars community-stars">
+                                    <?php if (!empty($gameData['rating_comunidad'])): ?>
+                                        <?php
+                                        $ratingBD = $gameData['rating_comunidad'];
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            if ($ratingBD >= $i) echo '<i class="fas fa-star"></i>';
+                                            elseif ($ratingBD >= ($i - 0.5)) echo '<i class="fas fa-star-half-alt"></i>';
+                                            else echo '<i class="far fa-star"></i>';
+                                        }
+                                        ?>
+                                    <?php else: ?>
+                                        <span class="no-rating">Sin valoraciones aún</span>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -93,6 +119,15 @@
                 <a href="index.php?controller=Foro&action=accederJuego&game_id=<?php echo $gameData['id']; ?>&name=<?php echo urlencode($gameData['name']); ?>" class="btn-foro-main">
                     FORO DEL JUEGO
                 </a>
+                <?php if (isset($_SESSION['id_usuario'])): ?>
+                    <button type="button" class="btn-foro-main btn-valorar" onclick="openRatingModal()">
+                        VALORAR JUEGO <i class="fas fa-star"></i>
+                    </button>
+                <?php else: ?>
+                    <a href="index.php?controller=User&action=mostrarAuth&return_to=<?php echo $gameData['id']; ?>" class="btn-foro-main btn-valorar" style="background: #555;">
+                        LOGUÉATE PARA VALORAR <i class="fas fa-lock"></i>
+                    </a>
+                <?php endif; ?>
             </div>
         </main>
         <?php include_once("footer_desktop.php"); ?>
@@ -146,21 +181,37 @@
                             </div>
                         <?php endif; ?>
 
-                        <div class="info-item">
-                            <span>Valoración:</span>
-                            <div class="stars">
-                                <?php
-                                $rating = $gameData['rating']; 
-                                for ($i = 1; $i <= 5; $i++) {
-                                    if ($rating >= $i) {
-                                        echo '<i class="fas fa-star"></i>';
-                                    } elseif ($rating >= ($i - 0.5)) {
-                                        echo '<i class="fas fa-star-half-alt"></i>';
-                                    } else {
-                                        echo '<i class="far fa-star"></i>';
+                        <div class="ratings-wrapper">
+                            <div class="info-item">
+                                <span>Valoración Global:</span>
+                                <div class="stars">
+                                    <?php
+                                    $ratingAPI = $gameData['rating'];
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        if ($ratingAPI >= $i) echo '<i class="fas fa-star"></i>';
+                                        elseif ($ratingAPI >= ($i - 0.5)) echo '<i class="fas fa-star-half-alt"></i>';
+                                        else echo '<i class="far fa-star"></i>';
                                     }
-                                }
-                                ?>
+                                    ?>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <span>Valoración Comunidad:</span>
+                                <div class="stars community-stars">
+                                    <?php if (!empty($gameData['rating_comunidad'])): ?>
+                                        <?php
+                                        $ratingBD = $gameData['rating_comunidad'];
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            if ($ratingBD >= $i) echo '<i class="fas fa-star"></i>';
+                                            elseif ($ratingBD >= ($i - 0.5)) echo '<i class="fas fa-star-half-alt"></i>';
+                                            else echo '<i class="far fa-star"></i>';
+                                        }
+                                        ?>
+                                    <?php else: ?>
+                                        <span class="no-rating">Sin valoraciones aún</span>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -172,11 +223,41 @@
 
             <div style="text-align: center; width: 100%;">
                 <a href="index.php?controller=Foro&action=accederJuego&game_id=<?php echo $gameData['id']; ?>&name=<?php echo urlencode($gameData['name']); ?>" class="btn-foro-main">FORO DEL JUEGO </a>
+                <?php if (isset($_SESSION['id_usuario'])): ?>
+                    <button type="button" class="btn-foro-main btn-valorar" onclick="openRatingModal()">
+                        VALORAR JUEGO <i class="fas fa-star"></i>
+                    </button>
+                <?php else: ?>
+                    <a href="index.php?controller=User&action=mostrarAuth&return_to=<?php echo $gameData['id']; ?>" class="btn-foro-main btn-valorar" style="background: #555;">
+                        LOGUÉATE PARA VALORAR <i class="fas fa-lock"></i>
+                    </a>
+                <?php endif; ?>
             </div>
         </main>
         <?php include_once("footer_mobile.php"); ?>
     </div>
+    <div id="ratingModal" class="modal-rating">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeRatingModal()">&times;</span>
+            <h3>Valorar <?php echo htmlspecialchars($gameData['name']); ?></h3>
 
+            <form action="index.php?controller=Games&action=guardarValoracion" method="POST">
+                <input type="hidden" name="game_id" value="<?php echo $gameData['id']; ?>">
+
+                <div class="star-rating-input">
+                    <input type="radio" id="star5" name="puntuacion" value="5" required /><label for="star5"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star4" name="puntuacion" value="4" /><label for="star4"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star3" name="puntuacion" value="3" /><label for="star3"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star2" name="puntuacion" value="2" /><label for="star2"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star1" name="puntuacion" value="1" /><label for="star1"><i class="fas fa-star"></i></label>
+                </div>
+
+                <textarea name="comentario" placeholder="Escribe una breve reseña (opcional)..." maxlength="255"></textarea>
+
+                <button type="submit" class="btn-enviar-valoracion">ENVIAR RESEÑA</button>
+            </form>
+        </div>
+    </div>
     <script src="assets/js/game_detail.js"></script>
 </body>
 

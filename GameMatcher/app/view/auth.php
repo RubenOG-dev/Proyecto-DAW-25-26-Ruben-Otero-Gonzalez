@@ -50,6 +50,7 @@ if (isset($_SESSION['id_usuario'])) {
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="login-pane-d" role="tabpanel">
                             <form id="loginFormDesktop" novalidate>
+                                <input type="hidden" name="return_to" value="<?php echo htmlspecialchars($return_to ?? ''); ?>">
                                 <div class="mb-3 text-start">
                                     <label class="form-label text-lila-label">Correo electrónico</label>
                                     <input type="email" name="email" class="form-control custom-input" placeholder="ejemplo@correo.com" required>
@@ -127,6 +128,7 @@ if (isset($_SESSION['id_usuario'])) {
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="login-pane-m" role="tabpanel">
                             <form id="loginFormMobile" novalidate>
+                                <input type="hidden" name="return_to" value="<?php echo htmlspecialchars($return_to ?? ''); ?>">
                                 <div class="mb-3 text-start">
                                     <label class="form-label text-lila-label">Correo electrónico</label>
                                     <input type="email" name="email" class="form-control custom-input" placeholder="ejemplo@correo.com" required>

@@ -1,0 +1,75 @@
+.modal-rating {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #1a1a2e;
+  margin: 15% auto;
+  padding: 30px;
+  border: 2px solid var(--gamer-purple);
+  width: 90%;
+  max-width: 400px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+}
+
+/* Sistema de estrellas invertido para CSS funcional */
+.star-rating-input {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 20px 0;
+}
+
+.star-rating-input input {
+  display: none;
+}
+
+.star-rating-input label {
+  color: #444;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.star-rating-input input:checked ~ label,
+.star-rating-input label:hover,
+.star-rating-input label:hover ~ label {
+  color: #f1c40f; /* Color oro */
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+}
+
+.btn-enviar-valoracion {
+  background: var(--gamer-cyan);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Efecto de suavizado al cerrar */
+.auto-hide {
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+  overflow: hidden;
+}
+
+/* Evitar que el botón de enviar se vea mal al hacer clic */
+.btn-enviar-valoracion:active {
+  transform: scale(0.98);
+  background-color: #27ae60;
+}

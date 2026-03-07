@@ -1,4 +1,5 @@
 <?php
+require_once MODEL_PATH . 'Valoracion.php';
 
 class GamesController
 {
@@ -96,6 +97,13 @@ class GamesController
         $allImages = array_values(array_filter(array_merge([$background], $screenshotUrls)));
         $gameData['all_images'] = $allImages;
 
+        $valModel = new Valoracion();
+        $resumenBD = $valModel->obtenerMedia($gameId);
+
+        // Guardamos la media de nuestra BBDD y el total de votos en el array que va a la vista
+        $gameData['rating_comunidad'] = $resumenBD['media'] ? round($resumenBD['media'], 1) : null;
+        $gameData['total_votos'] = $resumenBD['total'] ?? 0;
+
         include_once VIEW_PATH . "game_detail.php";
     }
 
@@ -106,7 +114,88 @@ class GamesController
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_USERAGENT, 'GameMatcherApp/1.0');
         $res = curl_exec($ch);
-        curl_close($ch);
         return $res;
     }
+
+    /* public function guardarValoracion()
+    {
+        if (session_status() === PHP_SESSION_NONE) session_start();
+
+        // 1. Verificación de seguridad
+        if (!isset($_SESSION['id_usuario'])) {
+            header("Location: index.php?controller=User&action=mostrarAuth");
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once 'models/Valoracion.php';
+            $valModel = new Valoracion();
+
+            $id_usuario = $_SESSION['id_usuario'];
+            $game_id = $_POST['game_id'] ?? null;
+            $puntos = $_POST['puntuacion'] ?? 0;
+            $comentario = !empty($_POST['comentario']) ? trim($_POST['comentario']) : null;
+
+            // 2. Si por algún motivo el ID no llega, volvemos al catálogo 
+            // He ajustado la ruta al nombre exacto de tu controlador 'Games'
+            if (!$game_id) {
+                header("Location: index.php?controller=Games&action=catalogo");
+                exit;
+            }
+
+            // 3. Intentamos guardar en la BD
+            $res = $valModel->guardar($id_usuario, $game_id, $puntos, $comentario);
+
+            // 4. REDIRECCIÓN CLAVE: Volver a la ficha del juego
+            // Usamos la misma estructura que tienes en tus enlaces
+            if ($res) {
+                header("Location: index.php?controller=Games&action=detalle&id=" . $game_id . "&success=1");
+            } else {
+                // Si el modelo falla (ej: ya existía valoración), volvemos con error
+                header("Location: index.php?controller=Games&action=detalle&id=" . $game_id . "&error=1");
+            }
+            exit;
+        }
+    } */
+
+    public function guardarValoracion()
+{
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
+    // 1. Verificación de sesión (Esto no lo toques, está bien)
+    if (!isset($_SESSION['id_usuario'])) {
+        header("Location: index.php?controller=User&action=mostrarAuth");
+        exit;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // 2. Carga del modelo usando la constante que ya tienes
+        require_once MODEL_PATH . 'Valoracion.php'; 
+        
+        $valModel = new Valoracion();
+        $id_usuario = $_SESSION['id_usuario']; 
+        $game_id = $_POST['game_id'] ?? null;
+        $puntos = $_POST['puntuacion'] ?? 0;
+        $comentario = !empty($_POST['comentario']) ? trim($_POST['comentario']) : null;
+
+        if (!$game_id) {
+            header("Location: index.php?controller=Games&action=catalogo");
+            exit;
+        }
+
+        // 3. Guardar en la base de datos
+        $res = $valModel->guardar($id_usuario, $game_id, $puntos, $comentario);
+
+        // 4. EL TRUCO: Volver exactamente a la misma URL que usas para ver el juego
+        // Usamos 'Games' porque tu index.php le concatena 'Controller' automáticamente
+        $redireccion = "index.php?controller=Games&action=detalle&id=" . $game_id;
+
+        if ($res) {
+            header("Location: " . $redireccion . "&success=1");
+        } else {
+            header("Location: " . $redireccion . "&error=1");
+        }
+        exit;
+    }
+}
 }

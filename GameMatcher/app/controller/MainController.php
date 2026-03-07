@@ -12,6 +12,6 @@ class MainController {
     }
 
     public function error() {
-        echo "404 - Páxina non atopada";
+        echo "404 - Página no encontrada";
     }
 }
