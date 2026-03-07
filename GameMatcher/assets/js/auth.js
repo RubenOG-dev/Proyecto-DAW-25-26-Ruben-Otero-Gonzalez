@@ -95,11 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (result.success) {
         mostrarMensajeUI(result.message, "success");
 
-        // Ahora ambos procesos pueden redirigir
         if (result.redirect) {
           setTimeout(() => (window.location.href = result.redirect), 1200);
         } else if (action === "procesarRegistro") {
-          // Fallback por si no quieres auto-login: limpiar y avisar
           form.reset();
           form.classList.remove("was-validated");
           inputs.forEach((i) => (i.readOnly = false));

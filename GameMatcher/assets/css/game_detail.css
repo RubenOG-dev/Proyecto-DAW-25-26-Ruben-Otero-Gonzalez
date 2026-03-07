@@ -554,20 +554,19 @@ main{
 
 .ratings-wrapper {
   display: flex;
-  flex-direction: row; /* Alineación horizontal */
-  gap: 40px; /* Espacio entre los dos bloques */
+  flex-direction: row;
+  gap: 40px;
   align-items: flex-start;
   margin-top: 10px;
 }
 
 .ratings-wrapper .info-item {
-  margin-bottom: 0; /* Quitamos el margen inferior para que no se descuadren */
+  margin-bottom: 0;
   display: flex;
-  flex-direction: column; /* El título arriba y las estrellas abajo dentro de cada bloque */
+  flex-direction: column;
   gap: 5px;
 }
 
-/* Opcional: Color cyan para diferenciar tu comunidad */
 .community-stars {
   color: #00f2ff;
   text-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
@@ -591,20 +590,19 @@ main{
   transform: translateY(-2px);
 }
 
-/* Contenedor de notificaciones para que no empujen el diseño */
 .notification-container {
-  position: fixed; /* O absolute si prefieres que suba con el scroll */
+  position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
   width: 90%;
   max-width: 500px;
-  pointer-events: none; /* No interfiere con clicks */
+  pointer-events: none;
 }
 
 .auto-hide {
-  pointer-events: auto; /* El mensaje sí se puede tocar si fuera necesario */
+  pointer-events: auto;
   padding: 15px 25px;
   border-radius: 12px;
   text-align: center;
@@ -612,7 +610,6 @@ main{
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
   animation: slideInDown 0.5s ease forwards;
-  /* Quitamos los estilos inline del PHP y los ponemos aquí */
 }
 
 .auto-hide.success {

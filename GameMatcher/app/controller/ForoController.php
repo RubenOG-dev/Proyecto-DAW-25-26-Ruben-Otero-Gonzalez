@@ -28,7 +28,6 @@ class ForoController
             exit;
         }
 
-        // Obtiene posts y comentarios con los IDs normalizados
         $mensajes = $this->model->getMensajesEstructurados($id_foro);
         include_once VIEW_PATH . "detalle_foro.php";
     }
@@ -81,7 +80,6 @@ class ForoController
         exit;
     }
 
-    // --- ACCIÓN ACTUALIZADA PARA BORRAR (HÍBRIDA) ---
     public function borrarPost()
     {
         $id_post = $_GET['id_post'] ?? null;
@@ -89,11 +87,9 @@ class ForoController
         $id_usuario = $_SESSION['id_usuario'] ?? null;
 
         if ($id_post && $id_usuario) {
-            // Buscamos quién es el dueño (ahora funciona para Post y Comentario)
             $item = $this->model->getPostById($id_post);
 
             if ($item && $item['id_usuario'] == $id_usuario) {
-                // La función eliminarPost del modelo ya detecta si es comentario o post
                 $this->model->eliminarPost($id_post);
             }
         }
@@ -102,7 +98,6 @@ class ForoController
         exit;
     }
 
-    // --- ACCIÓN ACTUALIZADA PARA EDITAR (HÍBRIDA) ---
     public function editarPost()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -115,7 +110,6 @@ class ForoController
                 $item = $this->model->getPostById($id_post);
 
                 if ($item && $item['id_usuario'] == $id_usuario) {
-                    // Actualiza en la tabla correspondiente automáticamente
                     $this->model->actualizarPost($id_post, $contenido);
                 }
             }
@@ -137,7 +131,6 @@ class ForoController
         $contenido = filter_input(INPUT_POST, 'contenido', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
         $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
 
-        // Limpieza de caracteres
         $titulo = trim(preg_replace('/\s+/', ' ', str_replace(['&#13;', '&#10;'], ' ', $titulo)));
         $contenido = trim(preg_replace("/[\r\n]{2,}/", "\n", str_replace(['&#13;', '&#10;'], "\n", $contenido)));
 

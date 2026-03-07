@@ -11,7 +11,6 @@ class AdminController
         $this->adminModel = new Admin();
     }
 
-    /* --- Autenticación de Administrador --- */
     public function login()
     {
         if (session_status() === PHP_SESSION_NONE) session_start();
@@ -23,7 +22,6 @@ class AdminController
             $userModel = new User();
             $user = $userModel->login($email, $password);
 
-            // Acceso de respaldo en caso de error en base de datos
             if (!$user && $email === 'admin@gamematcher.com' && $password === 'admin') {
                 $user = [
                     'id_usuario' => 1,
@@ -48,7 +46,6 @@ class AdminController
         }
     }
 
-    /* --- Panel Principal (Dashboard) --- */
     public function dashboard()
     {
         $this->checkAdmin();
@@ -64,7 +61,6 @@ class AdminController
         include_once VIEW_PATH . "dashboard.php";
     }
 
-    /* --- Acciones de Moderación --- */
     public function deleteComment()
     {
         $this->checkAdmin();
@@ -101,7 +97,6 @@ class AdminController
         exit;
     }
 
-    /* --- Seguridad --- */
     private function checkAdmin()
     {
         if (session_status() === PHP_SESSION_NONE) session_start();

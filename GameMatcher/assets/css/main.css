@@ -39,7 +39,6 @@ body {
   .desktop-only { display: none; }
   .mobile-only { display: block; }
   
-  /* Unificación de flechas en móvil */
   .carousel-wrapper .arrow-btn {
     width: 40px;
     height: 40px;
@@ -48,7 +47,6 @@ body {
   }
 }
 
-/* Unificación de Headers (Desktop y Móvil) */
 .main-header, .mobile-header {
   background: var(--bg-dark-m);
   display: flex;
@@ -86,7 +84,6 @@ body {
 
 .btn-logout:hover { background: #4f46e5; }
 
-/* Unificación de secciones Hero */
 .hero-section {
   height: 450px;
   background: url("../img/super-heroes.png") right/cover no-repeat;
@@ -109,7 +106,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Estilos específicos Desktop Hero */
 .desktop-only .hero-overlay {
   background: linear-gradient(to top, rgba(30, 41, 59, 1) 1%, rgba(30, 41, 59, 0.2) 100%);
   align-items: center;
@@ -156,7 +152,6 @@ body {
   font-style: italic;
 }
 
-/* Unificación de Carrusel */
 .carousel-wrapper {
   position: relative;
   display: flex;
@@ -226,7 +221,6 @@ body {
   outline: none;
 }
 
-/* Unificación de estados de flecha */
 .carousel-wrapper .arrow-btn:hover {
   background: var(--primary-lila-m);
   box-shadow: 0 0 15px rgba(109, 110, 255, 0.6);
@@ -269,7 +263,6 @@ body {
   gap: 10px;
 }
 
-/* --- ESTILOS MÓVIL ESPECÍFICOS --- */
 .mob-logo { height: 35px; }
 
 .btn-logout-mob {
@@ -339,7 +332,6 @@ body {
   min-width: 115px;
 }
 
-/* --- FOOTER UNIFICADO (Compartido Desktop/Móvil) --- */
 .main-footer, .mobile-footer {
   border-top: 1px solid #333;
 }
@@ -395,7 +387,6 @@ body {
 .footer-copyright, .copyright { color: #64748b; }
 .footer-copyright { font-size: 0.85rem; }
 
-/* --- FOOTER MOBILE ESPECÍFICO --- */
 .mobile-only .mobile-footer {
   border-top-color: var(--primary-lila-m);
   background: var(--bg-dark-m);

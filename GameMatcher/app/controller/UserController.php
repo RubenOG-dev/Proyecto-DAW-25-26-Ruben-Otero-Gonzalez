@@ -27,69 +27,60 @@ class UserController
     }
 
     public function procesarRegistro()
-{
-    // Limpiamos cualquier salida previa para asegurar un JSON limpio
-    if (ob_get_length()) ob_clean();
-    header('Content-Type: application/json');
+    {
+        if (ob_get_length()) ob_clean();
+        header('Content-Type: application/json');
 
-    try {
-        $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
-        $apellidos = filter_input(INPUT_POST, 'apellidos', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
-        $pass = $_POST['password'] ?? '';
-        $passConfirm = $_POST['password_confirm'] ?? '';
+        try {
+            $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
+            $apellidos = filter_input(INPUT_POST, 'apellidos', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
+            $pass = $_POST['password'] ?? '';
+            $passConfirm = $_POST['password_confirm'] ?? '';
 
-        // Validación básica de campos
-        if (empty($nombre) || empty($email) || empty($pass)) {
-            echo json_encode(['success' => false, 'message' => 'Por favor, completa todos los campos obligatorios.']);
-            exit;
-        }
-
-        if ($pass !== $passConfirm) {
-            echo json_encode(['success' => false, 'message' => 'Las contraseñas no coinciden.']);
-            exit;
-        }
-
-        $model = new User();
-        $nombreCompleto = trim($nombre . " " . $apellidos);
-        
-        // Intentar registro: Ahora $id_nuevo_usuario recibirá el ID de lastInsertId()
-        $id_nuevo_usuario = $model->registrar($nombreCompleto, $email, $pass);
-
-        if ($id_nuevo_usuario) {
-            // --- AUTO-LOGIN ---
-            if (session_status() === PHP_SESSION_NONE) session_start();
-            
-            $_SESSION['id_usuario'] = $id_nuevo_usuario;
-            $_SESSION['nombre'] = $nombre; // Guardamos solo el nombre de pila para saludar
-            $_SESSION['tipo_usuario'] = 'free'; // Valor inicial según tu INSERT en el modelo
-
-            // Registramos la sesión técnica en la tabla SESION
-            $model->registrarSesionBD($id_nuevo_usuario);
-
-            // --- REDIRECCIÓN INTELIGENTE ---
-            // Por defecto a principal
-            $redirectUrl = 'index.php?controller=MainController&action=principal';
-            
-            // Si el campo oculto 'return_to' tiene un ID de juego, redirigimos allí
-            if (!empty($_POST['return_to'])) {
-                $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . urlencode($_POST['return_to']);
+            if (empty($nombre) || empty($email) || empty($pass)) {
+                echo json_encode(['success' => false, 'message' => 'Por favor, completa todos los campos obligatorios.']);
+                exit;
             }
 
-            echo json_encode([
-                'success' => true, 
-                'message' => '¡Registro exitoso! Hola, ' . htmlspecialchars($nombre) . '. Iniciando sesión...',
-                'redirect' => $redirectUrl
-            ]);
-        } else {
-            // Si el modelo devuelve false, es que el email ya está en uso
-            echo json_encode(['success' => false, 'message' => 'Error: El correo electrónico ya está registrado.']);
+            if ($pass !== $passConfirm) {
+                echo json_encode(['success' => false, 'message' => 'Las contraseñas no coinciden.']);
+                exit;
+            }
+
+            $model = new User();
+            $nombreCompleto = trim($nombre . " " . $apellidos);
+
+            $id_nuevo_usuario = $model->registrar($nombreCompleto, $email, $pass);
+
+            if ($id_nuevo_usuario) {
+                if (session_status() === PHP_SESSION_NONE) session_start();
+
+                $_SESSION['id_usuario'] = $id_nuevo_usuario;
+                $_SESSION['nombre'] = $nombre;
+                $_SESSION['tipo_usuario'] = 'free';
+
+                $model->registrarSesionBD($id_nuevo_usuario);
+
+                $redirectUrl = 'index.php?controller=MainController&action=principal';
+
+                if (!empty($_POST['return_to'])) {
+                    $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . urlencode($_POST['return_to']);
+                }
+
+                echo json_encode([
+                    'success' => true,
+                    'message' => '¡Registro exitoso! Hola, ' . htmlspecialchars($nombre) . '. Iniciando sesión...',
+                    'redirect' => $redirectUrl
+                ]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Error: El correo electrónico ya está registrado.']);
+            }
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'message' => 'Error interno del servidor: ' . $e->getMessage()]);
         }
-    } catch (Exception $e) {
-        echo json_encode(['success' => false, 'message' => 'Error interno del servidor: ' . $e->getMessage()]);
+        exit;
     }
-    exit;
-}
 
     public function procesarLogin()
     {

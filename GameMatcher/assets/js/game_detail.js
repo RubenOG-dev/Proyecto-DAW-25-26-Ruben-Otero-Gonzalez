@@ -103,20 +103,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   messages.forEach((msg) => {
     setTimeout(() => {
-      // Usamos las transiciones de CSS
       msg.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
       msg.style.opacity = "0";
-      msg.style.transform = "translateY(-30px)"; // Efecto de desvanecer hacia arriba
+      msg.style.transform = "translateY(-30px)";
 
       setTimeout(() => {
         msg.remove();
-        // Limpiar URL
         const url = new URL(window.location);
         url.searchParams.delete("success");
         url.searchParams.delete("error");
         window.history.replaceState({}, document.title, url);
       }, 800);
-    }, 4000); // 4 segundos es mejor para que dé tiempo a leer
+    }, 4000);
   });
 });
 
@@ -128,7 +126,6 @@ function closeRatingModal() {
   document.getElementById("ratingModal").style.display = "none";
 }
 
-// Cerrar si el usuario hace clic fuera del contenido
 window.onclick = function (event) {
   let modal = document.getElementById("ratingModal");
   if (event.target == modal) {

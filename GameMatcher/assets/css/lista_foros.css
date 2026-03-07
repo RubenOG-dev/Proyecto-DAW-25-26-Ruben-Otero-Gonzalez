@@ -121,7 +121,7 @@ body.detail-page {
    ============================================================ */
 .container,
 .mobile-body {
-  flex: 1; /* Esto empuja el footer al fondo */
+  flex: 1;
   padding: 40px 20px;
   display: flex;
   justify-content: center;

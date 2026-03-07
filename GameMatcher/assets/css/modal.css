@@ -22,7 +22,6 @@
   color: white;
 }
 
-/* Sistema de estrellas invertido para CSS funcional */
 .star-rating-input {
   display: flex;
   flex-direction: row-reverse;
@@ -44,7 +43,7 @@
 .star-rating-input input:checked ~ label,
 .star-rating-input label:hover,
 .star-rating-input label:hover ~ label {
-  color: #f1c40f; /* Color oro */
+  color: #f1c40f;
   text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
 }
 
@@ -60,7 +59,6 @@
   margin-top: 15px;
 }
 
-/* Efecto de suavizado al cerrar */
 .auto-hide {
   transition:
     opacity 0.8s ease,
@@ -68,7 +66,6 @@
   overflow: hidden;
 }
 
-/* Evitar que el botón de enviar se vea mal al hacer clic */
 .btn-enviar-valoracion:active {
   transform: scale(0.98);
   background-color: #27ae60;

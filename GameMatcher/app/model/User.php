@@ -38,7 +38,6 @@ class User
                 ':email'  => $email
             ]);
 
-            // MODIFICACIÓN AQUÍ: Si el insert fue bien, devuelve el ID del usuario
             if ($res) {
                 return $this->db->lastInsertId();
             }

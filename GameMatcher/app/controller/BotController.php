@@ -3,7 +3,6 @@ require_once MODEL_PATH . 'Bot.php';
 
 class BotController
 {
-    /* --- Gestión de respuestas del Bot --- */
     public function responder()
     {
         header('Content-Type: application/json');
@@ -14,7 +13,6 @@ class BotController
             return;
         }
 
-        /* --- Control de límites para usuarios Free --- */
         if ($_SESSION['tipo_usuario'] === 'free') {
             if (!isset($_SESSION['bot_usage'])) $_SESSION['bot_usage'] = 0;
 
@@ -31,7 +29,6 @@ class BotController
             $_SESSION['bot_usage']++;
         }
 
-        /* --- Procesamiento del mensaje --- */
         $input = json_decode(file_get_contents("php://input"), true);
         $message = $input['message'] ?? '';
 
@@ -42,8 +39,6 @@ class BotController
 
         $bot = new Bot();
         $result = $bot->getResponse($message);
-
-        /* --- Información de uso restante --- */
         if ($_SESSION['tipo_usuario'] === 'free') {
             $restantes = 5 - $_SESSION['bot_usage'];
             $result['response'] .= "<br><br><small style='color: #888;'>Consultas restantes: $restantes</small>";

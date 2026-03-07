@@ -54,7 +54,6 @@ class Foro
         return $nuevo_id;
     }
 
-    // --- CORRECCIÓN DE LA ESTRUCTURA DE MENSAJES ---
     public function getMensajesEstructurados($id_foro)
     {
         $sql = "SELECT p.id_post, p.id_usuario, p.contido as contenido, u.nombre, p.data_publicacion as fecha 
@@ -68,7 +67,6 @@ class Foro
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($posts as &$post) {
-            // Usamos AS id_post para que el front-end no se rompa al buscar el ID
             $sql_comentarios = "SELECT c.id_comentario AS id_post, c.id_usuario, c.contenido, u.nombre, c.data_publicacion as fecha 
                         FROM COMENTARIO c 
                         JOIN USUARIO u ON c.id_usuario = u.id_usuario 
@@ -98,17 +96,12 @@ class Foro
         return $this->db->prepare($sql)->execute([$id_post, $id_usuario, $contenido]);
     }
 
-    // --- FUNCIONES MEJORADAS PARA EDITAR Y BORRAR (Dual Post/Comentario) ---
-
     public function eliminarPost($id)
     {
-        // Obtenemos el usuario de la sesión para seguridad (esto se valida en el controlador)
-        // Intentamos borrar de COMENTARIO primero
         $stmt = $this->db->prepare("DELETE FROM COMENTARIO WHERE id_comentario = ?");
         $stmt->execute([$id]);
 
         if ($stmt->rowCount() == 0) {
-            // Si no era un comentario, es un POST. Borramos sus hijos y luego el post.
             try {
                 $this->db->beginTransaction();
                 $this->db->prepare("DELETE FROM COMENTARIO WHERE id_post = ?")->execute([$id]);
@@ -125,19 +118,16 @@ class Foro
 
     public function actualizarPost($id, $contenido)
     {
-        // Intentar actualizar en la tabla COMENTARIO
         $stmt = $this->db->prepare("UPDATE COMENTARIO SET contenido = ? WHERE id_comentario = ?");
         $stmt->execute([$contenido, $id]);
 
         if ($stmt->rowCount() == 0) {
-            // Si no afectó a ninguna fila, intentar actualizar en la tabla POST
             $stmt = $this->db->prepare("UPDATE POST SET contido = ? WHERE id_post = ?");
             $stmt->execute([$contenido, $id]);
         }
         return true;
     }
 
-    // --- RESTO DE FUNCIONES ---
 
     public function getAllForos()
     {
@@ -167,7 +157,6 @@ class Foro
 
     public function getPostById($id_post)
     {
-        // Esta función ahora busca en ambas tablas para que el controlador pueda validar el dueño
         $sql = "SELECT id_usuario FROM POST WHERE id_post = ? 
                 UNION 
                 SELECT id_usuario FROM COMENTARIO WHERE id_comentario = ?";

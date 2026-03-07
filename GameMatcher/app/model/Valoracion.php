@@ -21,13 +21,10 @@ class Valoracion
         }
 
         try {
-            // 1. SOLUCIÓN AL ERROR: Insertamos el juego en la tabla JUEGO si no existe
-            // Usamos INSERT IGNORE para que si ya existe no haga nada y no de error
             $sqlJuego = "INSERT IGNORE INTO JUEGO (rawg_game_id) VALUES (:id_g)";
             $stmtJuego = $this->db->prepare($sqlJuego);
             $stmtJuego->execute([':id_g' => $rawg_game_id]);
 
-            // 2. Ahora que el juego existe sí o sí, hacemos el REPLACE de la valoración
             $sql = "REPLACE INTO VALORACION (id_usuario, rawg_game_id, puntuacion, comentario, data_valoracion) 
                     VALUES (:id_u, :id_g, :punt, :coment, NOW())";
 
@@ -39,7 +36,6 @@ class Valoracion
                 ':coment'  => $comentario
             ]);
         } catch (PDOException $e) {
-            // Ya sabemos que el error era la Foreign Key, esto lo soluciona
             return false;
         }
     }
