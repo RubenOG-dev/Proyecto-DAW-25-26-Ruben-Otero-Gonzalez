@@ -19,11 +19,27 @@
 ## 3- Innovación
 
 Vou facer uso de bootstrap nos formularios de rexistro e inicio de sesión.
+>
+Uso de sistemas de notificacións persistentes mediante clases CSS animadas para confirmar accións do usuario como o rexistro exitoso ou erros de validación.
+>
+Uso de animacións de carga con js e css para mellorar a percepción de velocidade de carga
 
 ## 4- Probas
 
-Se prueba el envío de mensajes vacíos en el botchat: el bot responde a mensajes sin texto. Corrección: añadir una validación en el script bot.js para que el botón de enviar solo actúe si el campo input tiene contenido.
-Se prueba el cierre del chat: funciona correctamente.
+Probase o envío de mensaxes vacíos no botchat: o bot non responde a mensaxes sen texto.
+>
+Corrección: engadir unha validación no script bot.js para que o botón de enviar so actúe se o campo input ten contido.
+>
+Próbase o cerre do chat, funciona correctamente.
+>
+O Formulario de rexistro impide o rexistro dun usuario se ese email xa se atopa na base de datos
+>
+Detectouse un erro ao intentar valorar un xogo que ainda non existía na base de datos propia.
+>
+Enviaronse comentarios no foro con caracteres especiais os cales agora son correxidos con htmlspecialchars()
+>
+Implementouse logo dun erro durante a eliminación dun fio no foro a eliminación dos comentarios asociados a dito fio facendo uso da clave foranea mais ON DELETE CASCADE en MYSQL.
+
 
 
 [**<-Anterior**](../../README.md)
