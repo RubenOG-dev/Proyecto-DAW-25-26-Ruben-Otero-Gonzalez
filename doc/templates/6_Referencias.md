@@ -25,7 +25,6 @@
 - [Visual Studio Code](https://code.visualstudio.com/) - Editor de código principal.
 - [Postman](https://www.postman.com/) - Plataforma para probas e depuración da API.
 - [GitHub](https://github.com/) - Plataforma para o control de versións e aloxamento do repositorio.
-- [XAMPP](https://www.apachefriends.org/index.html) - Contorna de servidor local para probas.
 
 ## 4- Normas ou documentos legais
 
