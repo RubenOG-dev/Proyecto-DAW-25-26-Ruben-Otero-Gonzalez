@@ -38,7 +38,7 @@ Para poder despregar **GameMatcher** no teu equipo, o primeiro que necesitas é 
 
 Unha vez que o teu servidor local estea funcionando, clona o repositorio ou descarga o código dentro do cartafol correspondente (`htdocs` en XAMPP ou `www` en Laragon). 
 
-O seguinte paso é configurar a persistencia de datos: accede a **phpMyAdmin** dende o teu navegador, crea unha nova base de datos chamada `gamematcher` e importa o ficheiro `gamematcher.sql` que atoparás dentro do cartafol `/db`. Finalmente, abre o arquivo `config.php` no teu editor de texto para introducir as túas credenciais de MySQL e a túa **API KEY de RAWG**. 
+O seguinte paso é configurar a persistencia de datos: accede a **phpMyAdmin** dende o teu navegador, crea unha nova base de datos chamada `gamematcher` e importa o ficheiro `gamematcher.sql` que atoparás dentro do cartafol `/database`. Finalmente, abre o arquivo `config.php` no teu editor de texto para introducir as túas credenciais de MySQL e a túa **API KEY de RAWG**. 
 
 Con isto feito, ao buscar `localhost/GameMatcher` no teu navegador, xa deberías poder interactuar coa plataforma.
 
