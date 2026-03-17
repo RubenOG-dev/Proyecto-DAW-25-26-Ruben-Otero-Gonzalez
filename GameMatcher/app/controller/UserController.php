@@ -65,7 +65,8 @@ class UserController
                 $redirectUrl = 'index.php?controller=MainController&action=principal';
 
                 if (!empty($_POST['return_to'])) {
-                    $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . urlencode($_POST['return_to']);
+                    $safe_id = preg_replace('/[^0-9a-zA-Z_-]/', '', $_POST['return_to']);
+                    $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . $safe_id;
                 }
 
                 echo json_encode([
@@ -111,7 +112,8 @@ class UserController
                 $redirectUrl = 'index.php?controller=User&action=mostrarMain';
 
                 if (!empty($_POST['return_to'])) {
-                    $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . $_POST['return_to'];
+                    $safe_id = preg_replace('/[^0-9a-zA-Z_-]/', '', $_POST['return_to']);
+                    $redirectUrl = 'index.php?controller=Games&action=detalle&id=' . $safe_id;
                 }
 
                 echo json_encode([

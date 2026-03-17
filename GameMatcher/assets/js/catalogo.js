@@ -71,8 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = 'hidden';
     });
   }
-  if(closeBtn) closeBtn.addEventListener('click', cerrarFiltros);
-  if(overlay) overlay.addEventListener('click', cerrarFiltros);
+  if (closeBtn) closeBtn.addEventListener('click', cerrarFiltros);
+  if (overlay) overlay.addEventListener('click', cerrarFiltros);
 
   for (let year = currentYear; year >= 1960; year--) {
     const item = document.createElement("div");
@@ -361,6 +361,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const article = document.createElement("article");
     article.className = "game-card-catalog";
 
+    const placeholder = "assets/img/No-Image-Placeholder.png";
+    const defaultImg = game.background_image || placeholder;
+
     const platformIcons =
       game.parent_platforms
         ?.map((p) => {
@@ -404,13 +407,13 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .join(", ") || "N/A";
 
-    const images = game.short_screenshots
+    const images = (game.short_screenshots && game.short_screenshots.length > 0)
       ? game.short_screenshots.map((s) => s.image)
-      : [game.background_image];
+      : [defaultImg];
 
     article.innerHTML = `
             <div class="card-img-wrapper">
-                <img src="${game.background_image || "assets/img/logo2.png"}" class="main-img" loading="lazy">
+                <img src="${defaultImg || "assets/img/No-Image-Placeholder.png"}" class="main-img" loading="lazy">
                 <div class="img-progress-bar">
                     ${images.map((_, idx) => `<div class="progress-segment ${idx === 0 ? "active" : ""}"></div>`).join("")}
                 </div>
@@ -441,7 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     article.addEventListener("mouseleave", () => {
       clearInterval(interval);
-      article.querySelector(".main-img").src = game.background_image;
+      article.querySelector(".main-img").src = defaultImg;
       const segments = article.querySelectorAll(".progress-segment");
       segments.forEach((s, idx) => s.classList.toggle("active", idx === 0));
     });
@@ -469,7 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .forEach((o) => o.classList.remove("active"));
       } else {
         this.classList.add("active");
-        
+
         const now = new Date();
         const todayStr = now.toISOString().split("T")[0];
 

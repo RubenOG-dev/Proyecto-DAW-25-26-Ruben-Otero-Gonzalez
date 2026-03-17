@@ -1,12 +1,13 @@
 async function traducirDescripciones() {
   const ids = ["target-description-desktop", "target-description-mobile"];
+  const excludeTexts = ["No hay descripción disponible", "Descripción no disponible"];
 
   for (const id of ids) {
     const el = document.getElementById(id);
     if (!el) continue;
 
     const texto = el.innerText.trim();
-    if (texto.length < 10 || texto.includes("QUERY LIMIT")) continue;
+    if (texto.length < 10 || texto.includes("QUERY LIMIT") || excludeTexts.some(t => texto.includes(t))) continue;
 
     const textoLimpio = texto.replace(/<\/?[^>]+(>|$)/g, "");
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(textoLimpio)}`;
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const carousels = document.querySelectorAll(".card-poster");
   const messages = document.querySelectorAll(".auto-hide");
+  const PLACEHOLDER = "assets/img/No-Image-Placeholder.png";
 
   carousels.forEach((carousel) => {
     let images = [];
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (images.length <= 1) return;
+    if (images.length <= 1 || images[0] === PLACEHOLDER) return;
 
     const imgElement = carousel.querySelector(".main-img");
     const segments = carousel.querySelectorAll(".progress-segment");
@@ -50,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       imgElement.classList.add("changing");
 
       setTimeout(() => {
+        imgElement.onerror = () => { imgElement.src = PLACEHOLDER; }
         imgElement.src = images[currentIndex];
 
         segments.forEach((seg, i) => {
@@ -93,9 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     carousel.addEventListener("mouseenter", startAuto);
-    carousel.addEventListener("mouseleave", () => {
-      stopAuto();
-    });
+    carousel.addEventListener("mouseleave", stopAuto);
 
     if (window.innerWidth <= 768) {
     }

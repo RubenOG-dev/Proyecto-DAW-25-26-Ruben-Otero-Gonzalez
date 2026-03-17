@@ -12,6 +12,11 @@
 </head>
 
 <body class="detail-page">
+    <?php
+    $placeholder = "assets/img/No-Image-Placeholder.png";
+    $defaultImg = (!empty($gameData['background_image'])) ? $gameData['background_image'] : $placeholder;
+    $carouselImages = (!empty($gameData['all_images'])) ? $gameData['all_images'] : [$defaultImg];
+    ?>
     <div class="notification-container">
         <?php if (isset($_GET['success'])): ?>
             <div class="auto-hide success">
@@ -41,15 +46,20 @@
         <main class="container">
             <div class="figma-card-desktop">
                 <div class="card-header-desktop">
-                    <div class="card-poster" data-images='<?php echo json_encode($gameData['all_images']); ?>'>
+                    <div class="card-poster" data-images='<?php echo json_encode($carouselImages); ?>'>
                         <div class="card-img-wrapper">
-                            <img src="<?php echo $gameData['background_image']; ?>" class="main-img">
-                            <div class="img-progress-bar">
-                                <?php foreach ($gameData['all_images'] as $index => $img): ?>
-                                    <div class="progress-segment <?php echo $index === 0 ? 'active' : ''; ?>"
-                                        data-index="<?php echo $index; ?>"></div>
-                                <?php endforeach; ?>
-                            </div>
+                            <img src="<?php echo $defaultImg; ?>"
+                                class="main-img"
+                                onerror="this.src='<?php echo $placeholder; ?>';">
+
+                            <?php if (count($carouselImages) > 1): ?>
+                                <div class="img-progress-bar">
+                                    <?php foreach ($carouselImages as $index => $img): ?>
+                                        <div class="progress-segment <?php echo $index === 0 ? 'active' : ''; ?>"
+                                            data-index="<?php echo $index; ?>"></div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="card-info-list">
@@ -71,7 +81,15 @@
                         <?php if (isset($gameData['developers'])): ?>
                             <div class="info-item">
                                 <span>Desarrolladora:</span>
-                                <p><?php echo implode(', ', array_map(fn($d) => $d['name'], $gameData['developers'])); ?></p>
+                                <p>
+                                    <?php
+                                    if (isset($gameData['developers']) && !empty($gameData['developers'])) {
+                                        echo implode(', ', array_map(fn($d) => $d['name'], $gameData['developers']));
+                                    } else {
+                                        echo '<p class="text-muted-alt">Información no disponible</p>';
+                                    }
+                                    ?>
+                                </p>
                             </div>
                         <?php endif; ?>
 
@@ -147,15 +165,20 @@
         <main class="mobile-body">
             <div class="figma-card-mobile">
                 <div class="card-header-mobile">
-                    <div class="card-poster" data-images='<?php echo json_encode($gameData['all_images']); ?>'>
+                    <div class="card-poster" data-images='<?php echo json_encode($carouselImages); ?>'>
                         <div class="card-img-wrapper">
-                            <img src="<?php echo $gameData['background_image']; ?>" class="main-img">
-                            <div class="img-progress-bar">
-                                <?php foreach ($gameData['all_images'] as $index => $img): ?>
-                                    <div class="progress-segment <?php echo $index === 0 ? 'active' : ''; ?>"
-                                        data-index="<?php echo $index; ?>"></div>
-                                <?php endforeach; ?>
-                            </div>
+                            <img src="<?php echo $defaultImg; ?>"
+                                class="main-img"
+                                onerror="this.src='<?php echo $placeholder; ?>';">
+
+                            <?php if (count($carouselImages) > 1): ?>
+                                <div class="img-progress-bar">
+                                    <?php foreach ($carouselImages as $index => $img): ?>
+                                        <div class="progress-segment <?php echo $index === 0 ? 'active' : ''; ?>"
+                                            data-index="<?php echo $index; ?>"></div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="card-info-list">
@@ -177,7 +200,15 @@
                         <?php if (isset($gameData['developers'])): ?>
                             <div class="info-item">
                                 <span>Desarrolladora:</span>
-                                <p><?php echo implode(', ', array_map(fn($d) => $d['name'], $gameData['developers'])); ?></p>
+                                <p>
+                                    <?php
+                                    if (isset($gameData['developers']) && !empty($gameData['developers'])) {
+                                        echo implode(', ', array_map(fn($d) => $d['name'], $gameData['developers']));
+                                    } else {
+                                        echo '<span class="text-muted-alt">Información no disponible</span>';
+                                    }
+                                    ?>
+                                </p>
                             </div>
                         <?php endif; ?>
 

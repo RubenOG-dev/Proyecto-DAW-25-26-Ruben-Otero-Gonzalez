@@ -33,85 +33,83 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const enviarFormulario = async (form, action) => {
-    if (!form.checkValidity()) {
-      form.classList.add("was-validated");
+const enviarFormulario = async (form, action) => {
+  if (!form.checkValidity()) {
+    form.classList.add("was-validated");
+    return;
+  }
+
+  const emailInput = form.querySelector('input[type="email"]');
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (emailInput && !emailRegex.test(emailInput.value)) {
+    mostrarMensajeUI("O formato do correo electrónico non é válido.", "danger");
+    return;
+  }
+
+  if (action === "procesarRegistro") {
+    const pass = form.querySelector('input[name="password"]');
+    const confirm = form.querySelector('input[name="password_confirm"]');
+    if (pass && pass.value.length < 8) {
+      mostrarMensajeUI("A contrasinal debe ter polo menos 8 caracteres.", "danger");
       return;
     }
-
-    const emailInput = form.querySelector('input[type="email"]');
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (emailInput && !emailRegex.test(emailInput.value)) {
-      mostrarMensajeUI(
-        "O formato do correo electrónico non é válido.",
-        "danger",
-      );
+    if (pass && confirm && pass.value !== confirm.value) {
+      mostrarMensajeUI("As contrasinais non coinciden.", "danger");
       return;
     }
+  }
 
-    if (action === "procesarRegistro") {
-      const pass = form.querySelector('input[name="password"]');
-      const confirm = form.querySelector('input[name="password_confirm"]');
-      if (pass && pass.value.length < 8) {
-        mostrarMensajeUI(
-          "A contrasinal debe ter polo menos 8 caracteres.",
-          "danger",
-        );
-        return;
+  const formData = new FormData(form);
+  const btn = form.querySelector('button[type="submit"]');
+  const originalText = btn.innerHTML;
+
+  $d.querySelectorAll(".auth-feedback").forEach((f) => f.classList.add("d-none"));
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Procesando...';
+  
+  const inputs = form.querySelectorAll("input");
+  inputs.forEach((i) => (i.readOnly = true));
+
+  try {
+    const response = await fetch(
+      `./index.php?controller=User&action=${action}`,
+      {
+        method: "POST",
+        body: formData,
       }
-      if (pass && confirm && pass.value !== confirm.value) {
-        mostrarMensajeUI("As contrasinais non coinciden.", "danger");
-        return;
-      }
-    }
-
-    const formData = new FormData(form);
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-
-    $d.querySelectorAll(".auth-feedback").forEach((f) =>
-      f.classList.add("d-none"),
     );
 
-    btn.disabled = true;
-    btn.innerHTML =
-      '<span class="spinner-border spinner-border-sm"></span> Procesando...';
-    const inputs = form.querySelectorAll("input");
-    inputs.forEach((i) => (i.readOnly = true));
+    if (!response.ok) throw new Error("Error en la respuesta del servidor");
 
-    try {
-      const response = await fetch(
-        `./index.php?controller=User&action=${action}`,
-        {
-          method: "POST",
-          body: formData,
-        },
-      );
+    const result = await response.json();
 
-      if (!response.ok) throw new Error("Error en la respuesta del servidor");
+    if (result.success) {
+      mostrarMensajeUI(result.message, "success");
 
-      const result = await response.json();
-
-      if (result.success) {
-        mostrarMensajeUI(result.message, "success");
-
-        if (result.redirect) {
-          setTimeout(() => (window.location.href = result.redirect), 1200);
-        } else if (action === "procesarRegistro") {
-          form.reset();
-          form.classList.remove("was-validated");
-          inputs.forEach((i) => (i.readOnly = false));
-        }
+      if (result.redirect) {
+        setTimeout(() => (window.location.href = result.redirect), 1200);
+      } else if (action === "procesarRegistro") {
+        form.reset();
+        form.classList.remove("was-validated");
+        inputs.forEach((i) => (i.readOnly = false));
       }
-    } catch (error) {
-      console.error("Error:", error);
-      mostrarMensajeUI("Error de conexión con el servidor", "danger");
+    } else {
+      // --- ESTE BLOQUE É O QUE CHE FALTABA ---
+      // Se success é false (contrasinal mal, etc.), avisamos e desbloqueamos
+      mostrarMensajeUI(result.message, "danger");
       inputs.forEach((i) => (i.readOnly = false));
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = originalText;
     }
-  };
+  } catch (error) {
+    console.error("Error:", error);
+    mostrarMensajeUI("Error de conexión con el servidor", "danger");
+    inputs.forEach((i) => (i.readOnly = false));
+  } finally {
+    // Isto execútase sempre, tanto se vai ben como se vai mal
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  }
+};
 
   const loginForms = ["loginFormDesktop", "loginFormMobile"];
   const registerForms = ["registerFormDesktop", "registerFormMobile"];
