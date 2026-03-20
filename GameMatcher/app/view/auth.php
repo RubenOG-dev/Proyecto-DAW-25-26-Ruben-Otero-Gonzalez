@@ -29,7 +29,7 @@ if (isset($_SESSION['id_usuario'])) {
     <div class="desktop-only">
         <div class="auth-container">
             <header class="auth-header text-center">
-                <a href="index.php?controller=MainController&action=principal">
+                <a href="index.php?controller=Main&action=principal">
                     <img src="assets/img/logo.png" alt="GameMatcher Logo" class="main-logo">
                 </a>
             </header>
@@ -107,7 +107,7 @@ if (isset($_SESSION['id_usuario'])) {
     <div class="mobile-only">
         <div class="auth-container d-flex flex-column min-vh-100">
             <header class="auth-header text-center py-4">
-                <a href="index.php?controller=MainController&action=principal">
+                <a href="index.php?controller=Main&action=principal">
                     <img src="assets/img/logo.png" alt="Logo" class="main-logo" style="max-width: 160px;">
                 </a>
             </header>

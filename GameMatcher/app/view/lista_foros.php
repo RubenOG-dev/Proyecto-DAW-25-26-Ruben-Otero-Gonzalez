@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body class="detail-page"> <div class="desktop-only">
+<body class="detail-page">
+    <div class="desktop-only">
         <header class="main-header">
             <div class="logo">
                 <a href="index.php?controller=Main&action=principal">
@@ -22,7 +23,8 @@
             </nav>
         </header>
 
-        <main class="container"> <section class="container-foros">
+        <main class="container">
+            <section class="container-foros">
                 <div class="tendencia-header">
                     <h2>TOP 7 FOROS EN TENDENCIA <i class="fas fa-bolt"></i></h2>
                 </div>
@@ -38,14 +40,17 @@
     <div class="mobile-only">
         <header class="mobile-header">
             <div class="logo-container">
-                <img src="assets/img/logo.png" alt="Logo">
+                <a href="index.php?controller=Main&action=principal">
+                    <img src="assets/img/logo.png" alt="Logo">
+                </a>
             </div>
             <div class="header-buttons">
                 <a href="index.php?controller=Games&action=catalogo" class="btn-small"><i class="fas fa-gamepad"></i> CATÁLOGO</a>
             </div>
         </header>
 
-        <main class="mobile-body"> <section class="container-foros" style="width: 95%;">
+        <main class="mobile-body">
+            <section class="container-foros" style="width: 95%;">
                 <div class="tendencia-header">
                     <h2>FOROS <i class="fas fa-bolt"></i></h2>
                 </div>
@@ -60,4 +65,5 @@
 
     <script src="assets/js/lista_foros.js"></script>
 </body>
+
 </html>

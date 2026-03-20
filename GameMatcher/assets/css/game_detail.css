@@ -179,7 +179,7 @@ main{
 .main-img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
   display: block;
   transition: opacity 0.3s ease-in-out;
 }
@@ -346,10 +346,7 @@ main{
   }
 }
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 /* ============================================================
 6. FOOTER
 ============================================================ */
@@ -639,7 +636,7 @@ main{
   }
 
   .ratings-wrapper {
-    flex-direction: column; /* Cambiamos a columna en móvil */
+    flex-direction: column;
     gap: 10px;
     margin-top: 10px;
   }

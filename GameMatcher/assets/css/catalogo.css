@@ -188,6 +188,10 @@ body.rawg-theme {
   display: block;
 }
 
+aside.active{
+  max-height: 100vh;
+}
+
 .mobile-close-sidebar {
   display: none;
 }

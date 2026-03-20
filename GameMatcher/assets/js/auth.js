@@ -95,8 +95,6 @@ const enviarFormulario = async (form, action) => {
         inputs.forEach((i) => (i.readOnly = false));
       }
     } else {
-      // --- ESTE BLOQUE É O QUE CHE FALTABA ---
-      // Se success é false (contrasinal mal, etc.), avisamos e desbloqueamos
       mostrarMensajeUI(result.message, "danger");
       inputs.forEach((i) => (i.readOnly = false));
     }
@@ -105,7 +103,6 @@ const enviarFormulario = async (form, action) => {
     mostrarMensajeUI("Error de conexión con el servidor", "danger");
     inputs.forEach((i) => (i.readOnly = false));
   } finally {
-    // Isto execútase sempre, tanto se vai ben como se vai mal
     btn.disabled = false;
     btn.innerHTML = originalText;
   }
