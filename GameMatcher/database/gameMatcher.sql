@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql-8001.dinaserver.com:3306
--- Tiempo de generación: 05-03-2026 a las 22:21:56
+-- Tiempo de generación: 11-03-2026 a las 09:35:06
 -- Versión del servidor: 8.0.37
 -- Versión de PHP: 8.2.8
 
@@ -41,10 +41,9 @@ CREATE TABLE `COMENTARIO` (
 --
 
 INSERT INTO `COMENTARIO` (`id_comentario`, `id_post`, `id_usuario`, `contenido`, `data_publicacion`, `data_edicion`) VALUES
-(1, 1, 2, 'Yo puedo ayudarte esta noche, agrégame.', '2026-02-13 08:51:23', NULL),
-(2, 2, 3, 'El Logitech G Pro Superlight es de lo mejor ahora mismo.', '2026-02-13 08:51:23', NULL),
-(3, 2, 1, 'Yo uso un Razer DeathAdder y me va genial.', '2026-02-13 08:51:23', NULL),
-(5, 2, 7, 'uno muy bueno sería el tharkov lo que pasa es que es algo caroo', '2026-03-05 22:11:12', NULL);
+(25, 13, 1, '¡Yo me apunto! Pásame tu ID.', '2026-03-06 00:47:28', NULL),
+(26, 14, 1, 'Dicen que vuelve Verdansk en 2026.', '2026-03-06 00:47:28', NULL),
+(27, 15, 1, 'Se ve increíble, la iluminación es de otro planeta.', '2026-03-06 00:47:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -69,7 +68,10 @@ CREATE TABLE `FORO` (
 INSERT INTO `FORO` (`id_foro`, `titulo`, `descripcion`, `tipo_entidad`, `relacion_id`, `data_creacion`, `data_edicion`) VALUES
 (1, 'Comunidad Portal 2', 'Debates sobre puzzles y cooperativo.', 'juego', 4200, '2026-02-13 08:51:23', NULL),
 (2, 'Zona Shooters', 'Para hablar de cualquier juego de disparos.', 'categoria', 5, '2026-02-13 08:51:23', NULL),
-(3, 'Soporte Técnico', 'Reporta fallos de la web aquí.', 'global', NULL, '2026-02-13 08:51:23', NULL);
+(3, 'Soporte Técnico', 'Reporta fallos de la web aquí.', 'global', NULL, '2026-02-13 08:51:23', NULL),
+(5, 'Foro de Grand Theft Auto V', 'Comunidad de Grand Theft Auto V', 'juego', 3498, '2026-03-05 23:35:31', NULL),
+(6, 'Foro de The Witcher 3: Wild Hunt', 'Comunidad de The Witcher 3: Wild Hunt', 'juego', 3328, '2026-03-06 00:55:30', NULL),
+(7, 'Foro de Tomb Raider (2013)', 'Comunidad de Tomb Raider (2013)', 'juego', 5286, '2026-03-06 01:04:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,6 +90,7 @@ CREATE TABLE `JUEGO` (
 
 INSERT INTO `JUEGO` (`rawg_game_id`, `nome_game`) VALUES
 (28, 'Red Dead Redemption 2'),
+(3498, ''),
 (4200, 'Portal 2');
 
 -- --------------------------------------------------------
@@ -111,9 +114,12 @@ CREATE TABLE `POST` (
 --
 
 INSERT INTO `POST` (`id_post`, `id_foro`, `id_usuario`, `titulo`, `contido`, `data_publicacion`, `data_edicion`) VALUES
-(1, 1, 1, '¿Alguien para el logro del coop?', 'Me faltan un par de niveles, busco compañero.', '2026-02-13 08:51:23', NULL),
-(2, 2, 2, '¿Mejor ratón para FPS?', 'Estoy pensando en comprar uno nuevo, ¿recomendaciones?', '2026-02-13 08:51:23', NULL),
-(3, 3, 1, 'Error al subir foto de perfil', 'No me deja subir archivos .png de más de 1MB.', '2026-02-13 08:51:23', NULL);
+(3, 3, 1, 'Error al subir foto de perfil', 'No me deja subir archivos .png de más de 1MB.', '2026-02-13 08:51:23', NULL),
+(13, 1, 1, '¿Alguien para el coop?', 'Busco gente para Portal 2.', '2026-03-06 00:47:22', NULL),
+(14, 2, 1, 'Duda sobre Warzone', '¿Van a meter mapas nuevos?', '2026-03-06 00:47:22', NULL),
+(15, 5, 1, 'GTA VI Tráiler', '¿Qué os ha parecido el vídeo?', '2026-03-06 00:47:22', NULL),
+(16, 6, 1, 'The Wiitcher 3: Top Juegos 2026', 'Para mi es uno de los mejores juegos 2026', '2026-03-06 00:55:56', NULL),
+(17, 7, 1, 'Primer Comentario del Foro', 'Hola soy nuevo en el juego, quien me puede dar consejo?', '2026-03-06 01:05:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,13 +140,8 @@ CREATE TABLE `SESION` (
 --
 
 INSERT INTO `SESION` (`id_sesion`, `id_usuario`, `token`, `data_inicio`, `data_fin`) VALUES
-(1, 7, 'a8fe01c096a607a54ca43d20bfe83a81', '2026-03-04 09:09:29', '2026-03-04 09:10:13'),
-(2, 7, 'f0b907819888c888614e6af3de4b5290', '2026-03-04 09:14:59', '2026-03-05 19:55:32'),
-(3, 7, '778848b8c64b3cc3a26c5562974b7726', '2026-03-05 10:46:45', '2026-03-05 19:55:32'),
-(4, 7, '974bb4b43017901224783f2855fd3817', '2026-03-05 13:18:15', '2026-03-05 19:55:32'),
-(5, 7, '498e59372f3039993ab0ad8e030b7c1a', '2026-03-05 19:58:34', '2026-03-05 19:59:54'),
-(6, 7, 'e2750f8daccad8883cdfa38f9a8c4927', '2026-03-05 20:08:35', '2026-03-05 20:11:24'),
-(7, 7, 'd69b59ea1ba4d7898d9e3c3b716d717f', '2026-03-05 20:13:36', NULL);
+(11, 17, '3123ff3101814db65cbf63114b4bbee5', '2026-03-07 20:44:04', '2026-03-07 20:50:48'),
+(12, 17, 'd3c53fe0df8d311bc73ec6223b3a1e33', '2026-03-07 20:51:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -166,10 +167,10 @@ CREATE TABLE `USUARIO` (
 
 INSERT INTO `USUARIO` (`id_usuario`, `nombre`, `contrasenha`, `email`, `tipo_usuario`, `stripe_customer_id`, `estado_suscripcion_id`, `activo`, `data_rexistro`) VALUES
 (1, 'Marcos88', 'pbkdf2:sha256:250000$xxxx', 'marcos@example.com', 'free', NULL, 0, 1, '2026-02-13 08:51:23'),
-(2, 'Elena_Gamer', 'pbkdf2:sha256:250000$yyyy', 'elena@example.com', 'premium', 'cus_N8x2kL0', 1, 1, '2026-02-13 08:51:23'),
 (3, 'Staff_GameMatcher', 'pbkdf2:sha256:250000$zzzz', 'staff@gamematcher.com', 'admin', NULL, 0, 1, '2026-02-13 08:51:23'),
 (4, 'Usuario Proba', '$2y$12$CqFJbNANmaO6TkD.qwFwOeogEHr4cACK25GGtkbZSqQRTrLgV7yiG', 'proba@gamematcher.com', 'free', NULL, 0, 1, '2026-02-13 13:11:10'),
-(7, 'RUBÉN OTERO GONZÁLEZ', '$2y$12$Amfbl4rWgrxWHIO260cgF.Sb9WZc2Itgy5qE.WrPNYwDVBdnbIF9C', 'oterogonzalezruben@gmail.com', 'premium', NULL, 0, 1, '2026-02-25 09:41:58');
+(14, 'admin', '$2y$10$8S8lS5U.Cdfu/qW6jXfKue7ZfXoDqBqY8S1B.M3u9z/H5r1p.7Gqy', 'admin@gamematcher.com', 'admin', NULL, 0, 1, '2026-03-06 00:16:55'),
+(17, 'RUBÉN OTERO GONZÁLEZ', '$2y$12$v6//novwiNsKRcdKVVowIO4SRgm1igMhlI7iXSmZdS2NKkdh4/EZi', 'oterogonzalezruben@gmail.com', 'free', NULL, 0, 1, '2026-03-07 20:43:54');
 
 -- --------------------------------------------------------
 
@@ -185,6 +186,13 @@ CREATE TABLE `VALORACION` (
   `comentario` text COLLATE utf8mb4_general_ci,
   `data_valoracion` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ;
+
+--
+-- Volcado de datos para la tabla `VALORACION`
+--
+
+INSERT INTO `VALORACION` (`id_valoracion`, `id_usuario`, `rawg_game_id`, `puntuacion`, `comentario`, `data_valoracion`) VALUES
+(7, 17, 3498, 3, 'está meh', '2026-03-07 22:50:11');
 
 --
 -- Índices para tablas volcadas
@@ -238,7 +246,7 @@ ALTER TABLE `USUARIO`
 --
 ALTER TABLE `VALORACION`
   ADD PRIMARY KEY (`id_valoracion`),
-  ADD KEY `id_usuario` (`id_usuario`),
+  ADD UNIQUE KEY `usuario_juego_unico` (`id_usuario`,`rawg_game_id`),
   ADD KEY `rawg_game_id` (`rawg_game_id`);
 
 --
@@ -249,31 +257,31 @@ ALTER TABLE `VALORACION`
 -- AUTO_INCREMENT de la tabla `COMENTARIO`
 --
 ALTER TABLE `COMENTARIO`
-  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `FORO`
 --
 ALTER TABLE `FORO`
-  MODIFY `id_foro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_foro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `POST`
 --
 ALTER TABLE `POST`
-  MODIFY `id_post` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_post` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `SESION`
 --
 ALTER TABLE `SESION`
-  MODIFY `id_sesion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_sesion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `USUARIO`
 --
 ALTER TABLE `USUARIO`
-  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `VALORACION`

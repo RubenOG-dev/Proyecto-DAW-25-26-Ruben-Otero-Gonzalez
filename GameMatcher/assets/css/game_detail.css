@@ -179,7 +179,7 @@ main{
 .main-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   display: block;
   transition: opacity 0.3s ease-in-out;
 }
@@ -347,113 +347,8 @@ main{
 }
 
 /* ============================================================
-   5. ESPECÍFICO MÓVIL
-   ============================================================ */
-@media (max-width: 768px) {
-  .container {
-    margin: 15px auto;
-    padding: 0 10px;
-  }
-
-  .mobile-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .figma-card-mobile {
-    width: 90%;
-    padding: 15px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-
-  .card-header-mobile {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    margin-bottom: 15px;
-  }
-
-  .card-poster {
-    flex: 0 0 50%;
-    max-width: 190px !important;
-  }
-  .card-img-wrapper {
-    aspect-ratio: 2 / 3 !important;
-    border-radius: 10px;
-    border-width: 2px;
-  }
-
-  .img-progress-bar {
-    padding: 2px 6px;
-    bottom: 5px;
-    transform: translateX(-50%) scale(0.6);
-    opacity: 1;
-  }
-  .progress-segment {
-    width: 12px;
-    height: 3px;
-  }
-  .progress-segment.active {
-    width: 18px;
-  }
-
-  .card-info-list {
-    flex: 1;
-    justify-content: center;
-  }
-  .info-item {
-    margin-bottom: 8px;
-  }
-  .info-item span {
-    font-size: 0.85rem;
-    margin-bottom: 2px;
-    text-transform: uppercase;
-  }
-  .info-item p {
-    font-size: 0.8rem;
-    line-height: 1.2;
-  }
-  .stars {
-    font-size: 1rem;
-  }
-
-  .card-description {
-    width: 100%;
-    padding-top: 15px;
-    margin-top: 5px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    text-align: left;
-  }
-
-  .btn-foro-main {
-    width: 40%;
-    padding: 10px;
-    font-size: 0.9rem;
-    margin: 20px 0px 20px 0px;
-    text-align: center;
-    border-radius: 10px;
-  }
-
-  .main-img{
-    object-fit: cover;
-  }
-
-  .mobile-body .ratings-wrapper{
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-/* ============================================================
-   6. FOOTER
-   ============================================================ */
+6. FOOTER
+============================================================ */
 .desktop-only .main-footer {
   background: #0f172a;
   padding: 0 8%;
@@ -641,5 +536,111 @@ main{
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   5. ESPECÍFICO MÓVIL
+   ============================================================ */
+@media (max-width: 768px) {
+  .container {
+    margin: 15px auto;
+    padding: 0 10px;
+  }
+
+  .mobile-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .figma-card-mobile {
+    width: 90%;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .card-header-mobile {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .card-poster {
+    flex: 0 0 50%;
+    max-width: 190px !important;
+  }
+  .card-img-wrapper {
+    aspect-ratio: 2 / 3 !important;
+    border-radius: 10px;
+    border-width: 2px;
+  }
+
+  .img-progress-bar {
+    padding: 2px 6px;
+    bottom: 5px;
+    transform: translateX(-50%) scale(0.6);
+    opacity: 1;
+  }
+  .progress-segment {
+    width: 12px;
+    height: 3px;
+  }
+  .progress-segment.active {
+    width: 18px;
+  }
+
+  .card-info-list {
+    flex: 1;
+    justify-content: center;
+  }
+  .info-item {
+    margin-bottom: 8px;
+  }
+  .info-item span {
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+  }
+  .info-item p {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+  .stars {
+    font-size: 1rem;
+  }
+
+  .card-description {
+    width: 100%;
+    padding-top: 15px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .btn-foro-main {
+    width: 40%;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin: 20px 0px 20px 0px;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .ratings-wrapper {
+    flex-direction: column; /* Cambiamos a columna en móvil */
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .ratings-wrapper .info-item {
+    align-items: flex-start;
   }
 }

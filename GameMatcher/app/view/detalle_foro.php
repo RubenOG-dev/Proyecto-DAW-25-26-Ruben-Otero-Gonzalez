@@ -43,14 +43,14 @@
                             <div class="post-card">
                                 <div class="post-meta">
                                     <span class="post-author"><?= htmlspecialchars($m['nombre']) ?></span>
-                                    <span class="post-date"><?= $m['fecha'] ?></span>
+                                    <span class="post-date"><?= htmlspecialchars($m['fecha']) ?></span>
                                 </div>
                                 <div class="post-body" id="contenido-<?= $m['id_post'] ?>">
                                     <?= nl2br(htmlspecialchars($m['contenido'])) ?>
                                 </div>
                                 <?php if (isset($_SESSION['id_usuario'])): ?>
                                     <div class="post-actions">
-                                        <button type="button" class="btn-small" onclick="setReply(<?= $m['id_post'] ?>, '<?= htmlspecialchars($m['nombre']) ?>')">
+                                        <button type="button" class="btn-small" onclick="setReply(<?= (int)$m['id_post'] ?>, '<?= addslashes(htmlspecialchars($m['nombre'], ENT_QUOTES, 'UTF-8')) ?>')">
                                             <i class="fas fa-reply"></i> Responder
                                         </button>
                                         <?php if (isset($_SESSION['id_usuario']) && $_SESSION['id_usuario'] == $m['id_usuario']): ?>
@@ -73,7 +73,7 @@
                                             <div class="reply-card" style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; margin-bottom: 10px;">
                                                 <div class="post-meta" style="font-size: 0.75rem;">
                                                     <span class="post-author" style="color: var(--gamer-cyan) !important;"><?= htmlspecialchars($r['nombre']) ?></span>
-                                                    <span class="post-date"><?= $r['fecha'] ?></span>
+                                                    <span class="post-date"><?= htmlspecialchars($m['fecha']) ?></span>
                                                 </div>
                                                 <div class="post-body" style="font-size: 0.9rem;" id="contenido-<?= $r['id_post'] ?>"> <?= nl2br(htmlspecialchars($r['contenido'])) ?>
                                                 </div>
@@ -163,14 +163,14 @@
                         <div class="post-card">
                             <div class="post-meta">
                                 <span class="post-author"><?= htmlspecialchars($m['nombre']) ?></span>
-                                <span class="post-date"><?= $m['fecha'] ?></span>
+                                <span class="post-date"><?= htmlspecialchars($m['fecha']) ?></span>
                             </div>
                             <div class="post-body" id="contenido-<?= $m['id_post'] ?>">
                                 <?= nl2br(htmlspecialchars($m['contenido'])) ?>
                             </div>
                             <?php if (isset($_SESSION['id_usuario'])): ?>
                                 <div class="post-actions">
-                                    <button type="button" class="btn-small" onclick="setReply(<?= $m['id_post'] ?>, '<?= htmlspecialchars($m['nombre']) ?>')">
+                                    <button type="button" class="btn-small" onclick="setReply(<?= (int)$m['id_post'] ?>, '<?= addslashes(htmlspecialchars($m['nombre'], ENT_QUOTES, 'UTF-8')) ?>')">
                                         <i class="fas fa-reply"></i> Responder
                                     </button>
                                     <?php if (isset($_SESSION['id_usuario']) && $_SESSION['id_usuario'] == $m['id_usuario']): ?>
@@ -193,7 +193,7 @@
                                         <div class="reply-card" style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px; margin-bottom: 10px;">
                                             <div class="post-meta" style="font-size: 0.75rem;">
                                                 <span class="post-author" style="color: var(--gamer-pink) !important;"><?= htmlspecialchars($r['nombre']) ?></span>
-                                                <span class="post-date"><?= $r['fecha'] ?></span>
+                                                <span class="post-date"><?= htmlspecialchars($m['fecha']) ?></span>
                                             </div>
                                             <div class="post-body" style="font-size: 0.9rem;" id="contenido-<?= $r['id_post'] ?>"> <?= nl2br(htmlspecialchars($r['contenido'])) ?>
                                             </div>

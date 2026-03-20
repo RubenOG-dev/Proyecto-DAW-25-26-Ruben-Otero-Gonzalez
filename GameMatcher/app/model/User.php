@@ -71,14 +71,14 @@ class User
         $token = bin2hex(random_bytes(16));
         $sql = "INSERT INTO SESION (id_usuario, token, data_inicio) VALUES (:id, :token, NOW())";
         $stmt = $this->db->prepare($sql);
-        return $stmt->execute(['id' => $id_usuario, 'token' => $token]);
+        return $stmt->execute([':id' => $id_usuario, ':token' => $token]);
     }
 
     public function cerrarSesionBD($id_usuario)
     {
         $sql = "UPDATE SESION SET data_fin = NOW() WHERE id_usuario = :id AND data_fin IS NULL";
         $stmt = $this->db->prepare($sql);
-        return $stmt->execute(['id' => $id_usuario]);
+        return $stmt->execute([':id' => $id_usuario]);
     }
 
     public function hacerPremium($id_usuario)

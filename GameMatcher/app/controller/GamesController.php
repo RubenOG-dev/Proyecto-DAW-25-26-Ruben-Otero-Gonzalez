@@ -5,12 +5,12 @@ class GamesController
 {
     public function catalogo()
     {
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $search = $_GET['search'] ?? '';
-        $genres = $_GET['genres'] ?? '';
-        $platforms = $_GET['platforms'] ?? '';
-        $ordering = $_GET['ordering'] ?? '';
-        $dates = $_GET['dates'] ?? '';
+        $page = isset($_GET['page']) && (int)$_GET['page'] > 0 ? (int)$_GET['page'] : 1;
+        $search = isset($_GET['search']) ? htmlspecialchars(trim($_GET['search']), ENT_QUOTES, 'UTF-8') : '';
+        $genres = isset($_GET['genres']) ? preg_replace('/[^0-9,]/', '', $_GET['genres']) : ''; // RAWG usa IDs numéricos separados por comas
+        $platforms = isset($_GET['platforms']) ? preg_replace('/[^0-9,]/', '', $_GET['platforms']) : '';
+        $ordering = isset($_GET['ordering']) ? preg_replace('/[^a-zA-Z0-9,-]/', '', $_GET['ordering']) : '';
+        $dates = isset($_GET['dates']) ? preg_replace('/[^0-9,-]/', '', $_GET['dates']) : '';
 
         $pageSize = 40;
         $url = "https://api.rawg.io/api/games?key=" . RAWG_API_KEY . "&page={$page}&page_size={$pageSize}";
@@ -51,7 +51,7 @@ class GamesController
             exit;
         }
 
-        $gameId = $_GET['id'];
+        $gameId = isset($_GET['id']) ? preg_replace('/[^0-9a-zA-Z_-]/', '', $_GET['id']) : null;
 
         $url = "https://api.rawg.io/api/games/{$gameId}?key=" . RAWG_API_KEY . "&lang=es";
         $json = $this->peticionApi($url);
@@ -123,11 +123,11 @@ class GamesController
 
             $valModel = new Valoracion();
             $id_usuario = $_SESSION['id_usuario'];
-            $game_id = $_POST['game_id'] ?? null;
-            $puntos = $_POST['puntuacion'] ?? 0;
-            $comentario = !empty($_POST['comentario']) ? trim($_POST['comentario']) : null;
+            $game_id = isset($_POST['game_id']) ? preg_replace('/[^0-9a-zA-Z_-]/', '', $_POST['game_id']) : null;
+            $puntos = isset($_POST['puntuacion']) ? (int)$_POST['puntuacion'] : 0;
+            $comentario = !empty($_POST['comentario']) ? htmlspecialchars(trim($_POST['comentario']), ENT_QUOTES, 'UTF-8') : null;
 
-            if (!$game_id) {
+            if (!$game_id || $puntos < 1 || $puntos > 5 ) {
                 header("Location: index.php?controller=Games&action=catalogo");
                 exit;
             }
