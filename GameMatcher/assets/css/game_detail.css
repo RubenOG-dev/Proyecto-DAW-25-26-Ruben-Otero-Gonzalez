@@ -440,6 +440,15 @@ main{
     text-align: center;
     border-radius: 10px;
   }
+
+  .main-img{
+    object-fit: cover;
+  }
+
+  .mobile-body .ratings-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* ============================================================

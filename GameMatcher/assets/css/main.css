@@ -388,6 +388,8 @@ body {
 .footer-copyright { font-size: 0.85rem; }
 
 .mobile-only .mobile-footer {
+  display: flex;
+  flex-direction: row;
   border-top-color: var(--primary-lila-m);
   background: var(--bg-dark-m);
   justify-content: space-around;
