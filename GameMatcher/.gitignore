@@ -3,3 +3,4 @@ node_modules/
 vendor/
 .DS_Store
 Thumbs.db
+app/globals.php
