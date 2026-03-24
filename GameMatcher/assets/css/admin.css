@@ -14,7 +14,7 @@
 body.admin-page {
   background-color: var(--bg-dark);
   color: var(--text-main);
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
 }
 

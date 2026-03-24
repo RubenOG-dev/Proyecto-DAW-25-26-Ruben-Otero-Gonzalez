@@ -19,7 +19,7 @@ body.detail-page {
   background-color: var(--bg-dark-core);
   color: var(--text-main);
   margin: 0;
-  font-family: inherit;
+  font-family: 'Roboto', sans-serif;
 }
 
 #main-textarea {
@@ -129,7 +129,7 @@ textarea {
   background: rgba(0, 0, 0, 0.3) !important;
   border: 1px solid rgba(139, 92, 246, 0.3) !important;
   color: white !important;
-  font-family: inherit;
+  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   resize: vertical;
   transition: 0.3s;
