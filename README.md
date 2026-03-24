@@ -89,6 +89,13 @@ A nivel visual, habilitar a edición de perfís e comentarios utilizando a libre
 
 ## Links
 
+### Acceso a Páxina no estado Actual
+* [GameMatcher](https://campechano.rial.com.es)
+* Usuario de Prueba:
+* ** correo: usuarioprueba@gmail.com
+* ** contrasinal: abcd1234.
+
+
 ### Viabilidade e Gastos do Proxecto
 * [Formas Xurídicas](https://www.infoautonomos.com/)
 * [Precio Hosting](https://dinahosting.com/)
